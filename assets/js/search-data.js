@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-projects",
           title: "projects",
-          description: "Research and engineering projects.",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
@@ -37,6 +37,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/teaching/";
           },
+        },{id: "nav-blog",
+          title: "blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
         },{id: "news-started-the-master-of-science-in-computer-science-at-vinuniversity-through-the-graduate-research-excellence-program",
           title: 'Started the Master of Science in Computer Science at VinUniversity through the Graduate...',
           description: "",
@@ -46,22 +53,7 @@ ninja.data = [{
           section: "News",},{id: "news-launched-this-academic-portfolio-based-on-al-folio",
           title: 'Launched this academic portfolio based on al-folio.',
           description: "",
-          section: "News",},{id: "projects-gaussian-splatting-research",
-          title: 'Gaussian Splatting Research',
-          description: "Structural learning, density control, optimization, and compact 3D scene representations.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/gaussian-splatting-research/";
-            },},{id: "projects-hcm-ai-challenge-2024",
-          title: 'HCM AI Challenge 2024',
-          description: "Web-based event-retrieval pipeline that advanced to the final round.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/hcm-ai-challenge/";
-            },},{id: "projects-triags",
-          title: 'TriaGS',
-          description: "WACV 2026 geometric regularization method for 3D Gaussian Splatting.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/triags/";
-            },},{id: "teachings-data-mining-comp4040",
+          section: "News",},{id: "teachings-data-mining-comp4040",
           title: 'Data Mining (COMP4040)',
           description: "Teaching assistant support for lab materials, lab sessions, and student projects.",
           section: "Teachings",handler: () => {
