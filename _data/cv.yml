@@ -1,0 +1,176 @@
+cv:
+  name: Quan Tran Hong
+  label: Computer Science MSc Student and 3D Vision Researcher
+  email: quanth238@gmail.com
+  website: https://quanth238.github.io
+  location: Finland
+  image: ""
+  summary: >
+    Researcher working on 3D vision, Gaussian Splatting, generative modeling,
+    computer vision, and practical machine learning systems. Current interests
+    include efficient 3D scene representations, neural rendering, and ML systems
+    that move cleanly from experiments into usable software.
+
+  social_networks:
+    - network: GitHub
+      username: quanth238
+    - network: LinkedIn
+      username: quan2381
+
+  sections:
+    Education:
+      - institution: VinUniversity
+        location: Hanoi, Vietnam
+        area: Computer Science
+        studyType: Master of Science
+        start_date: 2026-03
+        end_date: Present
+        highlights:
+          - Graduate Research Excellence Program, full-tuition scholarship and stipend.
+
+      - institution: Auckland University of Technology
+        location: Vietnam
+        area: Computer and Information Sciences
+        studyType: Bachelor
+        start_date: 2019-09
+        end_date: 2023-08
+        score: "GPA: 3.48/4.0"
+        highlights:
+          - High Merit Graduate.
+
+    Experience:
+      - company: Binh AI Lab, Center for AI Research (CAIR), VinUniversity
+        position: Research Assistant
+        location: Hanoi, Vietnam
+        start_date: 2026-03
+        end_date: Present
+        highlights:
+          - Conducting research in computer vision, 3D reconstruction, and neural rendering under the supervision of Prof. Nguyen Tuan Binh.
+          - Investigating efficient 3D scene representations, with a focus on Gaussian Splatting for high-quality, real-time rendering.
+
+      - company: Advised by Dr. Tuan Dang
+        position: Undergraduate Researcher
+        start_date: 2024-12
+        end_date: Present
+        highlights:
+          - Led implementation and experimentation for a geometric regularization method for 3D Gaussian Splatting, covering algorithm design, training, and evaluation.
+          - Prepared a WACV 2026 submission through weekly advisor feedback cycles, refining the method, experiments, and paper narrative.
+          - Supported academic reviewing by drafting a preliminary internal review for a conference submission at my advisor's request.
+
+      - company: VinUniversity
+        position: Teaching Assistant, Data Mining (COMP4040)
+        location: Hanoi, Vietnam
+        start_date: 2026-02
+        end_date: 2026-05
+        summary: Prepared lab materials, led lab sessions, and supported student projects.
+
+      - company: Fullerton Health Vietnam
+        position: Software Engineer
+        location: Vietnam
+        start_date: 2021-12
+        end_date: 2023-10
+        highlights:
+          - Engineered backend systems, migrated legacy services toward microservices, and optimized database query pipelines for more reliable production workloads.
+          - Developed authentication, authorization, and workflow automation, including SSO and RBAC, to support healthcare operations at scale.
+
+      - company: Zigvy Corporation
+        position: Frontend Developer Intern
+        location: Vietnam
+        start_date: 2021-04
+        end_date: 2021-10
+        highlights:
+          - Built reusable React UI components and shipped product features.
+
+    Publications:
+      - title: Birth-Death Structural Learning for 3D Gaussian Splatting
+        authors:
+          - Quan Tran Hong
+          - L. Nguyen-Chi
+          - B. Nguyen
+        publisher: Submitted to NeurIPS
+        releaseDate: 2026
+        summary: Structural learning method for 3D Gaussian Splatting.
+
+      - title: Applying Splat Regression Models to Particle Density Control in Radiance Fields
+        authors:
+          - Quan Tran Hong
+          - L. Nguyen-Chi
+          - B. Nguyen
+        publisher: Submitted to ICML 2026 SPIGM Workshop
+        releaseDate: 2026
+        summary: Splat regression approach for particle density control in radiance fields.
+
+      - title: "TriaGS: Differentiable Triangulation-Guided Geometric Consistency for 3D Gaussian Splatting"
+        authors:
+          - Quan Tran Hong
+          - Tuan Dang
+        publisher: IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)
+        releaseDate: 2026
+        url: https://arxiv.org/abs/2512.06269
+        summary: Geometry-guided regularization for improving 3D Gaussian Splatting consistency.
+
+      - title: Render-Aware Subset Selection for Post-Training 3D Gaussian Splatting Compaction
+        authors:
+          - Quan Tran Hong
+          - B. Nguyen
+        publisher: Manuscript
+        releaseDate: 2026
+        summary: Render-aware subset selection for compacting trained 3D Gaussian Splatting scenes.
+
+    Talks:
+      - label: "3D Gaussian Splatting (3DGS)"
+        details: Invited talk, CAIR Monthly Reading Group, VinUniversity, March 19, 2026.
+
+    Service:
+      - label: Workshop Reviewer
+        details: ICML 2026 Workshop on Structured Probabilistic Inference and Generative Modeling (SPIGM).
+
+    Skills:
+      - name: Languages
+        keywords:
+          - Python
+          - JavaScript/TypeScript
+          - Go
+          - Java
+          - C++
+      - name: ML/CV
+        keywords:
+          - PyTorch
+          - TensorFlow
+          - Scikit-learn
+          - 3D vision
+          - generative models
+      - name: Systems
+        keywords:
+          - FastAPI
+          - NestJS
+          - PostgreSQL
+          - Docker
+          - AWS
+
+    Projects:
+      - name: TriaGS
+        summary: Differentiable triangulation-guided geometric consistency for 3D Gaussian Splatting.
+        url: https://github.com/quanth238/triags
+        highlights:
+          - WACV 2026 research project with arXiv and code release.
+
+      - name: HCM AI Challenge 2024
+        summary: Web-based event-retrieval pipeline that advanced to the final round.
+
+    Certificates:
+      - name: AWS Certified Cloud Practitioner
+        issuer: Amazon Web Services
+      - name: AI Vietnam Program Graduate
+        issuer: AI Vietnam
+      - name: Full-Stack JavaScript Website Bootcamp
+        issuer: Full-stack JavaScript training program
+
+    Interests:
+      - name: Research
+        keywords:
+          - 3D vision
+          - Gaussian Splatting
+          - generative modeling
+          - computer vision
+          - practical machine learning systems
