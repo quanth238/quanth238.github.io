@@ -1,15 +1,15 @@
 cv:
   name: Quan Tran Hong
-  label: Computer Science MSc Student and 3D Vision Researcher
+  label: Graduate Student, Computer Science
   email: quanth238@gmail.com
   website: https://quanth238.github.io
-  location: Finland
-  image: ""
+  location: Vietnam
+  image: quan-tran-avatar.jpg
   summary: >
-    Researcher working on 3D vision, Gaussian Splatting, generative modeling,
-    computer vision, and practical machine learning systems. Current interests
-    include efficient 3D scene representations, neural rendering, and ML systems
-    that move cleanly from experiments into usable software.
+    Graduate student and researcher working on 3D vision, generative modeling,
+    optimization, computer vision, neural rendering, and probabilistic machine
+    learning. Current research studies learned 3D representations for neural
+    rendering and reconstruction.
 
   social_networks:
     - network: GitHub
@@ -39,23 +39,25 @@ cv:
           - High Merit Graduate.
 
     Experience:
-      - company: Binh AI Lab, Center for AI Research (CAIR), VinUniversity
+      - company: Binh AI Lab, CAIR, VinUniversity
         position: Research Assistant
         location: Hanoi, Vietnam
         start_date: 2026-03
         end_date: Present
+        summary: "Advisor: Asst. Prof. Binh T. Nguyen"
         highlights:
-          - Conducting research in computer vision, 3D reconstruction, and neural rendering under the supervision of Prof. Nguyen Tuan Binh.
-          - Investigating efficient 3D scene representations, with a focus on Gaussian Splatting for high-quality, real-time rendering.
+          - Research generative modeling, optimization, and probabilistic ML for 3D vision.
+          - Study training behavior of learned 3D representations for neural rendering and reconstruction.
 
-      - company: Advised by Dr. Tuan Dang
-        position: Undergraduate Researcher
+      - company: Cognitive Robotics Lab, University of Arkansas
+        position: Research Assistant
         start_date: 2024-12
-        end_date: Present
+        end_date: 2026-03
+        summary: "Advisor: Dr. Tuan Dang"
         highlights:
-          - Led implementation and experimentation for a geometric regularization method for 3D Gaussian Splatting, covering algorithm design, training, and evaluation.
-          - Prepared a WACV 2026 submission through weekly advisor feedback cycles, refining the method, experiments, and paper narrative.
-          - Supported academic reviewing by drafting a preliminary internal review for a conference submission at my advisor's request.
+          - Proposed and led a first-author project on geometric regularization for 3D Gaussian Splatting.
+          - Designed the method, ran experiments and ablations, and wrote the manuscript.
+          - Resulted in TriaGS, accepted to WACV 2026.
 
       - company: VinUniversity
         position: Teaching Assistant, Data Mining (COMP4040)
@@ -67,19 +69,16 @@ cv:
       - company: Fullerton Health Vietnam
         position: Software Engineer
         location: Vietnam
-        start_date: 2021-12
-        end_date: 2023-10
-        highlights:
-          - Engineered backend systems, migrated legacy services toward microservices, and optimized database query pipelines for more reliable production workloads.
-          - Developed authentication, authorization, and workflow automation, including SSO and RBAC, to support healthcare operations at scale.
+        start_date: 2023-12
+        end_date: 2025-10
+        summary: Built healthcare backend services with microservices, SSO/RBAC, and optimized queries.
 
       - company: Zigvy Corporation
         position: Frontend Developer Intern
         location: Vietnam
-        start_date: 2021-04
-        end_date: 2021-10
-        highlights:
-          - Built reusable React UI components and shipped product features.
+        start_date: 2023-04
+        end_date: 2023-10
+        summary: Built React UI components and implemented client-facing web application features.
 
     Publications:
       - title: Birth-Death Structural Learning for 3D Gaussian Splatting
@@ -87,18 +86,16 @@ cv:
           - Quan Tran Hong
           - L. Nguyen-Chi
           - B. Nguyen
-        publisher: Submitted to NeurIPS
+        publisher: Submitted to the Conference on Neural Information Processing Systems (NeurIPS)
         releaseDate: 2026
-        summary: Structural learning method for 3D Gaussian Splatting.
 
       - title: Applying Splat Regression Models to Particle Density Control in Radiance Fields
         authors:
           - Quan Tran Hong
           - L. Nguyen-Chi
           - B. Nguyen
-        publisher: Submitted to ICML 2026 SPIGM Workshop
+        publisher: Submitted to the ICML 2026 Workshop on Structured Probabilistic Inference and Generative Modeling (SPIGM)
         releaseDate: 2026
-        summary: Splat regression approach for particle density control in radiance fields.
 
       - title: "TriaGS: Differentiable Triangulation-Guided Geometric Consistency for 3D Gaussian Splatting"
         authors:
@@ -107,7 +104,6 @@ cv:
         publisher: IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)
         releaseDate: 2026
         url: https://arxiv.org/abs/2512.06269
-        summary: Geometry-guided regularization for improving 3D Gaussian Splatting consistency.
 
       - title: Render-Aware Subset Selection for Post-Training 3D Gaussian Splatting Compaction
         authors:
@@ -115,7 +111,6 @@ cv:
           - B. Nguyen
         publisher: Manuscript
         releaseDate: 2026
-        summary: Render-aware subset selection for compacting trained 3D Gaussian Splatting scenes.
 
     Talks:
       - label: "3D Gaussian Splatting (3DGS)"
@@ -138,6 +133,9 @@ cv:
           - PyTorch
           - TensorFlow
           - Scikit-learn
+          - training
+          - fine-tuning
+          - evaluation
           - 3D vision
           - generative models
       - name: Systems
@@ -170,7 +168,8 @@ cv:
       - name: Research
         keywords:
           - 3D vision
-          - Gaussian Splatting
           - generative modeling
+          - optimization
           - computer vision
-          - practical machine learning systems
+          - neural rendering
+          - probabilistic machine learning

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: TriaGS
-description: Differentiable triangulation-guided geometric consistency for 3D Gaussian Splatting.
+description: WACV 2026 geometric regularization method for 3D Gaussian Splatting.
 importance: 1
 category: research
 related_publications: true

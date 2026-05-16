@@ -9,11 +9,11 @@ last_name: Hong
 contact_note: >
   For research collaborations or software engineering work, email is the best way to reach me.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Portfolio and academic homepage for Quan Tran Hong, a computer science researcher working on 3D vision, Gaussian Splatting, generative modeling, and practical machine learning systems.
+  Portfolio and academic homepage for Quan Tran Hong, a Computer Science graduate student working on 3D vision, generative modeling, optimization, neural rendering, and probabilistic machine learning.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: 3d vision, gaussian splatting, computer vision, machine learning, neural rendering, portfolio # add your own keywords or leave empty
+keywords: 3d vision, gaussian splatting, generative modeling, optimization, computer vision, neural rendering, probabilistic machine learning, portfolio # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: Q # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 

@@ -20,6 +20,6 @@ Teaching Assistant for Data Mining (COMP4040), Spring 2026.
 
 ## Responsibilities
 
-- Prepared lab materials.
+- Prepared materials for labs.
 - Led lab sessions.
 - Supported student projects.

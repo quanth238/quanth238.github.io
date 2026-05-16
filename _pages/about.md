@@ -2,18 +2,19 @@
 layout: about
 title: about
 permalink: /
-subtitle: Computer Science MSc student at VinUniversity. 3D vision, Gaussian Splatting, generative modeling, and practical ML systems.
+subtitle: Graduate student in Computer Science at VinUniversity. Researching 3D vision, generative modeling, optimization, neural rendering, and probabilistic machine learning.
 
 profile:
   align: right
-  image:
+  image: quan-tran-avatar.jpg
   image_circular: false
   more_info: >
-    <p>Finland / Vietnam</p>
+    <p>Vietnam</p>
     <p><a href="mailto:quanth238@gmail.com">quanth238@gmail.com</a></p>
+    <p><a href="https://www.cogniboticslab.org/member.php?id=quantran">Cognitive Robotics Lab profile</a></p>
     <p><a href="https://www.linkedin.com/in/quan2381/">LinkedIn</a> · <a href="https://github.com/quanth238">GitHub</a></p>
 
-selected_papers: true
+selected_papers: false
 social: true
 
 announcements:
@@ -27,8 +28,13 @@ latest_posts:
   limit: 3
 ---
 
-I am a computer science researcher focused on 3D vision, neural rendering, Gaussian Splatting, generative modeling, and production-minded machine learning systems. I am currently an MSc student at VinUniversity through the Graduate Research Excellence Program and a Research Assistant at Binh AI Lab, CAIR.
+I am a Computer Science graduate student at VinUniversity and a Research Assistant at Binh AI Lab, CAIR, advised by Asst. Prof. Binh T. Nguyen. My research focuses on 3D vision, generative modeling, optimization, neural rendering, and probabilistic machine learning.
 
-My current work studies efficient 3D scene representations and geometry-aware methods for high-quality real-time rendering. I also bring software engineering experience from healthcare systems, backend services, authentication/authorization workflows, and full-stack product development.
+Before joining VinUniversity, I worked with Dr. Tuan Dang at the Cognitive Robotics Lab, University of Arkansas, where I proposed and led TriaGS, a geometric regularization method for 3D Gaussian Splatting accepted to WACV 2026. I also have software engineering experience in healthcare systems, including backend services, microservices, SSO/RBAC, and database query optimization.
 
-Recent research includes geometric consistency for 3D Gaussian Splatting, particle density control in radiance fields, structural learning for 3DGS, and render-aware subset selection for post-training 3DGS compaction.
+## Selected publications
+
+- **Birth-Death Structural Learning for 3D Gaussian Splatting.** Quan Tran Hong, L. Nguyen-Chi, B. Nguyen. Submitted to NeurIPS, 2026.
+- **Applying Splat Regression Models to Particle Density Control in Radiance Fields.** Quan Tran Hong, L. Nguyen-Chi, B. Nguyen. Submitted to ICML 2026 SPIGM Workshop.
+- **TriaGS: Differentiable Triangulation-Guided Geometric Consistency for 3D Gaussian Splatting.** Quan Tran Hong, Tuan Dang. WACV 2026. [arXiv](https://arxiv.org/abs/2512.06269) · [code](https://github.com/quanth238/triags)
+- **Render-Aware Subset Selection for Post-Training 3D Gaussian Splatting Compaction.** Quan Tran Hong, B. Nguyen. Manuscript.
