@@ -48,7 +48,7 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "projects-gaussian-splatting-research",
           title: 'Gaussian Splatting Research',
-          description: "Current work on structural learning, density control, and compact 3D scene representations.",
+          description: "Structural learning, density control, optimization, and compact 3D scene representations.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/gaussian-splatting-research/";
             },},{id: "projects-hcm-ai-challenge-2024",
@@ -58,7 +58,7 @@ ninja.data = [{
               window.location.href = "/projects/hcm-ai-challenge/";
             },},{id: "projects-triags",
           title: 'TriaGS',
-          description: "Differentiable triangulation-guided geometric consistency for 3D Gaussian Splatting.",
+          description: "WACV 2026 geometric regularization method for 3D Gaussian Splatting.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/triags/";
             },},{id: "teachings-data-mining-comp4040",
@@ -67,6 +67,13 @@ ninja.data = [{
           section: "Teachings",handler: () => {
               window.location.href = "/teachings/data-mining-comp4040/";
             },},{
+        id: 'social-cv',
+        title: 'CV',
+        section: 'Socials',
+        handler: () => {
+          window.open("/assets/pdf/quan-tran-hong-cv.pdf", "_blank");
+        },
+      },{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
@@ -88,11 +95,11 @@ ninja.data = [{
           window.open("https://www.linkedin.com/in/quan2381", "_blank");
         },
       },{
-        id: 'social-rss',
-        title: 'RSS Feed',
+        id: 'social-scholar',
+        title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("/feed.xml", "_blank");
+          window.open("https://scholar.google.com/citations?user=VZ0L3wIAAAAJ", "_blank");
         },
       },{
       id: 'light-theme',
