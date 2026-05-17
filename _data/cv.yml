@@ -53,7 +53,7 @@ cv:
         position: Research Assistant
         start_date: 2024-12
         end_date: 2026-03
-        summary: "Advisor: Dr. Tuan Dang"
+        summary: "Advisor: Asst. Prof. Tuan Dang, University of Arkansas"
         highlights:
           - Proposed and led a first-author project on geometric regularization for 3D Gaussian Splatting.
           - Designed the method, ran experiments and ablations, and wrote the manuscript.

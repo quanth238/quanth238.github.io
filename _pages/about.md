@@ -29,4 +29,4 @@ latest_posts:
 
 I am a Computer Science graduate student at VinUniversity and a Research Assistant at Binh AI Lab, CAIR, advised by Asst. Prof. Binh T. Nguyen. My research focuses on 3D vision, generative modeling, optimization, neural rendering, and probabilistic machine learning.
 
-Before joining VinUniversity, I worked with Dr. Tuan Dang at the Cognitive Robotics Lab, University of Arkansas, where I proposed and led TriaGS, a geometric regularization method for 3D Gaussian Splatting accepted to WACV 2026. I also have software engineering experience in healthcare systems, including backend services, microservices, SSO/RBAC, and database query optimization.
+Before joining VinUniversity, I worked with Asst. Prof. Tuan Dang at the Cognitive Robotics Lab, University of Arkansas, where I proposed and led TriaGS, a geometric regularization method for 3D Gaussian Splatting accepted to WACV 2026. I also have software engineering experience in healthcare systems, including backend services, microservices, SSO/RBAC, and database query optimization.
