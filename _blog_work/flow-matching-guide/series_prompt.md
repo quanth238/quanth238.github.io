@@ -10,8 +10,11 @@ Workspace:
 - Use branch codex/cv-research-blog-visual-pipeline, or create a new codex/flow-matching-series-* branch if this PR has already merged.
 - Do not edit /Users/quan238/personal/cv directly.
 - Before writing, read AGENTS.md, codex/skills/cv-research-blogger/SKILL.md,
-  codex/skills/cv-research-blogger/visual_quality.md, manifest.yml,
-  visual_sources.yml, series_tasks.yml, and HANDOFF.md.
+  codex/skills/cv-research-blogger/visual_quality.md, SESSION_BOOTSTRAP.md,
+  manifest.yml, visual_sources.yml, series_tasks.yml, HANDOFF.md, and this
+  prompt.
+- Run python3 scripts/blog_pipeline/check_harness.py flow-matching-guide before
+  changing a post, visual, or pipeline file.
 
 Source:
 - Primary: https://arxiv.org/abs/2412.06264
@@ -43,6 +46,17 @@ Required modes for each part:
 - mode:code-run
 - mode:review
 - mode:publish-check
+
+Harness rules:
+- Treat series_tasks.yml as the only source of truth for active work.
+- Keep WIP to one task. Valid states are not_started, active, blocked, and
+  passing.
+- Do not mark a task passing until its verification commands pass and evidence
+  is recorded.
+- Store visual decisions in visual_sources.yml, code-run logs under
+  _blog_work/flow-matching-guide/remote_runs/, and final assets under
+  assets/img/blog/flow-matching-guide/.
+- End every session by updating HANDOFF.md and the relevant task evidence.
 
 Writing constraints:
 - No meta sentences like "this tutorial explains" or "the reader should see".

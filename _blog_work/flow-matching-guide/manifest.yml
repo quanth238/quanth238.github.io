@@ -19,6 +19,14 @@ source_materials:
   - "https://www.weideng.org/posts/flow_matching/"
   - "https://daddaops.com/blog/flow-matching-from-scratch/"
 
+harness:
+  bootstrap_contract: "_blog_work/flow-matching-guide/SESSION_BOOTSTRAP.md"
+  task_source_of_truth: "_blog_work/flow-matching-guide/series_tasks.yml"
+  visual_source_of_truth: "_blog_work/flow-matching-guide/visual_sources.yml"
+  handoff: "_blog_work/flow-matching-guide/HANDOFF.md"
+  wip_limit: 1
+  cold_start_target: "A fresh agent can recover state and choose one verified task from repo files alone."
+
 checkpoints:
   intake: "created"
   outline: "topic_outline_scaffolded"

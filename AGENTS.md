@@ -18,14 +18,22 @@ Before drafting or publishing a research tutorial, read:
 - `codex/skills/cv-research-blogger/SKILL.md`
 - `codex/skills/cv-research-blogger/visual_quality.md`
 - `_blog_work/<series-slug>/manifest.yml`
+- `_blog_work/<series-slug>/SESSION_BOOTSTRAP.md` when present
 - `_blog_work/<series-slug>/visual_sources.yml`
 - `_blog_work/<series-slug>/series_tasks.yml` when present
 - `_blog_work/<series-slug>/HANDOFF.md` when present
+- `_blog_work/<series-slug>/series_prompt.md` when present
 
 Keep WIP to one active blog part or visual redesign. The repo files above are
 the durable handoff between sessions. A post is not publish-ready unless its
 visual plan contains external visual references, figure briefs, local assets or
 Mermaid source, alt text, evaluator notes, and passing checker/build evidence.
+
+For this pipeline, treat `_blog_work/<series-slug>/series_tasks.yml` as the
+single source of truth for active work. A task can move to `passing` only after
+its verification commands pass and the evidence is written into the task list or
+handoff. Use `python3 scripts/blog_pipeline/check_harness.py <series-slug>` as
+the cold-start harness check before a new writing or visual-design session.
 
 ## Quick Links by Role
 

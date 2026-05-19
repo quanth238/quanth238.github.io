@@ -3,25 +3,46 @@ updated_at: "2026-05-19"
 wip_limit: 1
 current_state: "part-1-pr-open"
 active_task: null
+state_policy:
+  valid_states: ["not_started", "active", "blocked", "passing"]
+  transition_rule: "A task can move to passing only after its verification commands pass and evidence is recorded."
+  source_of_truth: "_blog_work/flow-matching-guide/series_tasks.yml"
 
 tasks:
   - id: "FM-00"
     title: "Establish CV blog visual harness"
-    state: "done"
+    behavior: "Provide an agent-readable writing and visual pipeline with source intake, figure briefs, code runs, quality checks, and durable handoff files."
+    state: "passing"
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
     evidence:
       - "codex/skills/cv-research-blogger/SKILL.md"
       - "codex/skills/cv-research-blogger/visual_quality.md"
+      - "_blog_work/flow-matching-guide/SESSION_BOOTSTRAP.md"
       - "scripts/blog_pipeline/check_post.py"
       - "scripts/blog_pipeline/plan_visuals.py"
+      - "scripts/blog_pipeline/check_harness.py"
   - id: "FM-01"
     title: "Publish Flow Matching Part 1 through PR"
-    state: "done"
+    behavior: "Ship Part 1 as a source-backed distill post with Mermaid, local figures, code-result plots, alt text, and approval metadata."
+    state: "passing"
+    verification:
+      - "python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build"
     evidence:
       - "_posts/2026-05-19-flow-matching-guide-part-1.md"
       - "https://github.com/quanth238/quanth238.github.io/pull/1"
   - id: "FM-02"
     title: "Redesign Part 1 overview figure to match the professional visual standard"
-    state: "planned"
+    behavior: "Replace or revise the overview bitmap with a precise local technical figure that shows the exact flow-matching objects without generic stock styling."
+    state: "not_started"
+    depends_on: ["FM-01"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build"
+      - "Browser or screenshot verification of the replaced overview figure at desktop and mobile widths."
     acceptance:
       - "Create a figure brief revision in visual_sources.yml."
       - "Prefer local SVG/matplotlib schematic or a cleaner AI bitmap with verified labels."
@@ -29,13 +50,23 @@ tasks:
       - "Pass check_post.py and Jekyll build after replacing the figure."
   - id: "FM-03"
     title: "Plan the full Flow Matching series"
-    state: "planned"
+    behavior: "Create a one-task-at-a-time series map where each part has a practical reader question, cited sources, visual plan, code target, and handoff."
+    state: "not_started"
+    depends_on: ["FM-01"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
     acceptance:
       - "Each part has one practical reader question."
       - "Each part has cited core sources, visual plan, code-result target, and next-part transition."
   - id: "FM-04"
     title: "Implement Flow Matching Part 2"
-    state: "planned"
+    behavior: "Draft and verify Part 2 after its Planner visual plan exists, focusing on one sampling question and one code result."
+    state: "not_started"
+    depends_on: ["FM-03"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
+      - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
     acceptance:
       - "Answer one practical sampling question."
       - "Include solver-step or path-quality code result."

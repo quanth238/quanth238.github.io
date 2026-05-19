@@ -408,6 +408,27 @@ def visual_plan_errors(front_matter: str, body: str) -> list[str]:
             "FIX: add evaluator_notes with any visual risks, approvals, or redesign tasks."
         )
 
+    body_local_assets: set[str] = set()
+    for match in re.finditer(r"!\[[^\]]*\]\(([^)]+)\)", body):
+        target = match.group(1).strip()
+        if not re.match(r"https?://", target) and not target.startswith(("#", "mailto:", "data:")):
+            body_local_assets.add(target.split("#", 1)[0].split("?", 1)[0].lstrip("/"))
+    for match in re.finditer(r"{%\s*include\s+figure\.liquid\b([^%]*)%}", body):
+        target = attribute_value(match.group(1), "path")
+        if target and not re.match(r"https?://", target):
+            body_local_assets.add(target.split("#", 1)[0].split("?", 1)[0].lstrip("/"))
+    for match in re.finditer(r"<img\b([^>]*)>", body, flags=re.IGNORECASE):
+        target = attribute_value(match.group(1), "src")
+        if target and not re.match(r"https?://", target) and not target.startswith(("#", "mailto:", "data:")):
+            body_local_assets.add(target.split("#", 1)[0].split("?", 1)[0].lstrip("/"))
+    for asset in sorted(body_local_assets):
+        if asset and asset not in plan:
+            errors.append(
+                f"reader-facing asset is not registered in visual plan: {asset}. "
+                "WHY: figure provenance, alt text, and evaluator status must survive new sessions. "
+                "FIX: add the asset under generated_figures or remote_code_figures in the visual plan."
+            )
+
     references_text = yaml_section(plan, "references")
     source_count = len(re.findall(r"^\s*-\s+source:\s+\"?https?://", references_text, flags=re.MULTILINE))
     if source_count < 2:

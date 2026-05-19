@@ -43,15 +43,35 @@ Treat the repository as the source of truth. Before continuing a series, read:
 - this `SKILL.md`
 - `codex/skills/cv-research-blogger/visual_quality.md`
 - `_blog_work/<series-slug>/manifest.yml`
+- `_blog_work/<series-slug>/SESSION_BOOTSTRAP.md` when it exists
 - `_blog_work/<series-slug>/visual_sources.yml`
 - `_blog_work/<series-slug>/series_tasks.yml` when it exists
 - `_blog_work/<series-slug>/HANDOFF.md` when it exists
+- `_blog_work/<series-slug>/series_prompt.md` when it exists
 
 Work in one active blog part at a time. Every completed step needs durable
 evidence in `_blog_work/<series-slug>/`: source decisions, visual decisions,
 code-run metadata, checker output, render status, and the next task. If a new
 session cannot recover the current state from those files, the harness is not
 complete yet.
+
+## Session Bootstrap
+
+Before writing or drawing, run the cold-start routine:
+
+1. Read the series bootstrap, manifest, visual plan, task list, and handoff.
+2. Confirm the task list has `wip_limit: 1` and at most one `active` task.
+3. Run `python3 scripts/blog_pipeline/check_harness.py <series-slug>` when the
+   series already has bootstrap files.
+4. Pick exactly one task from `series_tasks.yml`; if a task needs to start, mark
+   it `active` before implementation and write the verification target.
+5. Do not mark a task `passing` until its verification command has run and the
+   output/evidence path is recorded.
+
+Before ending a session, update `series_tasks.yml` and `HANDOFF.md` with what
+changed, what passed, what is blocked, and the next recommended task. A clean
+exit requires passing blog checks, current progress, no stale generated assets,
+and an explicit startup path for the next session.
 
 ## Professional Visual Standard
 
