@@ -108,7 +108,29 @@ final_assets:
 
 minimal_required_site_changes:
   bibliography: []
-  config: []
+  config:
+    - harness_source: "_config.yml"
+      target: "/Users/quan238/personal/cv/_config.yml"
+      target_exists_at_manifest_time: true
+      overwrites_existing_target: true
+      required_change: "Set display_tags to include flow-matching, tutorial, and generative-modeling on the blog index."
+  pages:
+    - harness_source: "_pages/blog.md"
+      target: "/Users/quan238/personal/cv/_pages/blog.md"
+      target_exists_at_manifest_time: true
+      overwrites_existing_target: true
+      required_change: "Set hide_footer: true for the blog index."
+  layouts:
+    - harness_source: "_layouts/default.liquid"
+      target: "/Users/quan238/personal/cv/_layouts/default.liquid"
+      target_exists_at_manifest_time: true
+      overwrites_existing_target: true
+      required_change: "Respect page.hide_footer before including the al-folio footer."
+    - harness_source: "_layouts/distill.liquid"
+      target: "/Users/quan238/personal/cv/_layouts/distill.liquid"
+      target_exists_at_manifest_time: true
+      overwrites_existing_target: true
+      required_change: "Respect page.hide_footer before including the al-folio footer on Distill posts."
   data: []
   dependencies: []
 
@@ -142,3 +164,13 @@ verification_snapshot:
     - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md"
     - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
     - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+  post_manifest_footer_tag_update:
+    - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+    - "python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md"
+    - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+    - "Live /blog/ check: flow-matching tag present and copyright/powered-by footer absent."

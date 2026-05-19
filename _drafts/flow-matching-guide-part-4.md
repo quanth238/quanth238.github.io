@@ -5,7 +5,7 @@ description: "Compare endpoint couplings and inspect how pairing changes path ge
 date: 2026-05-19
 author: "Quan Tran Hong"
 thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg
-tags: ["tutorial", "reading-notes", "generative-modeling"]
+tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"
 part: 4

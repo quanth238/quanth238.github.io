@@ -55,6 +55,30 @@ verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
 
+2026-05-19 blog index footer and tag follow-up:
+
+- Active branch: `codex/flow-matching-series-complete-drafts`.
+- The blog index `_pages/blog.md` now sets `hide_footer: true`.
+- The default and Distill layouts now respect `page.hide_footer` before including
+  the al-folio footer.
+- `_config.yml` now displays the `flow-matching`, `tutorial`, and
+  `generative-modeling` tags on the blog index.
+- Flow Matching Parts 1-6 now include the `flow-matching` tag.
+- `_blog_work/flow-matching-guide/export_manifest.yml` now records the required
+  layout, page, and config changes for a future approved export. Those target
+  files already exist in `/Users/quan238/personal/cv`, so they are marked as
+  overwrites in the manifest. No personal CV files were modified.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Live `http://127.0.0.1:8080/blog/` check: `flow-matching` tag present and
+  copyright/powered-by footer absent.
+
 2026-05-19 FM-09 export manifest check:
 
 - Active branch: `codex/flow-matching-series-complete-drafts`.

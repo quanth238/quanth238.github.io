@@ -5,7 +5,7 @@ description: "Build the ODE sampling loop and inspect how Euler step count chang
 date: 2026-05-19
 author: "Quan Tran Hong"
 thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg
-tags: ["tutorial", "reading-notes", "generative-modeling"]
+tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"
 part: 2

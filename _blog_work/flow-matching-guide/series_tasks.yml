@@ -237,6 +237,7 @@ tasks:
       - "Verification passed: check_post.py for _drafts/flow-matching-guide-part-2.md through _drafts/flow-matching-guide-part-6.md."
       - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
       - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
+      - "Post-manifest follow-up: blog index now hides the al-folio footer, displays the flow-matching tag, and the manifest records required layout/page/config changes as personal CV overwrites requiring approval."
 
 completion_evidence_required:
   - "python3 scripts/blog_pipeline/check_post.py <draft-or-post>"

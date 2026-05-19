@@ -5,7 +5,7 @@ description: "Change the probability path and inspect how scheduler choice chang
 date: 2026-05-19
 author: "Quan Tran Hong"
 thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg
-tags: ["tutorial", "reading-notes", "generative-modeling"]
+tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"
 part: 5

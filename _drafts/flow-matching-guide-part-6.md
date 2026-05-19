@@ -5,7 +5,7 @@ description: "Map the toy flow-matching pieces to the verified official package 
 date: 2026-05-19
 author: "Quan Tran Hong"
 thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg
-tags: ["tutorial", "reading-notes", "generative-modeling"]
+tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"
 part: 6
