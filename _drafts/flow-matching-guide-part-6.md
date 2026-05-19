@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: "Flow Matching Guide and Code, part 6"
-description: "Map the toy flow-matching pieces to the verified official package components."
+description: "Map the toy flow-matching pieces to official package components."
 date: 2026-05-19
 author: "Quan Tran Hong"
 thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg
@@ -40,12 +40,12 @@ source_materials:
 
 The toy code has four moving parts: a probability path, a velocity target, a velocity model, and an ODE sampler. The official [`flow_matching`](https://github.com/facebookresearch/flow_matching) package keeps the same separation. The repository describes a PyTorch library for continuous and discrete flow matching implementations, with path, scheduler, solver, loss, and example modules tied to the Flow Matching Guide and Code paper [Flow Matching Guide and Code](https://arxiv.org/abs/2412.06264).
 
-I verified the package install and component names with `flow_matching==1.0.10`. The installed package exports `CondOTProbPath`, `AffineProbPath`, scheduler classes such as `CondOTScheduler` and `LinearVPScheduler`, and `ODESolver` for continuous sampling.
+In `flow_matching==1.0.10`, the package exports `CondOTProbPath`, `AffineProbPath`, scheduler classes such as `CondOTScheduler` and `LinearVPScheduler`, and `ODESolver` for continuous sampling.
 
 ```mermaid
 flowchart LR
     accTitle: Toy Flow Matching To Official Package Components
-    accDescr: The diagram maps the tutorial's toy path, scheduler, velocity target, model, and solver concepts to verified components in the official flow_matching package.
+    accDescr: The diagram maps the tutorial's toy path, scheduler, velocity target, model, and solver concepts to components in flow_matching version 1.0.10.
 
     toy_path["Toy path xt"]
     toy_velocity["Toy target Ut"]
@@ -73,15 +73,14 @@ flowchart LR
 
 The package does not remove the conceptual work. It gives names and tested APIs for the same objects:
 
-| Tutorial object | Verified package object |
-| --- | --- |
-| Conditional OT path | `CondOTProbPath` |
-| General affine path | `AffineProbPath` |
-| Conditional OT scheduler | `CondOTScheduler` |
-| Linear VP scheduler | `LinearVPScheduler` |
-| Continuous ODE sampler | `ODESolver` |
-| Model wrapper option | `ModelWrapper` |
-| Discrete generalized KL loss | `MixturePathGeneralizedKL` |
+| Tutorial object          | Package object in `flow_matching==1.0.10` |
+| ------------------------ | ----------------------------------------- |
+| Conditional OT path      | `CondOTProbPath`                          |
+| General affine path      | `AffineProbPath`                          |
+| Conditional OT scheduler | `CondOTScheduler`                         |
+| Linear VP scheduler      | `LinearVPScheduler`                       |
+| Continuous ODE sampler   | `ODESolver`                               |
+| Model wrapper option     | `ModelWrapper`                            |
 
 For the continuous path used in this series, the path object returns a `PathSample` with `x_t` and `dx_t`. The training loop can then use a standard PyTorch regression loss between the model output and `dx_t`.
 
@@ -133,11 +132,9 @@ pred = velocity_model(sample.x_t, sample.t)
 loss = torch.mean((pred - sample.dx_t) ** 2)
 ```
 
-The package also has discrete-flow components. In the installed version, `MixtureDiscreteProbPath`, `MixtureDiscreteEulerSolver`, and `MixturePathGeneralizedKL` are exported for discrete settings. That belongs to a different branch of the library than the continuous 2D examples used here.
-
 ## Minimal implementation
 
-The verified continuous solver API is `ODESolver.sample`. It accepts `x_init`, `step_size`, `method`, `time_grid`, and `return_intermediates`.
+For `flow_matching==1.0.10`, the continuous solver API is `ODESolver.sample`. It accepts `x_init`, `step_size`, `method`, `time_grid`, and `return_intermediates`.
 
 ```python
 import torch
@@ -145,7 +142,7 @@ from flow_matching.solver import ODESolver
 
 
 solver = ODESolver(velocity_model=velocity_model)
-time_grid = torch.linspace(0.0, 1.0, 32)
+time_grid = torch.linspace(0.0, 1.0, 33)
 
 samples = solver.sample(
     x_init=x0,
@@ -160,11 +157,11 @@ The velocity model can be a callable or a `ModelWrapper`. Extra keyword argument
 
 ## Code result
 
-The verified package run uses `CondOTProbPath` to sample exact conditional path points, then uses `ODESolver` with the matching conditional velocity to integrate the same endpoints up to $t=0.98$. Dotted gray curves are path-object samples. Solid blue curves are solver trajectories.
+The package bridge run uses `CondOTProbPath` to sample exact conditional path points, then uses `ODESolver` with the matching conditional velocity to integrate the same endpoints up to $t=0.98$. Dotted gray curves are path-object samples. Solid blue curves are solver trajectories.
 
 {% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg" class="img-fluid rounded z-depth-1" width="980" height="620" zoomable=true alt="Official flow_matching package smoke test using CondOTProbPath and ODESolver on conditional endpoint trajectories." %}
 
-The mean endpoint error at $t=0.98$ was 0.0524 in the 2D check. The point of the run is API wiring: the path object, velocity callable, and solver agree on tensor shapes and time arguments.
+The solver-to-path agreement metric compares the final solver state with the `CondOTProbPath` sample at the same final time, $t=0.98$. The displayed remaining distance to the endpoint is separate: it is the intentional path segment from $t=0.98$ to $t=1$, not solver error. The point of the run is API wiring: the path object, velocity callable, and solver agree on tensor shapes and time arguments.
 
 ## Sampling procedure
 
@@ -177,6 +174,8 @@ For a trained continuous model, the package sampling pattern is direct:
 
 The conceptual checks from the earlier parts still apply. The solver method should match the field's time behavior, the path scheduler should match training, and diagnostics should separate numerical integration error from model quality.
 
+The package also has a discrete branch, including `MixtureDiscreteProbPath`, `MixtureDiscreteEulerSolver`, and `MixturePathGeneralizedKL`. That is separate from the continuous 2D examples used in this series.
+
 ## Next part
 
 The series ends with an export checklist after all draft checks pass.
@@ -186,4 +185,3 @@ The series ends with an export checklist after all draft checks pass.
 - Primary guide and codebase paper: [Flow Matching Guide and Code](https://arxiv.org/abs/2412.06264).
 - Official package repository: [`facebookresearch/flow_matching`](https://github.com/facebookresearch/flow_matching).
 - Core paper: [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747).
-- Package verification metadata: `_blog_work/flow-matching-guide/remote_runs/20260519T155000Z_fm08_official_package/package_verification.md`.

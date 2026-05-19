@@ -1,16 +1,15 @@
 {
   "task": "FM-08",
   "flow_matching_version": "1.0.10",
-  "flow_matching_module": "/private/tmp/fm08-flow-matching-venv/lib/python3.9/site-packages/flow_matching/__init__.py",
+  "flow_matching_module": "/private/tmp/fm15-flow-matching-venv/lib/python3.9/site-packages/flow_matching/__init__.py",
   "torch_version": "2.8.0",
-  "components": [
-    "CondOTProbPath",
-    "ODESolver"
-  ],
+  "components": ["CondOTProbPath", "ODESolver"],
   "method": "midpoint",
   "step_size": 0.02,
   "time_grid_end": 0.98,
-  "mean_endpoint_error": 0.052367109805345535,
-  "max_endpoint_error": 0.09761476516723633,
+  "mean_solver_path_gap_at_final_time": 1.433954537333193e-7,
+  "max_solver_path_gap_at_final_time": 2.4575624024691933e-7,
+  "mean_remaining_distance_to_endpoint_at_final_time": 0.05236712470650673,
+  "max_remaining_distance_to_endpoint_at_final_time": 0.09761498123407364,
   "asset": "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
 }

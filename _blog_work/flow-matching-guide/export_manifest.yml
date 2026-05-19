@@ -1,10 +1,29 @@
 series: "flow-matching-guide"
 prepared_at: "2026-05-19"
-prepared_on_branch: "codex/flow-matching-series-complete-drafts"
+prepared_on_branch: "codex/flow-matching-series-review-revisions"
 harness_checkout: "/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline"
 publication_target: "/Users/quan238/personal/cv"
 status: "approval_required"
 export_performed: false
+review_revision_update:
+  updated_at: "2026-05-19"
+  branch: "codex/flow-matching-series-review-revisions"
+  scope:
+    - "Parts 1-6 received review/revision edits in the harness checkout."
+    - "Part 6 official package bridge SVG and smoke-test JSON were regenerated after correcting the solver-to-path metric semantics."
+    - "Visual metadata now records local ownership decisions and paper_figure_extraction: false for final reader-facing Flow Matching visuals."
+  exportable_files_changed:
+    reader_facing_posts:
+      - "_posts/2026-05-19-flow-matching-guide-part-1.md"
+      - "_drafts/flow-matching-guide-part-2.md"
+      - "_drafts/flow-matching-guide-part-3.md"
+      - "_drafts/flow-matching-guide-part-4.md"
+      - "_drafts/flow-matching-guide-part-5.md"
+      - "_drafts/flow-matching-guide-part-6.md"
+    final_assets:
+      - "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
+  export_performed: false
+  approval_required_before_export: true
 approval_gate:
   required_before_copying: true
   note: "Do not copy, create, or modify files under /Users/quan238/personal/cv until the user explicitly approves this manifest."
@@ -174,3 +193,21 @@ verification_snapshot:
     - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md"
     - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
     - "Live /blog/ check: flow-matching tag present and copyright/powered-by footer absent."
+  fm10_to_fm15_review_revision_part_gates:
+    - "For each part task FM-10 through FM-15: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide passed."
+    - "For each scoped part file: python3 scripts/blog_pipeline/check_post.py <part-file> passed."
+    - "For each part task FM-10 through FM-15: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py passed."
+    - "For each part task FM-10 through FM-15: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts passed."
+    - "Rendered HTML check after each drafts build: /blog/ retained expected flow-matching/tutorial/generative-modeling tags; Flow Matching Parts 1-6 retained Contents; footer/copyright/powered-by strings were absent from /blog/ and Flow Matching Parts 1-6."
+    - "Part 6 package bridge rerun passed in /tmp/fm15-flow-matching-venv with flow_matching==1.0.10 and tqdm installed; regenerated JSON/SVG separate solver-to-path gap from remaining endpoint distance."
+  final_review_revision_full_suite:
+    - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+    - "python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md"
+    - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+    - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+    - "Rendered HTML check: /blog/ has expected flow-matching/tutorial/generative-modeling tags; Flow Matching Parts 1-6 have Contents; footer/copyright/powered-by strings absent from /blog/ and Flow Matching Parts 1-6."

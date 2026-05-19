@@ -35,7 +35,8 @@
 <circle cx="741.1" cy="230.5" r="4.0" fill="#d95f59" opacity="0.88"/>
 <circle cx="260.9" cy="361.5" r="4.0" fill="#d95f59" opacity="0.88"/>
 <circle cx="751.3" cy="270.7" r="4.0" fill="#d95f59" opacity="0.88"/>
-<rect x="62" y="532" width="856" height="52" fill="#fff" stroke="#ddd"/>
+<rect x="62" y="526" width="856" height="64" fill="#fff" stroke="#ddd"/>
 <text x="82" y="558" font-family="Arial, sans-serif" font-size="13" fill="#444">Package: flow_matching 1.0.10; components: CondOTProbPath, ODESolver.</text>
-<text x="82" y="578" font-family="Arial, sans-serif" font-size="13" fill="#444">Mean endpoint error at t=0.98 against the conditional target: 0.0524.</text>
+<text x="82" y="576" font-family="Arial, sans-serif" font-size="13" fill="#444">Mean solver-to-path gap at t=0.98: 0.0000.</text>
+<text x="82" y="590" font-family="Arial, sans-serif" font-size="13" fill="#444">Mean remaining distance from t=0.98 path point to endpoint: 0.0524.</text>
 </svg>

@@ -63,7 +63,7 @@ The initial sample is $x_0 \sim p_0$.
 
 The distribution of $x_t$ changes over time. We can call this changing distribution $p_t$. The ideal goal is to choose a velocity field $v_t$ such that $p_t$ starts at $p_0$ and ends at $p_1$.
 
-The direct regression target is not available in real data. At intermediate times, we do not know the exact marginal distribution $p_t$ or the exact global velocity $v_t$. This is why conditional flow matching is useful: it creates tractable supervised targets by conditioning on sampled endpoints.
+The unavailable object is the direct marginal velocity target, not the conditional velocity target from sampled endpoints used below. At intermediate times, data do not give the exact marginal distribution $p_t$ or the global field $v_t$ that transports it. Conditional flow matching sidesteps that missing marginal target by conditioning on sampled endpoints, where the velocity along the chosen path is available.
 
 ## Path and velocity target
 

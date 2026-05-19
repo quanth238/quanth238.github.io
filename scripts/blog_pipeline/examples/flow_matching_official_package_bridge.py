@@ -58,9 +58,10 @@ def write_svg(
         parts.append(circle(x, y, 4.0, "#d95f59", 0.88, left, top, plot_w, plot_h))
     parts.extend(
         [
-            '<rect x="62" y="532" width="856" height="52" fill="#fff" stroke="#ddd"/>',
+            '<rect x="62" y="526" width="856" height="64" fill="#fff" stroke="#ddd"/>',
             f'<text x="82" y="558" font-family="Arial, sans-serif" font-size="13" fill="#444">Package: flow_matching {metrics["flow_matching_version"]}; components: CondOTProbPath, ODESolver.</text>',
-            f'<text x="82" y="578" font-family="Arial, sans-serif" font-size="13" fill="#444">Mean endpoint error at t=0.98 against the conditional target: {metrics["mean_endpoint_error"]:.4f}.</text>',
+            f'<text x="82" y="576" font-family="Arial, sans-serif" font-size="13" fill="#444">Mean solver-to-path gap at t={metrics["time_grid_end"]:.2f}: {metrics["mean_solver_path_gap_at_final_time"]:.4f}.</text>',
+            f'<text x="82" y="590" font-family="Arial, sans-serif" font-size="13" fill="#444">Mean remaining distance from t={metrics["time_grid_end"]:.2f} path point to endpoint: {metrics["mean_remaining_distance_to_endpoint_at_final_time"]:.4f}.</text>',
             "</svg>\n",
         ]
     )
@@ -101,7 +102,8 @@ def build(run_dir: Path) -> dict[str, Any]:
         time_grid=time_grid,
         return_intermediates=True,
     )
-    endpoint_error = torch.linalg.norm(solved[-1] - x1, dim=1)
+    solver_path_gap = torch.linalg.norm(solved[-1] - exact[-1], dim=1)
+    remaining_distance_to_endpoint = torch.linalg.norm(exact[-1] - x1, dim=1)
     x0_list = [tuple(map(float, row)) for row in x0.tolist()]
     x1_list = [tuple(map(float, row)) for row in x1.tolist()]
     exact_paths = [
@@ -124,15 +126,17 @@ def build(run_dir: Path) -> dict[str, Any]:
         "method": "midpoint",
         "step_size": 0.02,
         "time_grid_end": 0.98,
-        "mean_endpoint_error": float(endpoint_error.mean()),
-        "max_endpoint_error": float(endpoint_error.max()),
+        "mean_solver_path_gap_at_final_time": float(solver_path_gap.mean()),
+        "max_solver_path_gap_at_final_time": float(solver_path_gap.max()),
+        "mean_remaining_distance_to_endpoint_at_final_time": float(remaining_distance_to_endpoint.mean()),
+        "max_remaining_distance_to_endpoint_at_final_time": float(remaining_distance_to_endpoint.max()),
         "asset": str(figure_path.relative_to(ROOT)),
     }
     write_svg(x0_list, x1_list, exact_paths, solver_paths, metrics, figure_path)
     (run_dir / "official_package_smoke_test.json").write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8")
     (run_dir / "README.md").write_text(
         "# FM-08 Official Package Smoke Test\n\n"
-        "Verified `flow_matching==1.0.10` in a temporary venv with system Torch. The run imports `CondOTProbPath` and `ODESolver`, samples conditional OT path points, integrates the matching conditional velocity with `ODESolver.sample`, and writes a local SVG output.\n",
+        "This run targets `flow_matching==1.0.10` in a temporary venv with system Torch. It imports `CondOTProbPath` and `ODESolver`, samples conditional OT path points, integrates the matching conditional velocity with `ODESolver.sample`, and writes a local SVG output.\n",
         encoding="utf-8",
     )
     return metrics

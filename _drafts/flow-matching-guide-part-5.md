@@ -72,10 +72,10 @@ $$
 
 The guide lists several schedulers. I will compare two:
 
-| Schedule | $\alpha_t$ | $\sigma_t$ |
-| --- | --- | --- |
-| Conditional OT | $t$ | $1-t$ |
-| Linear VP | $t$ | $\sqrt{1-t^2}$ |
+| Schedule       | $\alpha_t$ | $\sigma_t$     |
+| -------------- | ---------- | -------------- |
+| Conditional OT | $t$        | $1-t$          |
+| Linear VP      | $t$        | $\sqrt{1-t^2}$ |
 
 The second schedule keeps more source noise at middle times. That changes both what the model sees and the scale of the target velocity.
 
@@ -119,7 +119,7 @@ $$
 U_t=X_1-\frac{t}{\sqrt{1-t^2}}X_0.
 $$
 
-The late-time velocity can become larger because $\sigma_t$ is shrinking quickly near $t=1$. That is a schedule effect, not a model architecture effect.
+The late-time velocity can become large because $\sigma_t=\sqrt{1-t^2}$ goes to zero as $t$ approaches 1, so the factor $t/\sigma_t$ is singular at the endpoint. That is a schedule effect, not a model architecture effect. In the toy comparison below, the reported times stay below 1, and the code uses a small epsilon guard when evaluating the schedule near the endpoint.
 
 ## Training objective
 
@@ -171,6 +171,8 @@ def linear_vp_velocity(x0: torch.Tensor, x1: torch.Tensor, t: torch.Tensor):
     return x1 - (t / sigma)[:, None] * x0
 ```
 
+The clamp is the epsilon guard for the Linear VP endpoint. It keeps the toy computation finite if a sampled or plotted time gets too close to $t=1$; the comparison table evaluates times below the endpoint.
+
 ## Code result
 
 The figure uses the same endpoint pairs for both rows. The top row uses Conditional OT. The bottom row uses the guide-listed Linear VP schedule.
@@ -179,10 +181,10 @@ The figure uses the same endpoint pairs for both rows. The top row uses Conditio
 
 The middle-time snapshots differ because the schedules mix source and data with different weights. Conditional OT moves mass linearly toward the target. Linear VP keeps a wider source-noise component for longer, then pays for that with larger late-time velocity magnitudes.
 
-| Schedule | $t=0.00$ | $t=0.33$ | $t=0.66$ | $t=0.90$ |
-| --- | ---: | ---: | ---: | ---: |
-| Conditional OT mean velocity | 2.50 | 2.50 | 2.50 | 2.50 |
-| Linear VP mean velocity | 2.29 | 2.31 | 2.45 | 3.35 |
+| Schedule                     | $t=0.00$ | $t=0.33$ | $t=0.66$ | $t=0.90$ |
+| ---------------------------- | -------: | -------: | -------: | -------: |
+| Conditional OT mean velocity |     2.50 |     2.50 |     2.50 |     2.50 |
+| Linear VP mean velocity      |     2.29 |     2.31 |     2.45 |     3.35 |
 
 The numbers are conditional target magnitudes for the toy draw. They are useful because they show what the loss is asking the model to fit at each time.
 

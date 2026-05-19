@@ -107,7 +107,7 @@ def euler_sample(model, x0: torch.Tensor, steps: int) -> torch.Tensor:
     return x
 ```
 
-The current official [`flow_matching`](https://github.com/facebookresearch/flow_matching) package wraps the continuous case with `flow_matching.solver.ODESolver`. In the checked source, `ODESolver.sample(...)` takes `x_init`, `step_size`, `method`, `time_grid`, and `return_intermediates`; common method strings include `"euler"`, `"midpoint"`, `"heun3"`, and adaptive `"dopri5"`.
+The hand-written loop is the sampler used below. For orientation, [`flow_matching==1.0.10`](https://github.com/facebookresearch/flow_matching) exposes the same continuous-sampling idea through `flow_matching.solver.ODESolver`; Part 6 maps the toy pieces to the package API in detail. A minimal Euler call has the same ingredients: an initial batch, a velocity model, a method, and a time grid.
 
 ```python
 import torch
@@ -123,7 +123,7 @@ samples = solver.sample(
 )
 ```
 
-For the rest of this part, the hand-written Euler loop is enough because it exposes the mechanics directly.
+For the step-count diagnostic here, the hand-written Euler loop is enough because it exposes each model evaluation and update directly.
 
 ## Code result
 
@@ -134,11 +134,11 @@ The figure uses one trained 2D toy field and the same initial noise samples for 
 The endpoint drift compares each coarse Euler endpoint to a 128-step Euler reference on the same initial samples.
 
 | Euler steps | Mean reference drift | Mean nearest-mode distance |
-| ---: | ---: | ---: |
-| 4 | 0.239 | 1.423 |
-| 8 | 0.126 | 1.476 |
-| 16 | 0.062 | 1.509 |
-| 32 | 0.027 | 1.527 |
+| ----------: | -------------------: | -------------------------: |
+|           4 |                0.239 |                      1.423 |
+|           8 |                0.126 |                      1.476 |
+|          16 |                0.062 |                      1.509 |
+|          32 |                0.027 |                      1.527 |
 
 The drift decreases as the step count increases because the coarse integrator is getting closer to the fine Euler reference for this fixed field. The nearest-mode distance does not monotonically improve here, which is a useful warning: a solver metric and a data-quality metric are not the same object.
 

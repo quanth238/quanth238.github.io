@@ -34,3 +34,11 @@ Smoke test:
 Draft guardrail:
 
 - Treat the output as an official-package component smoke test. It verifies path and solver APIs; it is not a trained generative model.
+
+FM-15 review correction:
+
+- Rerun environment: `/tmp/fm15-flow-matching-venv`
+- Additional package needed by the solver import: `tqdm`
+- Rerun command: `/tmp/fm15-flow-matching-venv/bin/python scripts/blog_pipeline/examples/flow_matching_official_package_bridge.py --run-dir _blog_work/flow-matching-guide/remote_runs/20260519T155000Z_fm08_official_package`
+- The corrected metric compares the final solver state with the exact `CondOTProbPath` sample at the same final time, `t=0.98`.
+- Remaining distance from the `t=0.98` path point to `x_1` is recorded separately and is not treated as solver error.

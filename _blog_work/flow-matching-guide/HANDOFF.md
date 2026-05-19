@@ -5,7 +5,7 @@ State date: 2026-05-19
 ## Current State
 
 - Worktree: `/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline`
-- Branch: `codex/flow-matching-series-complete-drafts`.
+- Branch: `codex/flow-matching-series-review-revisions`.
 - Previous PR: `https://github.com/quanth238/quanth238.github.io/pull/1` (merged before FM-03).
 - Main CV checkout at `/Users/quan238/personal/cv` is the clean publication
   target, not the working tree for this pipeline.
@@ -24,6 +24,30 @@ State date: 2026-05-19
 - `FM-09` is passing. The clean export manifest is
   `_blog_work/flow-matching-guide/export_manifest.yml`; no export has been
   performed and `/Users/quan238/personal/cv` was not modified.
+- `FM-10` is passing. The Revision Agent changed only the
+  Problem setup transition in
+  `_posts/2026-05-19-flow-matching-guide-part-1.md` to distinguish the missing
+  direct marginal velocity target from the endpoint-conditioned target used in
+  the next section. Part 1 visual metadata in `visual_sources.yml` was tightened
+  to explicitly approve/register the final reader-facing Part 1 visuals. No
+  visual assets, Parts 2-6 drafts, export files, or personal CV files were changed.
+- `FM-11` is passing. The Revision Agent tightened the Part 2 official-package
+  paragraph to be version-scoped to `flow_matching==1.0.10` and kept the
+  solver-step diagnostic centered on the hand-written Euler loop. Part 2 visual
+  metadata now records local ownership and no paper-figure extraction for the
+  solver-step SVG.
+- `FM-12` is passing. The Revision Agent added the Part 3 bridge around
+  target-conditioned notation, scoped the population-objective theorem wording,
+  and registered/approved Part 3 visual ownership metadata.
+- `FM-13` is passing. The Revision Agent narrowed Part 4 scope to endpoint/path
+  geometry and toy diagnostics, and kept sampling-cost language as a hypothesis
+  rather than a demonstrated result.
+- `FM-14` is passing. The Revision Agent added the Linear VP late-time endpoint
+  caveat and tied the toy implementation to the epsilon clamp.
+- `FM-15` is passing. The Revision Agent corrected the official-package bridge
+  metric semantics in code and draft prose. The coordinator regenerated the
+  package bridge JSON/SVG in a temporary `flow_matching==1.0.10` environment.
+- No review/revision task is currently active.
 
 ## Harness Files To Read First
 
@@ -54,6 +78,193 @@ screenshot. A task should not be marked `passing` in `series_tasks.yml` until it
 verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
+
+2026-05-19 FM-10 Part 1 revision update:
+
+- Active branch: `codex/flow-matching-series-review-revisions`.
+- Accepted Planner/Critic decision: revise only the Part 1 Problem setup
+  transition; keep all existing visuals; do not add diagrams; do not edit Parts
+  2-6; do not export.
+- Revision changed `_posts/2026-05-19-flow-matching-guide-part-1.md` so the
+  unavailable direct target is the direct marginal velocity target, while the
+  endpoint-conditioned path velocity remains the tractable target introduced in
+  the next section.
+- `visual_sources.yml` was tightened for Part 1 visual approvals: the Mermaid
+  pipeline is explicitly approved and registered with source post, accTitle /
+  accDescr note, local-original/editable ownership, and no paper-figure
+  extraction; the overview, loss, and path SVGs now record local ownership and
+  no paper-figure extraction, with loss and path marked approved.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Rendered HTML check after build: `/blog/` contains the expected
+  `flow-matching`, `tutorial`, and `generative-modeling` tag links; Flow
+  Matching Parts 1-6 contain Contents; footer/copyright/powered-by strings are
+  absent from `/blog/` and Flow Matching Parts 1-6.
+- `FM-10` is passing; `FM-11` is active.
+
+2026-05-19 FM-11 Part 2 revision update:
+
+- Active branch: `codex/flow-matching-series-review-revisions`.
+- Accepted Planner/Critic decision: revise only the Part 2 official-package
+  paragraph around Minimal implementation; scope it to `flow_matching==1.0.10`;
+  present it as a bridge to Part 6; avoid process phrasing; keep the solver-step
+  result toy-scoped; do not add diagrams.
+- Revision changed `_drafts/flow-matching-guide-part-2.md` so the ODESolver
+  paragraph is version-scoped and points forward to Part 6 while the Part 2
+  diagnostic remains centered on the hand-written Euler loop.
+- `visual_sources.yml` was tightened for the Part 2 final solver-step SVG:
+  `flow-matching-solver-steps.svg` now records local-original/reproducible code
+  ownership and no paper-figure extraction.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Rendered HTML check after build: `/blog/` contains the expected
+  `flow-matching`, `tutorial`, and `generative-modeling` tag links; Flow
+  Matching Parts 1-6 contain Contents; footer/copyright/powered-by strings are
+  absent from `/blog/` and Flow Matching Parts 1-6.
+- `FM-11` is passing; `FM-12` is active.
+
+2026-05-19 FM-12 Part 3 revision update:
+
+- Active branch: `codex/flow-matching-series-review-revisions`.
+- Accepted Planner/Critic decision: revise only Part 3; add a short bridge
+  before the target-conditioned formula so it is not confused with paired
+  endpoint paths; scope theorem wording to the population objective, same
+  conditional path, and regularity assumptions; do not expand the math; do not
+  add diagrams.
+- Revision changed `_drafts/flow-matching-guide-part-3.md` to distinguish the
+  target-conditioned path from the paired-endpoint implementation and to name
+  the theorem scope before the gradient-equivalence equation.
+- `visual_sources.yml` was tightened for Part 3: the Mermaid argument map is
+  explicitly approved and registered with source post, accTitle / accDescr note,
+  local-original/editable ownership, and no paper-figure extraction; the
+  conditional-to-marginal arrows SVG records local reproducible-code ownership
+  and no paper-figure extraction.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Rendered HTML check after build: `/blog/` contains the expected
+  `flow-matching`, `tutorial`, and `generative-modeling` tag links; Flow
+  Matching Parts 1-6 contain Contents; footer/copyright/powered-by strings are
+  absent from `/blog/` and Flow Matching Parts 1-6.
+- `FM-12` is passing; `FM-13` is active.
+
+2026-05-19 FM-13 Part 4 revision update:
+
+- Active branch: `codex/flow-matching-series-review-revisions`.
+- Accepted Planner/Critic decision: do not add a new sampling-cost diagnostic or
+  diagram; narrow Part 4 reader-facing and planning scope from path quality and
+  sampling cost to endpoint/path geometry and toy diagnostics; keep the guarded
+  OT-CFM and Rectified Flow wording; avoid implying minibatch OT is globally
+  optimal or directly proven to reduce sampling cost in this toy result.
+- Revision changed `_blog_work/flow-matching-guide/series_plan.yml` so the Part
+  4 reader question and objective focus on endpoint/path geometry and toy
+  diagnostics.
+- Revision changed `_drafts/flow-matching-guide-part-4.md` so solver-cost
+  language is a hypothesis for later inspection, not a result demonstrated by
+  the current coupling diagnostic.
+- `visual_sources.yml` was tightened for Part 4: the coupling diagnostic SVG now
+  records local-original/reproducible-code-result ownership and no paper-figure
+  extraction.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Rendered HTML check after build: `/blog/` contains the expected
+  `flow-matching`, `tutorial`, and `generative-modeling` tag links; Flow
+  Matching Parts 1-6 contain Contents; footer/copyright/powered-by strings are
+  absent from `/blog/` and Flow Matching Parts 1-6.
+- `FM-13` is passing; `FM-14` is active.
+
+2026-05-19 FM-14 Part 5 revision update:
+
+- Active branch: `codex/flow-matching-series-review-revisions`.
+- Accepted Planner/Critic decision: add a short note near the Linear VP
+  schedule/velocity target that `sigma_t = sqrt(1-t^2)` has singular or
+  large-velocity behavior as `t` approaches 1; state that the toy comparison
+  evaluates `t < 1` or uses an epsilon guard; connect this to the clamp in the
+  minimal implementation; keep diffusion/probability-flow wording modest and
+  source-tied; do not add diagrams.
+- Revision changed `_drafts/flow-matching-guide-part-5.md` near the Linear VP
+  velocity target and minimal implementation to explain the endpoint behavior
+  and the `torch.clamp(..., min=1e-6)` guard.
+- `visual_sources.yml` was tightened for Part 5: the path-family snapshots SVG
+  now records local-original/reproducible-code-result ownership and no
+  paper-figure extraction.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Rendered HTML check after build: `/blog/` contains the expected
+  `flow-matching`, `tutorial`, and `generative-modeling` tag links; Flow
+  Matching Parts 1-6 contain Contents; footer/copyright/powered-by strings are
+  absent from `/blog/` and Flow Matching Parts 1-6.
+- `FM-14` is passing; `FM-15` is active.
+
+2026-05-19 FM-15 Part 6 revision update:
+
+- Active branch: `codex/flow-matching-series-review-revisions`.
+- Accepted Planner/Critic decision: fix the official package bridge metric so
+  solver/path agreement compares `solved[-1]` with the exact `CondOTProbPath`
+  sample at the same final time, `t=0.98`; keep endpoint distance as a separately
+  named remaining-distance metric; fix the 32-interval time-grid snippet; remove
+  process phrasing and the reader-facing `_blog_work` reference; reduce the
+  discrete side branch; do not add diagrams.
+- Revision changed `scripts/blog_pipeline/examples/flow_matching_official_package_bridge.py`
+  so future runs write `mean_solver_path_gap_at_final_time` /
+  `max_solver_path_gap_at_final_time` and separately named remaining-distance
+  metrics.
+- Revision updated the existing
+  `_blog_work/flow-matching-guide/remote_runs/20260519T155000Z_fm08_official_package/official_package_smoke_test.json`
+  metric names and the existing
+  `assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg`
+  label so the intentional `t=0.98` to `t=1.0` gap is no longer described as
+  solver error.
+- Coordinator reran the package bridge in `/tmp/fm15-flow-matching-venv` after
+  installing `flow_matching==1.0.10` and `tqdm`. The regenerated metadata records
+  `mean_solver_path_gap_at_final_time=1.433954537333193e-07` and
+  `mean_remaining_distance_to_endpoint_at_final_time=0.05236712470650673`.
+- Revision changed `_drafts/flow-matching-guide-part-6.md` with
+  version-scoped `flow_matching==1.0.10` wording, a 33-point time grid for 32
+  intervals, corrected code-result prose, a short discrete-components pointer,
+  and no reader-facing `_blog_work` reference.
+- `visual_sources.yml` was tightened for Part 6: the Mermaid component map is
+  explicitly approved and registered with source post, accTitle / accDescr note,
+  local-original/editable ownership, and no paper-figure extraction; the official
+  package bridge SVG records local reproducible-code ownership and no
+  paper-figure extraction.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Rendered HTML check after build: `/blog/` contains the expected
+  `flow-matching`, `tutorial`, and `generative-modeling` tag links; Flow
+  Matching Parts 1-6 contain Contents; footer/copyright/powered-by strings are
+  absent from `/blog/` and Flow Matching Parts 1-6.
+- `FM-15` is passing; no review/revision task is currently active.
+
+2026-05-19 final review/revision suite:
+
+- Active branch: `codex/flow-matching-series-review-revisions`.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Rendered HTML check after final build: `/blog/` contains the expected
+  `flow-matching`, `tutorial`, and `generative-modeling` tag links; Flow
+  Matching Parts 1-6 contain Contents; footer/copyright/powered-by strings are
+  absent from `/blog/` and Flow Matching Parts 1-6.
+- Export manifest updated but export not performed. `/Users/quan238/personal/cv`
+  was not modified.
 
 2026-05-19 blog index footer and tag follow-up:
 
@@ -276,32 +487,21 @@ sampling trajectory. The replaced AI bitmap remains registered in
 
 ## Next Recommended Session
 
-Use `$cv-research-blogger` and start with `FM-04` only if the user asks to draft
-Part 2. Keep WIP to one task. Before drafting, verify official solver API names
-and generate the Part 2 step-count result planned in `series_plan.yml` and
-`visual_sources.yml`.
+FM-10 through FM-15 are passing and no review/revision task is active. The next
+step is not an export by default. If the user asks to publish, first present the
+updated `_blog_work/flow-matching-guide/export_manifest.yml` for explicit
+approval, including the source-to-target post list, final assets, required site
+changes, overwrites, and verification evidence.
 
-Do not move directly into drafting Part 2 until the visual plan for Part 2 has
-figure briefs and cited visual references.
-
-Do not edit `/Users/quan238/personal/cv` while finishing drafts. When all parts
-are passing and the user asks to publish, prepare an export manifest first and
-wait for approval.
-
-## FM-03 Gaps To Preserve
-
-- Part 2: exact solver APIs and naming in `facebookresearch/flow_matching` are
-  not verified.
-- Part 3: exact theorem statement and notation from the Flow Matching Guide are
-  not verified.
-- Part 5: conical Gaussian or diffusion schedule equations need primary-source
-  verification before drafting.
-- Part 6: official package install/run feasibility in this worktree is
-  unverified; keep Part 6 blocked if that check fails.
+Do not edit `/Users/quan238/personal/cv` until the user approves that export
+manifest. No old FM-03 verification gaps remain open; the solver API, theorem
+wording, path schedules, and package install/run feasibility were verified in
+FM-04 through FM-08 and rechecked during this review pass where needed.
 
 ## Clean Exit Requirements
 
-- Update `series_tasks.yml` with the active task state and evidence.
-- Update this handoff with checks run, unresolved blockers, and next action.
-- Keep all generated assets local and registered in `visual_sources.yml`.
-- Record failed checks explicitly instead of marking a task complete.
+- `series_tasks.yml` records `current_state: "fm-15-passing"` and
+  `active_task: null`.
+- This handoff records the final review/revision suite and rendered HTML checks.
+- Generated assets remain local and registered in `visual_sources.yml`.
+- Export is still approval-gated and has not been performed.

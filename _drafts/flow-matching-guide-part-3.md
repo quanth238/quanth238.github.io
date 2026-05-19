@@ -102,7 +102,7 @@ $$
 
 This is the field the sampler wants. It is not a single endpoint arrow. It is the average of all conditional arrows compatible with the same local state.
 
-The guide's quick tour also gives a target-conditioned linear path. If the path is conditioned only on a data point $x_1$, the conditional velocity is
+There are several valid choices for what goes into $Z$. The next formula is target-conditioned, not paired-endpoint conditioned: it fixes the data endpoint $x_1$ and writes the velocity as a function of the current state $x$. If the path is conditioned only on $x_1$, the conditional velocity is
 
 $$
 u_t(x|x_1)=\frac{x_1-x}{1-t}.
@@ -126,14 +126,14 @@ $$
 \mathbb{E}\left[\|v_\theta(X_t,t)-U_t\|_2^2\right].
 $$
 
-The theorem statement used here is the gradient equivalence:
+The population-level statement used here has a narrow scope: it compares the marginal and conditional objectives for the same conditional path, under the regularity assumptions that justify differentiating and marginalizing the loss. In that setting, the gradient equivalence is
 
 $$
 \nabla_\theta \mathcal{L}_{\mathrm{FM}}(\theta)=
 \nabla_\theta \mathcal{L}_{\mathrm{CFM}}(\theta).
 $$
 
-Under the theorem assumptions, the population minimizer of the conditional objective is the marginal velocity. This is why endpoint-conditioned targets can train a field that later samples without a chosen endpoint.
+Within that population objective, the minimizer of the conditional objective is the marginal velocity. This is why endpoint-conditioned targets can train a field that later samples without a chosen endpoint.
 
 ## Minimal implementation
 

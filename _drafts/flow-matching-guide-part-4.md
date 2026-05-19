@@ -92,7 +92,7 @@ $$
 
 The loss shape is the same for independent pairing and minibatch assignment. The data distribution over endpoint pairs is different.
 
-Rectified Flow gives a second reason to care about path geometry. It learns ODE models that follow straight paths between the two observed distributions as much as possible, and reports that increasingly straight paths can be simulated accurately with coarse time discretization [Flow Straight and Fast](https://arxiv.org/abs/2209.03003). That does not make minibatch OT and Rectified Flow the same algorithm. It gives a shared diagnostic: straighter, shorter, less tangled paths are easier for a coarse solver to follow.
+Rectified Flow gives a second reason to care about path geometry. It learns ODE models that follow straight paths between the two observed distributions as much as possible, and reports that increasingly straight paths can be simulated accurately with coarse time discretization [Flow Straight and Fast](https://arxiv.org/abs/2209.03003). That does not make minibatch OT and Rectified Flow the same algorithm. It gives a shared geometric diagnostic: straighter, shorter, less tangled paths are the object to inspect before making any claim about solver behavior.
 
 ## Minimal implementation
 
@@ -125,10 +125,10 @@ The diagnostic below uses the same source and target minibatch for both panels. 
 
 {% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg" class="img-fluid rounded z-depth-1" width="1100" height="620" zoomable=true alt="Endpoint coupling comparison showing independent random pairing and minibatch optimal transport assignment on the same toy batch." %}
 
-| Pairing rule | Mean squared endpoint cost | Segment crossings |
-| --- | ---: | ---: |
-| Independent random pairing | 7.430 | 16 |
-| Minibatch OT assignment | 3.917 | 3 |
+| Pairing rule               | Mean squared endpoint cost | Segment crossings |
+| -------------------------- | -------------------------: | ----------------: |
+| Independent random pairing |                      7.430 |                16 |
+| Minibatch OT assignment    |                      3.917 |                 3 |
 
 The batch assignment reduces this toy transport cost and removes many line crossings. That is a path-geometry result for the displayed batch. It does not say the learned model has solved the global OT problem.
 
@@ -136,9 +136,9 @@ The batch assignment reduces this toy transport cost and removes many line cross
 
 The sampler still integrates the learned marginal field. Coupling affects sampling indirectly by changing the conditional velocities used during training.
 
-A tangled independent pairing can ask the model to explain many long crossing segments. A batch assignment often gives shorter targets, so the learned field may be easier to integrate with fewer solver steps. Rectified-flow work pushes this idea further by training toward straighter transports and studying coarse discretization.
+A tangled independent pairing can ask the model to explain many long crossing segments. A batch assignment often gives shorter endpoint targets in the displayed minibatch. That geometry is a hypothesis about easier integration, not a sampling-cost measurement in this toy result. Rectified-flow work studies the stronger coarse-discretization question separately by training toward straighter transports.
 
-The practical diagnostic is simple: after changing the coupling, inspect segment cost, path crossings, trajectory curvature, and solver-step sensitivity. If those improve together, the sampler has a cleaner field to follow. If only the batch cost improves, the change may be an optimization artifact.
+The practical diagnostic in this part is simple: inspect endpoint cost and line crossings for the same displayed batch. These numbers say whether the pairing changed local path geometry. Solver-step sensitivity would need a separate experiment, so it is a hypothesis for later inspection rather than a conclusion from this figure.
 
 ## Next part
 

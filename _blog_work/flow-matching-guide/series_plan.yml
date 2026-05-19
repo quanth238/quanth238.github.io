@@ -114,13 +114,13 @@ parts:
       - "Sampling implication"
     code_target: "Complete: created a local quiver-style diagnostic showing endpoint-conditioned arrows near one (x,t) and their empirical average."
     visual_intent: "Complete: approved Mermaid argument map plus local SVG that distinguishes conditional arrows from the marginal direction."
-    transition: "Part 4 changes the endpoint coupling and studies path quality."
+    transition: "Part 4 changes the endpoint coupling and studies endpoint/path geometry."
 
   - part: 4
     status: "draft-passing"
     title: "Couplings, minibatch OT, and rectified paths"
-    reader_question: "How does endpoint pairing change path quality and sampling cost?"
-    objective: "Compare independent pairing, minibatch OT pairing, and rectified-flow motivation."
+    reader_question: "How does endpoint pairing change endpoint/path geometry and toy diagnostics?"
+    objective: "Compare independent pairing, minibatch OT pairing, and rectified-flow motivation through endpoint/path geometry diagnostics."
     sources:
       - "https://arxiv.org/abs/2302.00482"
       - "https://arxiv.org/abs/2209.03003"

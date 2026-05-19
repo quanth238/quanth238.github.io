@@ -222,6 +222,9 @@ figure_briefs:
 generated_figures:
   - path: "assets/img/blog/flow-matching-guide/flow-matching-overview.svg"
     alt: "Flow matching schematic showing source and target samples, interpolation times, velocity target arrows, a learned vector field, and one ODE sampling trajectory."
+    source_post: "_posts/2026-05-19-flow-matching-guide-part-1.md"
+    ownership_decision: "local-original/generated-from-harness-script"
+    paper_figure_extraction: false
     prompt: |
       Local SVG schematic specification: draw a deterministic, original technical overview for Flow Matching Part 1. Use a clean coordinate plane with source samples x0 from p0, target samples x1 from p1, straight conditional interpolation at t=0, t=0.5, and t=1, velocity target arrows along the highlighted path, learned vector-field arrows v_theta(x,t), and one ODE sampling trajectory from fresh noise into the target cloud. Use colorblind-aware blue, vermillion, teal, gray, and black marks; keep labels short; avoid copied layouts, dense text, decorative stock-art styling, logos, watermarks, and embedded derivations.
     source: "_blog_work/flow-matching-guide/make_overview_schematic.py"
@@ -241,35 +244,69 @@ generated_figures:
 mermaid_figures:
   - id: "flow-matching-pipeline"
     purpose: "Editable diagram linking endpoint samples, interpolated path, velocity target, training loss, and ODE sampling."
-    status: "created"
+    source_post: "_posts/2026-05-19-flow-matching-guide-part-1.md"
+    accessibility_note: "The Part 1 Mermaid block includes accTitle: Flow Matching Pipeline and accDescr describing endpoint sampling, conditional path construction, velocity regression, and learned-field integration."
+    ownership_decision: "local-original/editable"
+    paper_figure_extraction: false
+    status: "approved"
+  - id: "part-3-cfm-argument-map"
+    purpose: "Editable Part 3 argument map separating the unavailable marginal objective, tractable conditional objective, population averaging, and endpoint-free sampling."
+    source_post: "_drafts/flow-matching-guide-part-3.md"
+    accessibility_note: "The Part 3 Mermaid block includes accTitle: Conditional To Marginal Flow Matching Argument and accDescr describing the separation between marginal FM loss, conditional FM loss, population averaging, and the marginal velocity used by sampling."
+    ownership_decision: "local-original/editable"
+    paper_figure_extraction: false
+    status: "approved"
+  - id: "part-6-package-component-map"
+    purpose: "Editable Part 6 map from toy path, scheduler, velocity target, model, loss, and solver concepts to flow_matching==1.0.10 components."
+    source_post: "_drafts/flow-matching-guide-part-6.md"
+    accessibility_note: "The Part 6 Mermaid block includes accTitle: Toy Flow Matching To Official Package Components and accDescr mapping the toy path, scheduler, velocity target, model, and solver concepts to flow_matching version 1.0.10 components."
+    ownership_decision: "local-original/editable"
+    paper_figure_extraction: false
+    status: "approved"
 remote_code_figures:
   - path: "assets/img/blog/flow-matching-guide/flow-matching-loss.svg"
     alt: "Velocity-regression loss curve for a 2D flow matching check."
+    source_post: "_posts/2026-05-19-flow-matching-guide-part-1.md"
+    ownership_decision: "local-original/reproducible-code-result"
+    paper_figure_extraction: false
     run_id: "20260519T105934Z"
-    status: "created"
+    status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-paths.svg"
     alt: "Paths moving source samples toward a two-cluster target distribution."
+    source_post: "_posts/2026-05-19-flow-matching-guide-part-1.md"
+    ownership_decision: "local-original/reproducible-code-result"
+    paper_figure_extraction: false
     run_id: "20260519T105934Z"
-    status: "created"
+    status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg"
     alt: "Euler solver step sweep showing 4, 8, 16, and 32 step trajectories for the same toy flow matching field."
     run_id: "20260519T151120Z_fm04_solver_steps"
+    ownership_decision: "local-original/reproducible-code-result"
+    paper_figure_extraction: false
     status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg"
     alt: "Conditional endpoint velocity arrows near one query point averaged into a local marginal direction."
     run_id: "20260519T152215Z_fm05_conditional_marginal"
+    ownership_decision: "local-original/reproducible-code-result"
+    paper_figure_extraction: false
     status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg"
     alt: "Endpoint coupling comparison showing independent random pairing and minibatch optimal transport assignment on the same toy batch."
     run_id: "20260519T153215Z_fm06_coupling_diagnostics"
+    ownership_decision: "local-original/reproducible-code-result"
+    paper_figure_extraction: false
     status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg"
     alt: "Probability path snapshots comparing Conditional OT and Linear VP schedules on the same toy endpoint pairs."
     run_id: "20260519T154210Z_fm07_path_families"
+    ownership_decision: "local-original/reproducible-code-result"
+    paper_figure_extraction: false
     status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
     alt: "Official flow_matching package smoke test using CondOTProbPath and ODESolver on conditional endpoint trajectories."
     run_id: "20260519T155000Z_fm08_official_package"
+    ownership_decision: "local-original/reproducible-code-result"
+    paper_figure_extraction: false
     status: "approved"
 quality_gate:
   required_before_publish: "Evaluator checks conceptual correctness, reader flow, label quality, originality, accessibility, and Jekyll rendering."
