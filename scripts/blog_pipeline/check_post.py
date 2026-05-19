@@ -48,6 +48,7 @@ FORBIDDEN_SECTION_NAMES = [
 BANNED_PATTERNS = [
     r"\bcheckpoint draft\b",
     r"\bthis file is a scaffold\b",
+    r"\bconcise tutorial note that connects\b",
     r"\bshould help a student answer\b",
     r"\bnotebook written after\b",
     r"\bthe reader should see\b",
@@ -447,8 +448,9 @@ def validate(path: Path) -> tuple[list[str], list[str]]:
 
     visible_body = re.sub(r"<!--.*?-->", "", body, flags=re.DOTALL)
     body_without_code = re.sub(r"```.*?```", "", visible_body, flags=re.DOTALL)
+    voice_text = front_matter + "\n" + body_without_code
     for pattern in BANNED_PATTERNS:
-        if re.search(pattern, body_without_code, flags=re.IGNORECASE):
+        if re.search(pattern, voice_text, flags=re.IGNORECASE):
             errors.append(f"human voice check failed: banned phrase matched /{pattern}/")
 
     if is_post_path(path):

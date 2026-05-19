@@ -85,6 +85,7 @@ mermaid:
 ## Quality Bar
 
 - Explain from scratch but avoid shallow summaries.
+- Write front matter descriptions as a concrete reader promise, not article metadata. Say what the reader will build, understand, or inspect; avoid phrases like "a concise tutorial note that connects...".
 - Keep theory to the amount needed for a working mental model.
 - Order the tutorial as path, velocity target, loss, minimal code, code result, then theory/sampling.
 - Use concrete section titles. Prefer `Path and velocity target` over vague labels such as `Core construction`.

@@ -172,6 +172,9 @@ def visual_sources_content(args: argparse.Namespace, today: str) -> str:
 
 def draft_content(args: argparse.Namespace, today: str) -> str:
     title = f"{args.title}, part {args.part}"
+    description = yaml_quote(
+        f"A practical first pass at {args.title}: the object to learn, the smallest example, and the result to inspect."
+    )
     source_lines = join_for_template([f"- [{source}]({source})" for source in args.source])
     front_matter_sources = join_for_template([f"  - {yaml_quote(source)}" for source in args.source])
     topic_label = slug_to_title(args.slug)
@@ -180,7 +183,7 @@ def draft_content(args: argparse.Namespace, today: str) -> str:
         ---
         layout: distill
         title: {yaml_quote(title)}
-        description: "A concise tutorial note that connects the idea, math, diagram, and code."
+        description: {description}
         date: {today}
         author: "Quan Tran Hong"
         tags: ["tutorial", "reading-notes", "generative-modeling"]

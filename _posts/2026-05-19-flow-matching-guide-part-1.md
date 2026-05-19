@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: "Flow Matching Guide and Code, part 1"
-description: "A concise tutorial note that connects the idea, math, diagram, and code."
+description: "A practical first pass at flow matching: path, velocity target, loss, and a 2D check."
 date: 2026-05-19
 author: "Quan Tran Hong"
 thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png
@@ -32,13 +32,13 @@ source_materials:
 
 ## Introduction
 
-Flow matching is a generative modeling framework built around a velocity field. Instead of learning a denoising step for a fixed noise schedule, the model learns how points should move along a continuous path from a source distribution to the data distribution. The first flow matching paper introduced this as simulation-free regression for continuous normalizing flows [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747), while the newer guide collects the foundations, design choices, extensions, and PyTorch examples in one place [Flow Matching Guide and Code](https://arxiv.org/abs/2412.06264).
+Flow matching is a generative modeling framework built around a velocity field. Instead of learning a denoising step for a fixed noise schedule, the model learns how points should move along a continuous path from a source distribution to the data distribution. Lipman et al. introduced flow matching as simulation-free regression for continuous normalizing flows [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747). I use [Flow Matching Guide and Code](https://arxiv.org/abs/2412.06264) as the reading spine here, but the first thing to make concrete is smaller: what path do we choose, what velocity do we regress, and how does that become a sampler?
 
-The practical object is simple: learn $v_\theta(x, t)$, a neural velocity field. During sampling, start from $x_0 \sim p_0$ and integrate the learned field until $t=1$. If the field is good, the final sample follows the data distribution.
+The object we train is $v_\theta(x, t)$, a neural velocity field. During sampling, start from $x_0 \sim p_0$ and integrate the learned field until $t=1$. If the field points in the right direction along the path, the final sample should look like data.
 
 {% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png" class="img-fluid rounded z-depth-1" width="1693" height="929" zoomable=true alt="Flow matching overview showing source noise, paths, velocity arrows, a learned field, and generated samples." %}
 
-The working sequence is: choose a path, compute its velocity target, train with a regression loss, then sample by integrating the learned field.
+The useful sequence is short: choose a path, compute its velocity target, train with a regression loss, then sample by integrating the learned field.
 
 ## Problem setup
 
@@ -68,7 +68,7 @@ $$
 u_t = \frac{d x_t}{dt} = x_1 - x_0.
 $$
 
-This gives a clean supervised learning problem. The network sees the current position $x_t$ and time $t$, then predicts the velocity that should move the sample along the path.
+This turns the problem into supervised velocity prediction. The network sees the current position $x_t$ and time $t$, then predicts the velocity that should move the sample along the path.
 
 ```mermaid
 flowchart LR
@@ -111,11 +111,11 @@ $$
 \ell_\theta=\left\|v_\theta(x_t,t)-(x_1-x_0)\right\|_2^2.
 $$
 
-This objective is attractive because it avoids solving the sampling ODE during training. Each training step only needs four operations: sample endpoints, sample time, interpolate, and regress the velocity.
+This objective is useful because training does not solve the sampling ODE. Each step only needs four operations: sample endpoints, sample time, interpolate, and regress the velocity.
 
 ## Minimal implementation
 
-The following code is the smallest useful training core for the straight-line conditional path.
+The training core for the straight-line conditional path is only a few lines.
 
 ```python
 import torch
@@ -144,11 +144,11 @@ def flow_matching_loss(model, data: torch.Tensor) -> torch.Tensor:
     return torch.mean((velocity_pred - velocity_target) ** 2)
 ```
 
-This fragment is the training target in code. `x0` is fresh Gaussian noise, `x1` is a batch of real data, `t` chooses a point between them, `xt` is that interpolated point, and `x1 - x0` is the velocity the model learns to predict.
+This is the training target in code. `x0` is fresh Gaussian noise, `x1` is a batch of real data, `t` chooses a point between them, `xt` is that interpolated point, and `x1 - x0` is the velocity the model learns to predict.
 
 ## Code result
 
-A 2D check with a linear velocity model and a two-cluster target reduced the velocity-regression loss from 3.479 to 2.010 over 520 steps. This confirms that the training target is learnable in a controlled setting: the model sees interpolated points and learns the velocity direction that moves them toward the sampled data endpoint.
+A 2D check with a linear velocity model and a two-cluster target reduced the velocity-regression loss from 3.479 to 2.010 over 520 steps. The run is small, but it shows the training signal doing the right job: the model sees interpolated points and learns the velocity direction that moves them toward the sampled data endpoint.
 
 {% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-loss.svg" class="img-fluid rounded z-depth-1" width="760" height="360" zoomable=true alt="Velocity-regression loss curve for a 2D flow matching check." %}
 
@@ -156,11 +156,11 @@ The path plot makes the sampling side concrete. Black dots are initial source sa
 
 {% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-paths.svg" class="img-fluid rounded z-depth-1" width="760" height="460" zoomable=true alt="Paths moving source samples toward a two-cluster target distribution." %}
 
-The limitation is also visible. Straight lines between independently paired noise and data points are easy to teach, but they are not always the best path for every domain.
+The limitation is also visible. Straight lines between independently paired noise and data points are easy to train on, but they are not always the best path for every domain.
 
 ## Sampling procedure
 
-One theoretical step remains. Training uses conditional endpoint pairs $(x_0, x_1)$, but sampling starts from fresh noise without choosing a target endpoint. Flow matching shows that the conditional regression objective has the right population optimum for the marginal velocity field under the chosen probability path. This conditional-to-marginal argument is the core idea behind flow matching and conditional flow matching [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747), [Improving and Generalizing Flow-Based Generative Models with Minibatch Optimal Transport](https://arxiv.org/abs/2302.00482).
+There is one theoretical step to connect training and sampling. Training uses conditional endpoint pairs $(x_0, x_1)$, but sampling starts from fresh noise without choosing a target endpoint. Flow matching shows that the conditional regression objective has the right population optimum for the marginal velocity field under the chosen probability path. This conditional-to-marginal argument is the core idea behind flow matching and conditional flow matching [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747), [Improving and Generalizing Flow-Based Generative Models with Minibatch Optimal Transport](https://arxiv.org/abs/2302.00482).
 
 After training, discard the paired endpoint construction. Sampling starts from fresh noise and follows the learned vector field:
 
