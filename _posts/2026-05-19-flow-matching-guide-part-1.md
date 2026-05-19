@@ -1,23 +1,33 @@
 ---
 layout: distill
-title: "Flow Matching Guide and Code, part 1"
-description: "A practical first pass at flow matching: path, velocity target, loss, and a 2D check."
+title: "Flow Matching: Velocity Fields"
+description: "Train the basic velocity target."
 date: 2026-05-19
 author: "Quan Tran Hong"
-thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-overview.svg
-tags: ["tutorial", "reading-notes", "generative-modeling"]
+thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-card-part-1.svg
+tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"
 part: 1
 draft_stage: "published"
 publish_ready: true
+hide_footer: true
+toc:
+  - name: "Introduction"
+  - name: "Problem setup"
+  - name: "Path and velocity target"
+  - name: "Training objective"
+  - name: "Minimal implementation"
+  - name: "Code result"
+  - name: "Sampling procedure"
+  - name: "Next part"
+  - name: "References and visual resources"
 mermaid:
   enabled: true
   zoomable: true
 chart:
   plotly: false
   vega_lite: false
-visual_plan: "_blog_work/flow-matching-guide/visual_sources.yml"
 source_materials:
   - "https://arxiv.org/abs/2412.06264"
   - "https://arxiv.org/abs/2210.02747"
@@ -52,7 +62,7 @@ The initial sample is $x_0 \sim p_0$.
 
 The distribution of $x_t$ changes over time. We can call this changing distribution $p_t$. The ideal goal is to choose a velocity field $v_t$ such that $p_t$ starts at $p_0$ and ends at $p_1$.
 
-The direct regression target is not available in real data. At intermediate times, we do not know the exact marginal distribution $p_t$ or the exact global velocity $v_t$. This is why conditional flow matching is useful: it creates tractable supervised targets by conditioning on sampled endpoints.
+The unavailable object is the direct marginal velocity target, not the conditional velocity target from sampled endpoints used below. At intermediate times, data do not give the exact marginal distribution $p_t$ or the global field $v_t$ that transports it. Conditional flow matching sidesteps that missing marginal target by conditioning on sampled endpoints, where the velocity along the chosen path is available.
 
 ## Path and velocity target
 

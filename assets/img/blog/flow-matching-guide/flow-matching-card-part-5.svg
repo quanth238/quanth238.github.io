@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Flow Matching Part 5: Choose the path</title>
+  <desc id="desc">The same endpoints can travel through different intermediate distributions.</desc>
+  <rect width="1200" height="675" rx="34" fill="#111827"/>
+  <rect x="34" y="34" width="1132" height="607" rx="28" fill="#172033" stroke="#2B3548" stroke-width="2"/>
+  <text x="72" y="96" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="1.5">PART 5 / PATH DESIGN</text>
+  <text x="72" y="154" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="47" font-weight="760">Choose the path</text>
+  <circle cx="225" cy="305" r="34" fill="#2DD4BF" opacity="0.18" stroke="#2DD4BF" stroke-width="4"/>
+  <circle cx="390" cy="305" r="34" fill="#2DD4BF" opacity="0.18" stroke="#2DD4BF" stroke-width="4"/>
+  <circle cx="555" cy="305" r="34" fill="#2DD4BF" opacity="0.18" stroke="#2DD4BF" stroke-width="4"/>
+  <circle cx="720" cy="305" r="34" fill="#2DD4BF" opacity="0.18" stroke="#2DD4BF" stroke-width="4"/>
+  <circle cx="885" cy="305" r="34" fill="#2DD4BF" opacity="0.18" stroke="#2DD4BF" stroke-width="4"/>
+  <path d="M225 305 C390 230 555 380 720 270 C790 245 850 287 885 305" fill="none" stroke="#2DD4BF" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="225" cy="465" r="34" fill="#A78BFA" opacity="0.18" stroke="#A78BFA" stroke-width="4"/>
+  <circle cx="390" cy="465" r="34" fill="#A78BFA" opacity="0.18" stroke="#A78BFA" stroke-width="4"/>
+  <circle cx="555" cy="465" r="34" fill="#A78BFA" opacity="0.18" stroke="#A78BFA" stroke-width="4"/>
+  <circle cx="720" cy="465" r="34" fill="#A78BFA" opacity="0.18" stroke="#A78BFA" stroke-width="4"/>
+  <circle cx="885" cy="465" r="34" fill="#A78BFA" opacity="0.18" stroke="#A78BFA" stroke-width="4"/>
+  <path d="M225 465 C390 390 555 540 720 430 C790 405 850 447 885 465" fill="none" stroke="#A78BFA" stroke-width="7" stroke-linecap="round"/>
+  <text x="110" y="316" fill="#2DD4BF" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="760">CondOT</text>
+  <text x="110" y="476" fill="#A78BFA" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="760">Linear VP</text>
+  <text x="290" y="570" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="29">matched t slices on shared axes</text>
+</svg>

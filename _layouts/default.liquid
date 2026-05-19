@@ -48,7 +48,9 @@
     </div>
 
     <!-- Footer -->
-    {% include footer.liquid %}
+    {% unless page.hide_footer %}
+      {% include footer.liquid %}
+    {% endunless %}
 
     <!-- JavaScripts -->
     {% include scripts.liquid %}
