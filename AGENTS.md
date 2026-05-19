@@ -35,12 +35,6 @@ its verification commands pass and the evidence is written into the task list or
 handoff. Use `python3 scripts/blog_pipeline/check_harness.py <series-slug>` as
 the cold-start harness check before a new writing or visual-design session.
 
-Run compute-heavy work on the WSL server, not the Mac. Code examples, training
-runs, figure-generation scripts, and expensive build/render checks should use
-`ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net` or
-`scripts/blog_pipeline/run_remote_example.py`. Local Mac commands are acceptable
-for file inspection, editing, git, and lightweight static checks.
-
 ## Quick Links by Role
 
 - **Are you a coding agent?** → Read [`.github/copilot-instructions.md`](.github/copilot-instructions.md) first (tech stack, build, CI/CD, common pitfalls & solutions)

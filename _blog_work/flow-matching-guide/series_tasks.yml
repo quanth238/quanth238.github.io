@@ -41,8 +41,8 @@ tasks:
     verification:
       - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
       - "python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md"
-      - "Run the figure-generation script on WSL through scripts/blog_pipeline/run_remote_example.py or ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net."
-      - "Run Jekyll/browser or screenshot verification on WSL when the render check is compute-heavy."
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build"
+      - "Browser or screenshot verification of the replaced overview figure at desktop and mobile widths."
     acceptance:
       - "Create a figure brief revision in visual_sources.yml."
       - "Prefer local SVG/matplotlib schematic or a cleaner AI bitmap with verified labels."
@@ -65,8 +65,8 @@ tasks:
     depends_on: ["FM-03"]
     verification:
       - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
-      - "Run the Part 2 example on WSL through scripts/blog_pipeline/run_remote_example.py or ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net."
-      - "Run Jekyll build/render verification on WSL when the render check is compute-heavy."
+      - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
     acceptance:
       - "Answer one practical sampling question."
       - "Include solver-step or path-quality code result."

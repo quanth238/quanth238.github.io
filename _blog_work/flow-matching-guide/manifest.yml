@@ -26,10 +26,6 @@ harness:
   handoff: "_blog_work/flow-matching-guide/HANDOFF.md"
   wip_limit: 1
   cold_start_target: "A fresh agent can recover state and choose one verified task from repo files alone."
-  remote_runtime:
-    ssh: "Admin@desktop-a4ko83o.tail7cb6d9.ts.net"
-    wsl_distro: "Ubuntu-24.04"
-    policy: "Use WSL for code examples, training, figure generation, and expensive build/render checks; keep the Mac for editing, git, and lightweight static checks."
 
 checkpoints:
   intake: "created"

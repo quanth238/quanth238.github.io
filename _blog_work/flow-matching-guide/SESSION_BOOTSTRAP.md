@@ -37,21 +37,6 @@ A new session is ready only if it can answer these from repo files:
 - Feedback: blog checker, Python compile check, Jekyll build, browser/screenshot
   visual review, and evaluator notes in `visual_sources.yml`.
 
-## Remote Runtime
-
-Use the Mac as the control and editing machine. Run code examples, training,
-figure-generation scripts, and expensive build/render checks on the WSL server:
-
-```bash
-ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net
-python3 scripts/blog_pipeline/run_remote_example.py --slug flow-matching-guide --script scripts/blog_pipeline/examples/<example>.py
-```
-
-`run_remote_example.py` already defaults to
-`Admin@desktop-a4ko83o.tail7cb6d9.ts.net` and `Ubuntu-24.04`. Local Mac commands
-are acceptable for file inspection, git, `check_harness.py`, `check_post.py`,
-and Python syntax checks because they are lightweight.
-
 ## Start Commands
 
 ```bash
