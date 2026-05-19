@@ -35,6 +35,49 @@ of them:
 Do not skip the Planner role for later posts in a series. The next part still
 needs its own practical question, visual plan, and code result.
 
+## Harness Contract
+
+Treat the repository as the source of truth. Before continuing a series, read:
+
+- `AGENTS.md`
+- this `SKILL.md`
+- `codex/skills/cv-research-blogger/visual_quality.md`
+- `_blog_work/<series-slug>/manifest.yml`
+- `_blog_work/<series-slug>/visual_sources.yml`
+- `_blog_work/<series-slug>/series_tasks.yml` when it exists
+- `_blog_work/<series-slug>/HANDOFF.md` when it exists
+
+Work in one active blog part at a time. Every completed step needs durable
+evidence in `_blog_work/<series-slug>/`: source decisions, visual decisions,
+code-run metadata, checker output, render status, and the next task. If a new
+session cannot recover the current state from those files, the harness is not
+complete yet.
+
+## Professional Visual Standard
+
+Read `visual_quality.md` before `visual-plan`, `draft`, `review`, or
+`publish-check` work. Every reader-facing figure needs a figure brief before it
+is generated or drawn. The brief states the question the figure answers, the
+exact objects to show, the visual form, the cited inspiration sources, and what
+to avoid.
+
+Use this visual chain for each major concept:
+
+1. Planner collects external diagrams/blogs and cites only the ideas to learn
+   from them.
+2. Planner writes a figure brief in `_blog_work/<series-slug>/visual_sources.yml`.
+3. Generator creates an original Mermaid diagram, data plot, or AI bitmap from
+   the brief.
+4. Evaluator scores conceptual correctness, visual hierarchy, label quality,
+   originality, accessibility, and browser rendering.
+5. Weak visuals are marked for redesign instead of being described as
+   professional.
+
+Prefer clean local plots, SVGs, and Mermaid for precise technical objects. Use
+ChatGPT image generation for intuition-building overview figures only when it
+adds clarity. Do not embed equations in AI bitmap figures unless the text is
+short and verified after rendering.
+
 ## Routing
 
 Expected prompt:
@@ -57,7 +100,7 @@ Route the work by mode:
 
 1. Work on a dedicated branch for CV content changes.
 2. Use `_blog_work/<series-slug>/manifest.yml` as the source of truth for checkpoints.
-3. Use `_blog_work/<series-slug>/visual_sources.yml` for external visual references, original figure prompts, generated asset paths, and alt text.
+3. Use `_blog_work/<series-slug>/visual_sources.yml` for external visual references, figure briefs, original figure prompts, generated asset paths, quality-gate notes, and alt text.
 4. Keep posts in `_drafts/` until the outline and final draft are approved.
 5. Prefer Mermaid for structural diagrams because the site already renders it and it is easy to edit in git.
 6. Use ChatGPT image generation only for original scientific-educational bitmap figures; never copy, trace, or hotlink external diagrams.
@@ -112,6 +155,9 @@ mermaid:
 - Keep the reference list anchored in core sources. For technical posts, include the primary paper/tutorial, at least two scholarly core sources, and external explanation/visual references when useful.
 - Keep display equations narrow. Split side conditions into prose, avoid `\quad` and `\qquad`, and break long objectives into short named equations so mobile and desktop renders do not show formula scrollbars.
 - Keep visual-source planning explicit: at least two cited visual/blog references before publication.
+- Write a figure brief before creating a bitmap figure, Mermaid diagram, or code-result plot. A figure brief must include purpose, must-show objects, avoided failure modes, status, and cited inspirations.
+- Do not accept a generated figure only because it exists. If labels are blurry, composition is generic, colors are confusing, arrows do not match the explanation, or the figure feels like stock art, mark it for redesign.
+- Every Mermaid diagram must include `accTitle` and `accDescr` and must render without label overlap at desktop and mobile widths.
 - Save original bitmap figures in `assets/img/blog/<series-slug>/` with alt text and prompt provenance.
 - In `distill` posts, render local images with `{% include figure.liquid ... class="img-fluid rounded z-depth-1" width="..." height="..." zoomable=true alt="..." %}` so large figures stay responsive and SVGs keep nonzero height.
 - Do not use raw HTML image hotlinks. Every image must be a local asset with non-empty alt text.

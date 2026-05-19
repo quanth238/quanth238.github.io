@@ -266,6 +266,27 @@ def html_image_errors(body: str) -> list[str]:
     return errors
 
 
+def mermaid_accessibility_errors(body: str) -> list[str]:
+    errors: list[str] = []
+    for index, block in enumerate(
+        re.findall(r"```mermaid\s*\n(.*?)```", body, flags=re.DOTALL),
+        start=1,
+    ):
+        if not re.search(r"^\s*accTitle:\s+\S", block, flags=re.MULTILINE):
+            errors.append(
+                f"Mermaid diagram {index} is missing accTitle. "
+                "WHY: accessible titles make visual checks recoverable across sessions. "
+                "FIX: add an accTitle line near the top of the Mermaid block."
+            )
+        if not re.search(r"^\s*accDescr:\s+\S", block, flags=re.MULTILINE):
+            errors.append(
+                f"Mermaid diagram {index} is missing accDescr. "
+                "WHY: diagrams need a short text description for accessibility and review. "
+                "FIX: add an accDescr line near the top of the Mermaid block."
+            )
+    return errors
+
+
 def local_asset_errors(value: str | None, label: str) -> list[str]:
     if not value:
         return [f"missing {label}"]
@@ -329,6 +350,15 @@ def section_body(body: str, section: str) -> str:
     return body[match.end() : end].strip()
 
 
+def yaml_section(text: str, section: str) -> str:
+    match = re.search(rf"^{re.escape(section)}:\s*(?:\[\])?\s*$", text, flags=re.MULTILINE)
+    if not match:
+        return ""
+    next_match = re.search(r"^[a-z_]+:\s*(?:\[\])?\s*$", text[match.end() :], flags=re.MULTILINE)
+    end = match.end() + next_match.start() if next_match else len(text)
+    return text[match.end() : end].strip()
+
+
 def display_math_errors(body: str) -> list[str]:
     errors: list[str] = []
     for block in re.findall(r"\$\$(.*?)\$\$", body, flags=re.DOTALL):
@@ -359,15 +389,44 @@ def visual_plan_errors(front_matter: str, body: str) -> list[str]:
     if "Do not copy" not in plan or "hotlink" not in plan:
         errors.append("visual plan must include no-copy/no-hotlink policy")
 
-    references_block = re.search(
-        r"^references:\s*(.*?)(?:\n[a-z_]+:\s*(?:\[\])?\s*$|\Z)",
-        plan,
-        flags=re.DOTALL | re.MULTILINE,
-    )
-    references_text = references_block.group(1) if references_block else ""
+    if "visual_contract:" not in plan:
+        errors.append(
+            "visual plan is missing visual_contract. "
+            "WHY: professional figures need a durable quality contract, not only asset paths. "
+            "FIX: add visual_contract to the plan or recreate it with new_series.py."
+        )
+    if "quality_gate:" not in plan:
+        errors.append(
+            "visual plan is missing quality_gate. "
+            "WHY: the Evaluator role needs an explicit visual review checkpoint. "
+            "FIX: add quality_gate with required_before_publish and evaluator_status."
+        )
+    if "evaluator_notes:" not in plan:
+        errors.append(
+            "visual plan is missing evaluator_notes. "
+            "WHY: review decisions should survive context resets and new sessions. "
+            "FIX: add evaluator_notes with any visual risks, approvals, or redesign tasks."
+        )
+
+    references_text = yaml_section(plan, "references")
     source_count = len(re.findall(r"^\s*-\s+source:\s+\"?https?://", references_text, flags=re.MULTILINE))
     if source_count < 2:
         errors.append("visual plan must include at least two external visual/blog references")
+
+    figure_briefs_text = yaml_section(plan, "figure_briefs")
+    brief_count = len(re.findall(r"^\s*-\s+id:\s+", figure_briefs_text, flags=re.MULTILINE))
+    if brief_count < 1:
+        errors.append(
+            "visual plan is missing figure_briefs. "
+            "WHY: a figure brief forces Planner and Generator to decide what a figure teaches before drawing it. "
+            "FIX: add a figure_briefs entry with id, kind, reader_question, purpose, must_show, avoid, cited_inspirations, and status."
+        )
+    for list_key in ("must_show", "avoid", "cited_inspirations"):
+        if brief_count and not re.search(rf"^\s+{list_key}:\s*$", figure_briefs_text, flags=re.MULTILINE):
+            errors.append(f"figure_briefs entries must include {list_key} items")
+    for key in ("kind", "reader_question", "purpose", "status"):
+        if brief_count and not re.search(rf"^\s+{key}:\s+\S", figure_briefs_text, flags=re.MULTILINE):
+            errors.append(f"figure_briefs entries must include {key}")
 
     for path in re.findall(r"^\s*-\s+path:\s+\"([^\"]+)\"", plan, flags=re.MULTILINE):
         if re.match(r"https?://", path):
@@ -377,12 +436,7 @@ def visual_plan_errors(front_matter: str, body: str) -> list[str]:
             errors.append(f"visual plan local asset does not exist: {path}")
 
     for section in ("generated_figures", "remote_code_figures"):
-        block = re.search(
-            rf"^{section}:\s*(.*?)(?:\n[a-z_]+:\s*(?:\[\])?\s*$|\Z)",
-            plan,
-            flags=re.DOTALL | re.MULTILINE,
-        )
-        section_text = block.group(1) if block else ""
+        section_text = yaml_section(plan, section)
         if re.search(r"^\s*-\s+path:", section_text, flags=re.MULTILINE):
             alt_values = [
                 match.group(1).strip().strip('"').strip("'")
@@ -392,6 +446,8 @@ def visual_plan_errors(front_matter: str, body: str) -> list[str]:
                 errors.append(f"{section} entries must include alt text")
             if section == "generated_figures" and not re.search(r"^\s+prompt:\s+\|", section_text, flags=re.MULTILINE):
                 errors.append("generated_figures entries must include the final image prompt")
+            if section == "generated_figures" and "inspiration_sources:" not in section_text:
+                errors.append("generated_figures entries must include cited inspiration_sources")
 
     has_mermaid = bool(re.search(r"```mermaid\s", body))
     has_local_image = bool(re.search(r"!\[[^\]]+\]\((?!https?://)[^)]+\)", body))
@@ -446,6 +502,7 @@ def validate(path: Path) -> tuple[list[str], list[str]]:
     errors.extend(markdown_image_errors(body))
     errors.extend(liquid_figure_errors(body))
     errors.extend(html_image_errors(body))
+    errors.extend(mermaid_accessibility_errors(body))
     errors.extend(visual_plan_errors(front_matter, body))
 
     visible_body = re.sub(r"<!--.*?-->", "", body, flags=re.DOTALL)

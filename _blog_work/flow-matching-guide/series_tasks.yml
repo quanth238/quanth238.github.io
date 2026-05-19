@@ -1,0 +1,48 @@
+series: "flow-matching-guide"
+updated_at: "2026-05-19"
+wip_limit: 1
+current_state: "part-1-pr-open"
+active_task: null
+
+tasks:
+  - id: "FM-00"
+    title: "Establish CV blog visual harness"
+    state: "done"
+    evidence:
+      - "codex/skills/cv-research-blogger/SKILL.md"
+      - "codex/skills/cv-research-blogger/visual_quality.md"
+      - "scripts/blog_pipeline/check_post.py"
+      - "scripts/blog_pipeline/plan_visuals.py"
+  - id: "FM-01"
+    title: "Publish Flow Matching Part 1 through PR"
+    state: "done"
+    evidence:
+      - "_posts/2026-05-19-flow-matching-guide-part-1.md"
+      - "https://github.com/quanth238/quanth238.github.io/pull/1"
+  - id: "FM-02"
+    title: "Redesign Part 1 overview figure to match the professional visual standard"
+    state: "planned"
+    acceptance:
+      - "Create a figure brief revision in visual_sources.yml."
+      - "Prefer local SVG/matplotlib schematic or a cleaner AI bitmap with verified labels."
+      - "Keep the visual original and cite inspirations only as conceptual references."
+      - "Pass check_post.py and Jekyll build after replacing the figure."
+  - id: "FM-03"
+    title: "Plan the full Flow Matching series"
+    state: "planned"
+    acceptance:
+      - "Each part has one practical reader question."
+      - "Each part has cited core sources, visual plan, code-result target, and next-part transition."
+  - id: "FM-04"
+    title: "Implement Flow Matching Part 2"
+    state: "planned"
+    acceptance:
+      - "Answer one practical sampling question."
+      - "Include solver-step or path-quality code result."
+      - "Use professional local diagrams and plots before publication."
+
+completion_evidence_required:
+  - "python3 scripts/blog_pipeline/check_post.py <draft-or-post>"
+  - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+  - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build"
+  - "Browser or screenshot verification when reader-facing visuals change."

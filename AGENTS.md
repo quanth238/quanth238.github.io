@@ -2,6 +2,31 @@
 
 A simple, clean, and responsive Jekyll theme for academics.
 
+## CV Blog Visual Pipeline
+
+This branch also contains a CV-owned research blog harness. For Flow Matching or
+other tutorial posts, work only in this worktree:
+
+`/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline`
+
+Do not edit `/Users/quan238/personal/cv` directly for this pipeline. Use
+`codex/cv-research-blog-visual-pipeline` unless a new branch is needed after the
+current PR is merged.
+
+Before drafting or publishing a research tutorial, read:
+
+- `codex/skills/cv-research-blogger/SKILL.md`
+- `codex/skills/cv-research-blogger/visual_quality.md`
+- `_blog_work/<series-slug>/manifest.yml`
+- `_blog_work/<series-slug>/visual_sources.yml`
+- `_blog_work/<series-slug>/series_tasks.yml` when present
+- `_blog_work/<series-slug>/HANDOFF.md` when present
+
+Keep WIP to one active blog part or visual redesign. The repo files above are
+the durable handoff between sessions. A post is not publish-ready unless its
+visual plan contains external visual references, figure briefs, local assets or
+Mermaid source, alt text, evaluator notes, and passing checker/build evidence.
+
 ## Quick Links by Role
 
 - **Are you a coding agent?** → Read [`.github/copilot-instructions.md`](.github/copilot-instructions.md) first (tech stack, build, CI/CD, common pitfalls & solutions)

@@ -158,15 +158,24 @@ def visual_sources_content(args: argparse.Namespace, today: str) -> str:
         f"series: {yaml_quote(args.slug)}\n"
         f'created_at: "{today}"\n'
         f'updated_at: "{today}"\n'
+        "visual_contract:\n"
+        '  standard: "Plan the visual before drawing it; every reader-facing figure needs a brief, local asset or editable source, alt text, and evaluator decision."\n'
+        '  evidence: "Store source references, figure briefs, prompts, generated paths, code-result paths, and evaluator notes in this file."\n'
+        '  approval_rule: "A weak or generic figure is marked redesign and is not described as professional."\n\n'
         "policy:\n"
         '  external_images: "Do not copy, trace, or hotlink external diagrams."\n'
         '  generated_images: "Create original figures from cited ideas; store prompt, asset path, and alt text."\n'
         '  mermaid: "Use Mermaid for editable structural diagrams."\n\n'
         "references:\n"
         f"{sources}\n\n"
+        "figure_briefs: []\n"
         "generated_figures: []\n"
         "mermaid_figures: []\n"
         "remote_code_figures: []\n"
+        "quality_gate:\n"
+        '  required_before_publish: "Evaluator checks conceptual correctness, reader flow, label quality, originality, accessibility, and Jekyll rendering."\n'
+        '  evaluator_status: "pending"\n'
+        "evaluator_notes: []\n"
     )
 
 

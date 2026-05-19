@@ -9,6 +9,9 @@ Workspace:
 - Work only in /Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline.
 - Use branch codex/cv-research-blog-visual-pipeline, or create a new codex/flow-matching-series-* branch if this PR has already merged.
 - Do not edit /Users/quan238/personal/cv directly.
+- Before writing, read AGENTS.md, codex/skills/cv-research-blogger/SKILL.md,
+  codex/skills/cv-research-blogger/visual_quality.md, manifest.yml,
+  visual_sources.yml, series_tasks.yml, and HANDOFF.md.
 
 Source:
 - Primary: https://arxiv.org/abs/2412.06264
@@ -23,12 +26,14 @@ practical question first, then add only the theory needed to understand it.
 Three-role workflow:
 1. Planner: choose the practical question for the part, map the core sources,
    collect visual/blog references, plan original figures, and define the code
-   result the reader should inspect.
+   result the reader should inspect. Write figure briefs before any figure is
+   generated or drawn.
 2. Generator: write the topic outline, draft the prose, create Mermaid diagrams
    and original image prompts, and build the runnable example around the
    Planner's target.
 3. Evaluator: check citations, visual metadata, local assets, equation width,
-   human voice, code-result presence, Jekyll build, and browser rendering.
+   human voice, code-result presence, professional visual quality, Jekyll build,
+   and browser rendering.
 
 Required modes for each part:
 - mode:intake
@@ -47,8 +52,15 @@ Writing constraints:
 - Keep equations narrow; avoid display math that scrolls.
 - Cite core papers for core claims and related papers for design choices.
 - Use original local figures or Mermaid diagrams; do not copy or hotlink images.
+- Every major visual needs a figure brief in visual_sources.yml before creation.
+- Figures should look like professional technical diagrams: clear hierarchy,
+  readable labels, colorblind-safe palette, no generic stock-art style, no dense
+  text, no copied layout, and no equations embedded in AI bitmaps.
+- Prefer local SVG/matplotlib plots for precise flow paths, vector fields,
+  losses, samples, and solver comparisons.
 - Code-result prose should explain what the result shows, not how the pipeline ran.
 - End each part with one short sentence saying what the next part covers.
 
-First, plan the whole Flow Matching series. Then implement the next unpublished part.
+First, inspect the handoff and visual task list. Then plan the whole Flow
+Matching series. Implement only one active part or visual redesign at a time.
 ```

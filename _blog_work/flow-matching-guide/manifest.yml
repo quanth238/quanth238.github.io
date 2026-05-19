@@ -22,7 +22,7 @@ source_materials:
 checkpoints:
   intake: "created"
   outline: "topic_outline_scaffolded"
-  visual_plan: "external_sources_collected_original_ai_figure_registered"
+  visual_plan: "external_sources_collected_figure_briefs_and_quality_gate_registered"
   draft: "revised_with_visual_plan_and_remote_code_results"
   code_run: "passed_remote_wsl_20260519T105934Z"
   human_voice_pass: "revised_for_direct_professional_style"
@@ -37,7 +37,7 @@ approval:
 
 notes:
   personal_angle: "Explain the topic directly with concise theory, visual structure, and code."
-  visual_default: "Plan visual sources first; use Mermaid for editable structure and original AI figures when they improve intuition."
+  visual_default: "Plan visual sources first; write figure briefs; prefer Mermaid and local plots for precise technical objects; use AI figures only when they improve intuition."
   style_reference: "Robot Learning: A Tutorial style: scoped tutorial, named topic sections, concise theory, code examples."
   local_style_reference: "/Users/quan238/Library/CloudStorage/GoogleDrive-1959030@itec.hcmus.edu.vn/My Drive/Papers/storage/E9KBH4KD/Capuano et al. - 2025 - Robot Learning A Tutorial.pdf"
   publication_rule: "Keep drafts in _drafts until explicit approval."

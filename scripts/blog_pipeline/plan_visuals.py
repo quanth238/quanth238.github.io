@@ -34,14 +34,23 @@ def default_plan(slug: str, today: str) -> str:
         f"series: {yaml_quote(slug)}\n"
         f"created_at: {yaml_quote(today)}\n"
         f"updated_at: {yaml_quote(today)}\n"
+        "visual_contract:\n"
+        "  standard: \"Plan the visual before drawing it; every reader-facing figure needs a brief, local asset or editable source, alt text, and evaluator decision.\"\n"
+        "  evidence: \"Store source references, figure briefs, prompts, generated paths, code-result paths, and evaluator notes in this file.\"\n"
+        "  approval_rule: \"A weak or generic figure is marked redesign and is not described as professional.\"\n\n"
         "policy:\n"
         "  external_images: \"Do not copy, trace, or hotlink external diagrams.\"\n"
         "  generated_images: \"Create original figures from cited ideas; store prompt, asset path, and alt text.\"\n"
         "  mermaid: \"Use Mermaid for editable structural diagrams.\"\n\n"
         "references: []\n"
+        "figure_briefs: []\n"
         "generated_figures: []\n"
         "mermaid_figures: []\n"
         "remote_code_figures: []\n"
+        "quality_gate:\n"
+        "  required_before_publish: \"Evaluator checks conceptual correctness, reader flow, label quality, originality, accessibility, and Jekyll rendering.\"\n"
+        "  evaluator_status: \"pending\"\n"
+        "evaluator_notes: []\n"
     )
 
 
@@ -86,6 +95,41 @@ def add_reference(text: str, source: str, idea: str, title: str | None, use: str
         f"    use: {yaml_quote(use)}\n"
     )
     return append_to_section(text, "references", block)
+
+
+def add_figure_brief(
+    text: str,
+    brief_id: str,
+    kind: str,
+    reader_question: str,
+    purpose: str,
+    must_show: list[str],
+    avoid: list[str],
+    cited_inspirations: list[str],
+    status: str,
+) -> str:
+    if brief_id in text:
+        return text
+    must_show_lines = "\n".join(f"      - {yaml_quote(item)}" for item in must_show) or "      []"
+    avoid_lines = "\n".join(f"      - {yaml_quote(item)}" for item in avoid) or "      []"
+    inspiration_lines = (
+        "\n".join(f"      - {yaml_quote(source)}" for source in cited_inspirations)
+        or "      []"
+    )
+    block = (
+        f"  - id: {yaml_quote(brief_id)}\n"
+        f"    kind: {yaml_quote(kind)}\n"
+        f"    reader_question: {yaml_quote(reader_question)}\n"
+        f"    purpose: {yaml_quote(purpose)}\n"
+        "    must_show:\n"
+        f"{must_show_lines}\n"
+        "    avoid:\n"
+        f"{avoid_lines}\n"
+        "    cited_inspirations:\n"
+        f"{inspiration_lines}\n"
+        f"    status: {yaml_quote(status)}\n"
+    )
+    return append_to_section(text, "figure_briefs", block)
 
 
 def add_generated_figure(
@@ -144,6 +188,14 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--idea", required=True, help="Visual idea to cite from the source")
     parser.add_argument("--title", help="Optional source title")
     parser.add_argument("--use", default="visual-reference", help="How this source should be used")
+    parser.add_argument("--brief-id", help="Stable id for a planned figure brief")
+    parser.add_argument("--brief-kind", default="mermaid", help="Figure kind for --brief-id")
+    parser.add_argument("--reader-question", help="Question the figure should answer")
+    parser.add_argument("--brief-purpose", help="One-sentence figure purpose")
+    parser.add_argument("--must-show", action="append", default=[], help="Required visual object; repeat as needed")
+    parser.add_argument("--avoid", action="append", default=[], help="Visual failure mode to avoid; repeat as needed")
+    parser.add_argument("--brief-status", default="planned", help="Figure brief status")
+    parser.add_argument("--brief-inspiration", action="append", default=[], help="Cited inspiration for --brief-id")
     parser.add_argument("--asset", help="Generated local image path to register")
     parser.add_argument("--alt", help="Alt text for --asset or --remote-asset")
     parser.add_argument("--prompt", help="Final image-generation prompt for --asset")
@@ -163,6 +215,25 @@ def main(argv: list[str]) -> int:
         ensure_plan(plan_path, args.slug)
         text = plan_path.read_text(encoding="utf-8")
         text = add_reference(text, args.source, args.idea, args.title, args.use)
+        if args.brief_id:
+            if not args.reader_question or not args.brief_purpose:
+                raise ValueError("--brief-id requires --reader-question and --brief-purpose")
+            if not args.must_show:
+                raise ValueError("--brief-id requires at least one --must-show")
+            if not args.avoid:
+                raise ValueError("--brief-id requires at least one --avoid")
+            inspirations = args.brief_inspiration or [args.source]
+            text = add_figure_brief(
+                text,
+                args.brief_id,
+                args.brief_kind,
+                args.reader_question,
+                args.brief_purpose,
+                args.must_show,
+                args.avoid,
+                inspirations,
+                args.brief_status,
+            )
         if args.asset:
             if not args.alt or not args.prompt:
                 raise ValueError("--asset requires --alt and --prompt")
