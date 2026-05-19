@@ -95,6 +95,9 @@ def validate_manifest(slug: str, manifest: dict[str, Any], errors: list[str]) ->
             errors.append(f"manifest.yml harness.{key} is missing")
             continue
         local_path_exists(str(value), errors, f"manifest.yml harness.{key}")
+    export_policy = harness.get("export_policy")
+    if export_policy:
+        local_path_exists(str(export_policy), errors, "manifest.yml harness.export_policy")
     if harness.get("wip_limit") != 1:
         errors.append("manifest.yml harness.wip_limit must be 1")
 

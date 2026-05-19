@@ -4,14 +4,27 @@ A simple, clean, and responsive Jekyll theme for academics.
 
 ## CV Blog Visual Pipeline
 
-This branch also contains a CV-owned research blog harness. For Flow Matching or
-other tutorial posts, work only in this worktree:
+This branch contains the CV-owned research blog harness. Treat this checkout as
+the workshop for planning, drafts, code runs, visual metadata, and verification.
+For Flow Matching or other tutorial posts, work only in this worktree:
 
 `/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline`
 
-Do not edit `/Users/quan238/personal/cv` directly for this pipeline. Use
-`codex/cv-research-blog-visual-pipeline` unless a new branch is needed after the
-current PR is merged.
+Do not edit `/Users/quan238/personal/cv` directly during harness work. The
+personal al-folio site is the publication target, not the drafting workspace.
+Use a `codex/flow-matching-series-*` branch in this harness checkout unless the
+user explicitly asks for a different branch.
+
+Keep the harness project separate from the personal website:
+
+- Harness-only files stay here: `_blog_work/`, `scripts/blog_pipeline/`,
+  `codex/skills/`, remote-run logs, evidence screenshots, and working drafts.
+- The personal website should receive only an approved export bundle:
+  reader-facing `_posts/` files, final local assets under `assets/img/blog/`,
+  and minimal bibliography or config changes when required.
+- Do not copy, commit, or merge harness internals into `/Users/quan238/personal/cv`.
+- Before applying any export to the personal site, prepare an export manifest and
+  ask for explicit approval.
 
 Before drafting or publishing a research tutorial, read:
 
@@ -23,6 +36,7 @@ Before drafting or publishing a research tutorial, read:
 - `_blog_work/<series-slug>/series_tasks.yml` when present
 - `_blog_work/<series-slug>/HANDOFF.md` when present
 - `_blog_work/<series-slug>/series_prompt.md` when present
+- `_blog_work/<series-slug>/EXPORT_POLICY.md` when present
 
 Keep WIP to one active blog part or visual redesign. The repo files above are
 the durable handoff between sessions. A post is not publish-ready unless its

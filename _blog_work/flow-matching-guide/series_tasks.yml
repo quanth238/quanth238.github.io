@@ -100,6 +100,75 @@ tasks:
       - "Answer one practical sampling question."
       - "Include solver-step or path-quality code result."
       - "Use professional local diagrams and plots before publication."
+  - id: "FM-05"
+    title: "Implement Flow Matching Part 3"
+    behavior: "Draft and verify Part 3 after the conditional-to-marginal theorem wording and notation are checked against primary sources."
+    state: "not_started"
+    depends_on: ["FM-04"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md"
+      - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+    acceptance:
+      - "Answer one practical question about why conditional endpoint training supports endpoint-free sampling."
+      - "Use source-verified theorem wording or mark unresolved claims as blocked."
+      - "Include the planned conditional-to-marginal visual and local code-result evidence."
+  - id: "FM-06"
+    title: "Implement Flow Matching Part 4"
+    behavior: "Draft and verify Part 4 on endpoint couplings, minibatch OT, and rectified-path diagnostics."
+    state: "not_started"
+    depends_on: ["FM-05"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md"
+      - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+    acceptance:
+      - "Answer one practical question about how endpoint pairing changes path quality and sampling cost."
+      - "Avoid claiming minibatch OT is globally optimal."
+      - "Include local coupling diagnostics and registered visual metadata."
+  - id: "FM-07"
+    title: "Implement Flow Matching Part 5"
+    behavior: "Draft and verify Part 5 on probability path families after schedule equations are checked against primary sources."
+    state: "not_started"
+    depends_on: ["FM-06"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md"
+      - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+    acceptance:
+      - "Answer one practical question about what changes when the probability path changes."
+      - "Verify path schedule equations before reader-facing claims."
+      - "Include local path-family snapshots with alt text and visual-source evidence."
+  - id: "FM-08"
+    title: "Implement Flow Matching Part 6"
+    behavior: "Draft and verify Part 6 mapping the toy series concepts to the official flow_matching package after install/run feasibility is checked."
+    state: "not_started"
+    depends_on: ["FM-07"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md"
+      - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+    acceptance:
+      - "Answer one practical question about mapping tutorial concepts to official package components."
+      - "Verify package component names and install/run feasibility before reader-facing claims."
+      - "Include a component map and one verified output plot, or mark the task blocked if the package run cannot be verified."
+  - id: "FM-09"
+    title: "Prepare clean export manifest for personal website"
+    behavior: "After Parts 2-6 pass in the harness, list only approved reader-facing posts, final assets, and required minimal site changes for export to /Users/quan238/personal/cv."
+    state: "not_started"
+    depends_on: ["FM-08"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "All draft check_post.py commands for Parts 2-6 have passed."
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts has passed in the harness checkout."
+    acceptance:
+      - "Export manifest excludes _blog_work/, scripts/blog_pipeline/, codex/skills/, _drafts/, remote-run logs, and evidence screenshots."
+      - "Manifest lists exact source-to-target paths and any overwrites."
+      - "No files are copied into /Users/quan238/personal/cv until the user explicitly approves the export."
 
 completion_evidence_required:
   - "python3 scripts/blog_pipeline/check_post.py <draft-or-post>"

@@ -5,9 +5,14 @@ State date: 2026-05-19
 ## Current State
 
 - Worktree: `/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline`
-- Branch: `codex/flow-matching-series-fm-03`
+- Branch: `main` after FM-03 merge; create a fresh
+  `codex/flow-matching-series-*` branch for the next harness task.
 - Previous PR: `https://github.com/quanth238/quanth238.github.io/pull/1` (merged before FM-03).
-- Main CV checkout at `/Users/quan238/personal/cv` is not the working tree for this pipeline.
+- Main CV checkout at `/Users/quan238/personal/cv` is the clean publication
+  target, not the working tree for this pipeline.
+- Harness internals must stay in this checkout. Export only approved `_posts`
+  files, final `assets/img/blog/flow-matching-guide/` assets, and minimal
+  required bibliography/config changes after explicit user approval.
 - Part 1 is published on the branch as `_posts/2026-05-19-flow-matching-guide-part-1.md`.
 - The cold-start contract is `_blog_work/flow-matching-guide/SESSION_BOOTSTRAP.md`.
 - The task source of truth is `_blog_work/flow-matching-guide/series_tasks.yml`; keep `wip_limit: 1`.
@@ -28,6 +33,7 @@ State date: 2026-05-19
 - `_blog_work/flow-matching-guide/series_tasks.yml`
 - `_blog_work/flow-matching-guide/series_plan.yml`
 - `_blog_work/flow-matching-guide/series_prompt.md`
+- `_blog_work/flow-matching-guide/EXPORT_POLICY.md`
 
 ## Bootstrap Check
 
@@ -44,6 +50,19 @@ screenshot. A task should not be marked `passing` in `series_tasks.yml` until it
 verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
+
+2026-05-19 harness/website separation correction:
+
+- The harness checkout remains the workshop for `_blog_work/`,
+  `scripts/blog_pipeline/`, `codex/skills/`, draft files, run logs, and evidence.
+- `/Users/quan238/personal/cv` is treated only as the publication target.
+- Future export must list exact source-to-target files and receive user approval
+  before any personal-site write.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- YAML parse of `manifest.yml`, `series_plan.yml`, `visual_sources.yml`, and
+  `series_tasks.yml`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `git diff --check`: passed.
 
 2026-05-19 FM-03 series-planning artifact check:
 
@@ -99,6 +118,10 @@ and generate the Part 2 step-count result planned in `series_plan.yml` and
 
 Do not move directly into drafting Part 2 until the visual plan for Part 2 has
 figure briefs and cited visual references.
+
+Do not edit `/Users/quan238/personal/cv` while finishing drafts. When all parts
+are passing and the user asks to publish, prepare an export manifest first and
+wait for approval.
 
 ## FM-03 Gaps To Preserve
 

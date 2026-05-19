@@ -14,6 +14,7 @@ choose one task, and verify it without relying on chat history.
 6. `_blog_work/flow-matching-guide/series_tasks.yml`
 7. `_blog_work/flow-matching-guide/HANDOFF.md`
 8. `_blog_work/flow-matching-guide/series_prompt.md`
+9. `_blog_work/flow-matching-guide/EXPORT_POLICY.md`
 
 ## Cold-Start Questions
 
@@ -24,6 +25,8 @@ A new session is ready only if it can answer these from repo files:
 - Which visual assets are approved, created, or marked for redesign?
 - What verification commands prove a post or visual change is acceptable?
 - What is the next single task under the WIP limit?
+- Which files are harness-only, and which files may be exported to the personal
+  site after explicit approval?
 
 ## Harness Subsystems
 
@@ -32,6 +35,9 @@ A new session is ready only if it can answer these from repo files:
   `scripts/blog_pipeline/`, and local assets under `assets/img/blog/`.
 - State: `manifest.yml`, `series_tasks.yml`, `HANDOFF.md`, remote-run logs, and
   git history.
+- Export policy: `_blog_work/flow-matching-guide/EXPORT_POLICY.md`; the
+  personal checkout at `/Users/quan238/personal/cv` is not edited during
+  harness work.
 - Tools: `new_series.py`, `plan_visuals.py`, `run_remote_example.py`,
   `check_post.py`, and `check_harness.py`.
 - Feedback: blog checker, Python compile check, Jekyll build, browser/screenshot
@@ -73,4 +79,6 @@ Before ending a session:
 - Update `HANDOFF.md` with current branch, changed files, checks run, blockers,
   and next task.
 - Leave generated assets either referenced in `visual_sources.yml` or removed.
+- Do not copy anything into `/Users/quan238/personal/cv` unless the user has
+  approved an explicit export manifest.
 - Run the relevant checker commands and record failures explicitly if any remain.

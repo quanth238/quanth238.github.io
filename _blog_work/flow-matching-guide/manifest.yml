@@ -2,7 +2,7 @@ series:
   slug: "flow-matching-guide"
   title: "Flow Matching Guide and Code"
   audience: "CS/ML students"
-  status: "published"
+  status: "part-1-published-series-planned"
   created_at: "2026-05-19"
   updated_at: "2026-05-19"
   default_layout: "distill"
@@ -24,8 +24,12 @@ harness:
   task_source_of_truth: "_blog_work/flow-matching-guide/series_tasks.yml"
   visual_source_of_truth: "_blog_work/flow-matching-guide/visual_sources.yml"
   handoff: "_blog_work/flow-matching-guide/HANDOFF.md"
+  export_policy: "_blog_work/flow-matching-guide/EXPORT_POLICY.md"
   wip_limit: 1
   cold_start_target: "A fresh agent can recover state and choose one verified task from repo files alone."
+  workspace_role: "harness-only drafting and verification workspace"
+  publication_target: "/Users/quan238/personal/cv"
+  publication_rule: "Do not edit the publication target during drafting; export only approved reader-facing posts and final assets after explicit user approval."
 
 checkpoints:
   intake: "created"
@@ -48,4 +52,4 @@ notes:
   visual_default: "Plan visual sources first; write figure briefs; prefer Mermaid and local plots for precise technical objects; use AI figures only when they improve intuition."
   style_reference: "Robot Learning: A Tutorial style: scoped tutorial, named topic sections, concise theory, code examples."
   local_style_reference: "/Users/quan238/Library/CloudStorage/GoogleDrive-1959030@itec.hcmus.edu.vn/My Drive/Papers/storage/E9KBH4KD/Capuano et al. - 2025 - Robot Learning A Tutorial.pdf"
-  publication_rule: "Keep drafts in _drafts until explicit approval."
+  publication_rule: "Keep drafts in _drafts until explicit approval; do not export to /Users/quan238/personal/cv until the user approves an export manifest."

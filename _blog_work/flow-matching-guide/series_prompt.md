@@ -6,13 +6,18 @@ Use this prompt to continue the Flow Matching Guide and Code tutorial series.
 Use $cv-research-blogger for the Flow Matching Guide and Code series.
 
 Workspace:
-- Work only in /Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline.
-- Use branch codex/cv-research-blog-visual-pipeline, or create a new codex/flow-matching-series-* branch if this PR has already merged.
-- Do not edit /Users/quan238/personal/cv directly.
+- Work only in the harness checkout:
+  /Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline.
+- Create a new codex/flow-matching-series-* branch from updated main.
+- Do not edit /Users/quan238/personal/cv during drafting, review, or harness checks.
+- Treat /Users/quan238/personal/cv as the clean publication target only. Export
+  into it only after all series checks pass and the user explicitly approves the
+  source-to-target file list.
+- Read _blog_work/flow-matching-guide/EXPORT_POLICY.md before any export step.
 - Before writing, read AGENTS.md, codex/skills/cv-research-blogger/SKILL.md,
   codex/skills/cv-research-blogger/visual_quality.md, SESSION_BOOTSTRAP.md,
-  manifest.yml, visual_sources.yml, series_tasks.yml, HANDOFF.md, and this
-  prompt.
+  manifest.yml, visual_sources.yml, series_tasks.yml, series_plan.yml,
+  HANDOFF.md, EXPORT_POLICY.md, and this prompt.
 - Run python3 scripts/blog_pipeline/check_harness.py flow-matching-guide before
   changing a post, visual, or pipeline file.
 
@@ -56,6 +61,8 @@ Harness rules:
 - Store visual decisions in visual_sources.yml, code-run logs under
   _blog_work/flow-matching-guide/remote_runs/, and final assets under
   assets/img/blog/flow-matching-guide/.
+- Keep _blog_work/, scripts/blog_pipeline/, codex/skills/, _drafts/,
+  remote-run logs, and evidence screenshots out of the personal website export.
 - End every session by updating HANDOFF.md and the relevant task evidence.
 
 Writing constraints:
@@ -77,4 +84,6 @@ Writing constraints:
 
 First, inspect the handoff and visual task list. Then plan the whole Flow
 Matching series. Implement only one active part or visual redesign at a time.
+When the series is complete, prepare an export manifest and stop for user
+approval before touching /Users/quan238/personal/cv.
 ```

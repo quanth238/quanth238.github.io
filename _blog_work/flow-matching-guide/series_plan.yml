@@ -4,10 +4,13 @@ task_id: "FM-03"
 artifact_owner: "Generator / Artifact Builder"
 artifact_scope:
   worktree: "/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline"
+  workspace_role: "harness-only drafting and verification workspace"
+  publication_target: "/Users/quan238/personal/cv"
   task_source_of_truth: "_blog_work/flow-matching-guide/series_tasks.yml"
   visual_source_of_truth: "_blog_work/flow-matching-guide/visual_sources.yml"
+  export_policy: "_blog_work/flow-matching-guide/EXPORT_POLICY.md"
   reader_facing_files: "not edited"
-  constraint: "Planning metadata only; do not draft Part 2 prose or edit _drafts/_posts."
+  constraint: "Planning metadata only; do not draft Part 2 prose or edit _drafts/_posts. Do not edit the publication target until an export manifest is approved."
   allowed_write_set:
     - "_blog_work/flow-matching-guide/series_plan.yml"
     - "_blog_work/flow-matching-guide/visual_sources.yml"
@@ -184,6 +187,22 @@ parts:
     code_target: "Run a minimal official or official-inspired continuous synthetic example and store one verified output plot."
     visual_intent: "Component map Mermaid plus one verified output plot."
     transition: "End the series with a concise checklist, not a new unpublished part."
+
+export_plan:
+  status: "planned"
+  export_task: "FM-09"
+  rule: "After Parts 2-6 pass in the harness and the user approves publication, prepare a source-to-target manifest before touching /Users/quan238/personal/cv."
+  exportable:
+    - "Approved _posts/2026-...-flow-matching-guide-part-N.md files."
+    - "Final local assets under assets/img/blog/flow-matching-guide/."
+    - "Bibliography, data, or config changes only when required by a published post."
+  excluded:
+    - "_blog_work/"
+    - "scripts/blog_pipeline/"
+    - "codex/skills/"
+    - "_drafts/"
+    - "remote-run logs"
+    - "evidence screenshots"
 
 gaps_for_evaluator_or_future_parts:
   - part: 2

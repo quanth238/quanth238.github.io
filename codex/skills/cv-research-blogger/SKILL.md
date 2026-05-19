@@ -12,6 +12,18 @@ The target voice is clear, technical, concise, and useful to students. Go direct
 to the concept; do not write meta commentary about the draft, the author's mental
 model, or what the post "should help" someone do.
 
+## Harness vs Publication Target
+
+The blog harness is the drafting and verification workspace. Keep `_blog_work/`,
+`scripts/blog_pipeline/`, `codex/skills/`, remote-run logs, evidence screenshots,
+and working drafts in the harness checkout.
+
+The personal al-folio site is the publication target. Do not edit
+`/Users/quan238/personal/cv` during drafting or review. After the series passes
+and the user approves publication, prepare an explicit export manifest that lists
+only reader-facing `_posts/` files, final local assets under `assets/img/blog/`,
+and any minimal bibliography or config changes. Do not export harness internals.
+
 ## Agent Roles
 
 - Planner: source intake, literature/blog search, visual-source planning, and citation targets.
@@ -48,6 +60,7 @@ Treat the repository as the source of truth. Before continuing a series, read:
 - `_blog_work/<series-slug>/series_tasks.yml` when it exists
 - `_blog_work/<series-slug>/HANDOFF.md` when it exists
 - `_blog_work/<series-slug>/series_prompt.md` when it exists
+- `_blog_work/<series-slug>/EXPORT_POLICY.md` when it exists
 
 Work in one active blog part at a time. Every completed step needs durable
 evidence in `_blog_work/<series-slug>/`: source decisions, visual decisions,
@@ -126,6 +139,7 @@ Route the work by mode:
 6. Use ChatGPT image generation only for original scientific-educational bitmap figures; never copy, trace, or hotlink external diagrams.
 7. Treat humanizer-style edits as prose quality checks, not evidence checks.
 8. Cite or link every external claim that is not common background knowledge.
+9. Keep the harness separate from the publication target; export only approved reader-facing files and assets after explicit user approval.
 
 ## Series Continuation
 
