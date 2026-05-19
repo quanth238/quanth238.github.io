@@ -127,11 +127,11 @@ For the step-count diagnostic here, the hand-written Euler loop is enough becaus
 
 ## Code result
 
-The figure uses one trained 2D toy field and the same initial noise samples for every panel. Only the number of Euler steps changes. Black dots are starts, blue curves are solver trajectories, teal dots are final samples, and the vermillion cloud is the target distribution.
+The figure uses one trained 2D toy field and the same initial noise samples for every panel. Only the number of Euler steps changes. Black dots are starts, blue curves are solver trajectories, teal dots are coarse final samples, purple rings are 128-step reference endpoints, orange segments are endpoint drift to that reference, and the vermillion cloud is the target distribution.
 
-{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg" class="img-fluid rounded z-depth-1" width="1180" height="760" zoomable=true alt="Euler solver step sweep showing 4, 8, 16, and 32 step trajectories for the same toy flow matching field." %}
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg" class="img-fluid rounded z-depth-1" width="1180" height="760" zoomable=true alt="Euler solver step sweep showing 4, 8, 16, and 32 step trajectories with orange endpoint residuals to purple 128-step reference endpoints." %}
 
-The endpoint drift compares each coarse Euler endpoint to a 128-step Euler reference on the same initial samples.
+The endpoint drift compares each coarse Euler endpoint to a 128-step Euler reference on the same initial samples. The blue paths are intentionally similar because the field and starts are fixed; the orange residuals and the drift column are the step-count diagnostic.
 
 | Euler steps | Mean reference drift | Mean nearest-mode distance |
 | ----------: | -------------------: | -------------------------: |

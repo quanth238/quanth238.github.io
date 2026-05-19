@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 ASSET_DIR = ROOT / "assets/img/blog/flow-matching-guide"
-DEFAULT_RUN_DIR = ROOT / "_blog_work/flow-matching-guide/remote_runs/fm04_solver_steps"
+DEFAULT_RUN_DIR = ROOT / "_blog_work/flow-matching-guide/remote_runs/20260519T151120Z_fm04_solver_steps"
 
 
 def randn(rng: random.Random) -> float:
@@ -109,6 +109,28 @@ def svg_circle(cx: float, cy: float, radius: float, fill: str, opacity: float = 
     return f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{radius:.1f}" fill="{fill}" opacity="{opacity:.2f}"/>'
 
 
+def svg_ring(cx: float, cy: float, radius: float, stroke: str, opacity: float = 1.0) -> str:
+    return (
+        f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{radius:.1f}" fill="none" '
+        f'stroke="{stroke}" stroke-width="1.8" opacity="{opacity:.2f}"/>'
+    )
+
+
+def svg_line(
+    x1: float,
+    y1: float,
+    x2: float,
+    y2: float,
+    color: str,
+    opacity: float,
+    width: float = 1.4,
+) -> str:
+    return (
+        f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" '
+        f'stroke="{color}" stroke-width="{width:.1f}" opacity="{opacity:.2f}"/>'
+    )
+
+
 def svg_polyline(points: list[tuple[float, float]], color: str, opacity: float, width: float = 1.4) -> str:
     coords = " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
     return f'<polyline points="{coords}" fill="none" stroke="{color}" stroke-width="{width:.1f}" opacity="{opacity:.2f}"/>'
@@ -116,6 +138,7 @@ def svg_polyline(points: list[tuple[float, float]], color: str, opacity: float, 
 
 def write_sweep_svg(
     target_points: list[tuple[float, float]],
+    reference_endpoints: list[tuple[float, float]],
     paths_by_steps: dict[int, list[list[tuple[float, float]]]],
     metrics: list[dict[str, float]],
     path: Path,
@@ -132,27 +155,44 @@ def write_sweep_svg(
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Euler solver step sweep on a two-dimensional toy flow matching model">',
         '<rect width="100%" height="100%" fill="#fbfbf8"/>',
-        '<text x="55" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#222">Same learned field, different Euler step counts</text>',
-        '<text x="55" y="62" font-family="Arial, sans-serif" font-size="14" fill="#555">Toy 2D diagnostic: black starts, blue trajectories, teal endpoints, vermillion target cloud</text>',
+        '<defs>',
     ]
+    for steps, (left, top) in panels.items():
+        parts.append(
+            f'<clipPath id="solver-clip-{steps}">'
+            f'<rect x="{left:.1f}" y="{top + 55:.1f}" width="{panel_w:.1f}" height="{panel_h - 72:.1f}"/>'
+            "</clipPath>"
+        )
+    parts.extend(
+        [
+            "</defs>",
+            '<text x="55" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#222">Coarse Euler endpoints converge to a 128-step reference</text>',
+            '<text x="55" y="62" font-family="Arial, sans-serif" font-size="14" fill="#555">Same learned field and starts; orange residuals show endpoint drift, purple rings mark the fine reference.</text>',
+        ]
+    )
     for steps, (left, top) in panels.items():
         parts.append(f'<rect x="{left:.1f}" y="{top:.1f}" width="{panel_w}" height="{panel_h}" fill="#fff" stroke="#ddd" stroke-width="1"/>')
         parts.append(f'<text x="{left + 12:.1f}" y="{top + 24:.1f}" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#222">{steps} Euler steps</text>')
         row = metric_by_step[steps]
-        metric_text = f"reference drift {row['mean_reference_drift']:.3f}; mode distance {row['mean_nearest_mode_distance']:.3f}"
+        metric_text = f"mean drift to 128-step ref {row['mean_reference_drift']:.3f}; mode distance {row['mean_nearest_mode_distance']:.3f}"
         parts.append(f'<text x="{left + 12:.1f}" y="{top + 46:.1f}" font-family="Arial, sans-serif" font-size="12" fill="#555">{metric_text}</text>')
+        parts.append(f'<g clip-path="url(#solver-clip-{steps})">')
         for x, y in target_points:
             sx, sy = scale_point(x, y, left, top + 55, panel_w, panel_h - 72)
             parts.append(svg_circle(sx, sy, 2.0, "#d95f59", 0.25))
-        for sample_path in paths_by_steps[steps]:
+        for sample_path, ref_endpoint in zip(paths_by_steps[steps], reference_endpoints):
             scaled = [scale_point(x, y, left, top + 55, panel_w, panel_h - 72) for x, y in sample_path]
+            ref_scaled = scale_point(ref_endpoint[0], ref_endpoint[1], left, top + 55, panel_w, panel_h - 72)
             parts.append(svg_polyline(scaled, "#2f6f8f", 0.70))
+            parts.append(svg_line(scaled[-1][0], scaled[-1][1], ref_scaled[0], ref_scaled[1], "#d97706", 0.82, 2.2))
             parts.append(svg_circle(scaled[0][0], scaled[0][1], 2.4, "#222", 0.90))
             parts.append(svg_circle(scaled[-1][0], scaled[-1][1], 2.8, "#238b8d", 0.92))
+            parts.append(svg_ring(ref_scaled[0], ref_scaled[1], 4.0, "#6d4aff", 0.90))
+        parts.append("</g>")
     parts.extend(
         [
-            '<text x="55" y="724" font-family="Arial, sans-serif" font-size="13" fill="#444">Metric drift is mean endpoint distance from a 128-step Euler reference on the same initial samples.</text>',
-            '<text x="55" y="744" font-family="Arial, sans-serif" font-size="13" fill="#444">The comparison isolates integration step count; the trained field and random starts are held fixed.</text>',
+            '<text x="55" y="716" font-family="Arial, sans-serif" font-size="13" fill="#444">Blue paths can look similar because the same learned field is reused. The diagnostic difference is the endpoint residual.</text>',
+            '<text x="55" y="738" font-family="Arial, sans-serif" font-size="13" fill="#444">The comparison isolates integration step count; the trained field, target cloud, and random starts are held fixed.</text>',
             "</svg>\n",
         ]
     )
@@ -184,7 +224,7 @@ def build(run_dir: Path) -> dict[str, object]:
     ASSET_DIR.mkdir(parents=True, exist_ok=True)
     run_dir.mkdir(parents=True, exist_ok=True)
     figure_path = ASSET_DIR / "flow-matching-solver-steps.svg"
-    write_sweep_svg(target_points, paths_by_steps, metrics, figure_path)
+    write_sweep_svg(target_points, reference, paths_by_steps, metrics, figure_path)
     payload: dict[str, object] = {
         "task": "FM-04",
         "seed": 19,
@@ -196,12 +236,13 @@ def build(run_dir: Path) -> dict[str, object]:
         "step_counts": step_counts,
         "reference_steps": 128,
         "metrics": metrics,
+        "visual_encoding": "Purple rings mark 128-step Euler reference endpoints. Orange line segments connect each coarse endpoint to its matching reference endpoint, making the step-count drift visible even when trajectories overlap at page scale.",
         "asset": str(figure_path.relative_to(ROOT)),
     }
     (run_dir / "solver_step_metrics.json").write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     (run_dir / "README.md").write_text(
         "# FM-04 Solver Step Sweep\n\n"
-        "Deterministic pure-Python run for Flow Matching Part 2. The script trains a small linear velocity field on the two-cluster toy distribution, then integrates the same initial samples with 4, 8, 16, and 32 explicit Euler steps. Metrics compare each endpoint to a 128-step Euler reference on the same starts.\n",
+        "Deterministic pure-Python run for Flow Matching Part 2. The script trains a small linear velocity field on the two-cluster toy distribution, then integrates the same initial samples with 4, 8, 16, and 32 explicit Euler steps. Metrics compare each endpoint to a 128-step Euler reference on the same starts. The SVG marks the reference endpoints with purple rings and the coarse-to-reference endpoint residuals with orange segments so the solver-step effect is visible at page scale.\n",
         encoding="utf-8",
     )
     return payload

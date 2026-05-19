@@ -1,7 +1,7 @@
 series: "flow-matching-guide"
-updated_at: "2026-05-19"
+updated_at: "2026-05-20"
 wip_limit: 1
-current_state: "fm-15-passing"
+current_state: "fm-16-passing"
 active_task: null
 state_policy:
   valid_states: ["not_started", "active", "blocked", "passing"]
@@ -401,6 +401,33 @@ tasks:
       - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
       - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
       - "Rendered HTML check passed after build: _site/blog/index.html contains flow-matching/tutorial/generative-modeling tag links; Flow Matching Parts 1-6 contain Contents; footer/copyright/powered-by strings are absent from _site/blog/index.html and Flow Matching Parts 1-6."
+  - id: "FM-16"
+    title: "Clarify Part 2 solver-step visual diagnostic"
+    behavior: "Revise the Part 2 solver-step figure and prose so the Euler step-count effect is visually inspectable, not only reported in small metric differences."
+    state: "passing"
+    depends_on: ["FM-15"]
+    part_file: "_drafts/flow-matching-guide-part-2.md"
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
+      - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+    acceptance:
+      - "Make the coarse-vs-reference endpoint error visible in the SVG."
+      - "Keep the result toy-scoped and do not claim that nearest-mode distance improves with more steps."
+      - "Update visual metadata, export manifest, and handoff evidence without editing /Users/quan238/personal/cv."
+    evidence:
+      - "Activated after user review noted that the 4/8/16/32 step trajectory panels looked visually identical despite different reference-drift metrics."
+      - "Revision updated scripts/blog_pipeline/examples/flow_matching_solver_steps.py to regenerate the SVG with clipped panels, purple 128-step reference endpoints, and orange coarse-to-reference endpoint residuals."
+      - "Revision regenerated assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg and _blog_work/flow-matching-guide/remote_runs/20260519T151120Z_fm04_solver_steps/solver_step_metrics.json with unchanged metrics plus visual_encoding notes."
+      - "Revision updated _drafts/flow-matching-guide-part-2.md to explain that the blue paths can look similar and that the orange residuals and drift column are the diagnostic."
+      - "Visual metadata updated in _blog_work/flow-matching-guide/visual_sources.yml; export manifest updated to include the revised Part 2 asset."
+      - "Visual evidence screenshot: _blog_work/flow-matching-guide/evidence/2026-05-20-solver-steps-svg.png."
+      - "Verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide -> [harness-check] passed: flow-matching-guide."
+      - "Verification passed: python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md -> [blog-check] passed."
+      - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
+      - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
+      - "Rendered checks passed: _site/blog/index.html has flow-matching/tutorial/generative-modeling tags; Part 2 contains Contents and the revised alt text; footer/copyright/powered-by strings are absent from /blog/ and Part 2."
 
 completion_evidence_required:
   - "python3 scripts/blog_pipeline/check_post.py <draft-or-post>"

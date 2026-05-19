@@ -84,7 +84,7 @@ parts:
       - "Limits of the toy field"
       - "Next step"
     code_target: "Complete: compared 4, 8, 16, and 32 Euler steps against a 128-step Euler reference on a fixed 2D toy field."
-    visual_intent: "Complete: approved local SVG with trajectories by step count, final samples, toy-scope labels, and metric summary."
+    visual_intent: "Complete: approved local SVG with trajectories by step count, final samples, 128-step reference endpoints, visible coarse-to-reference residuals, toy-scope labels, and metric summary."
     transition: "Part 3 explains why conditional endpoint regression can learn the marginal field."
 
   - part: 3

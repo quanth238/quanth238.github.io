@@ -1,6 +1,6 @@
 # Flow Matching Series Handoff
 
-State date: 2026-05-19
+State date: 2026-05-20
 
 ## Current State
 
@@ -47,6 +47,11 @@ State date: 2026-05-19
 - `FM-15` is passing. The Revision Agent corrected the official-package bridge
   metric semantics in code and draft prose. The coordinator regenerated the
   package bridge JSON/SVG in a temporary `flow_matching==1.0.10` environment.
+- `FM-16` is passing. The Part 2 solver-step SVG now makes the hidden
+  step-count difference visible with clipped panels, purple 128-step reference
+  endpoints, and orange coarse-to-reference endpoint residuals. Part 2 prose,
+  visual metadata, export manifest, and run metadata were updated in the
+  harness only.
 - No review/revision task is currently active.
 
 ## Harness Files To Read First
@@ -485,9 +490,35 @@ interpolation times, velocity target arrows, learned field arrows, and an ODE
 sampling trajectory. The replaced AI bitmap remains registered in
 `visual_sources.yml` as archived provenance but is no longer reader-facing.
 
+2026-05-20 FM-16 Part 2 solver-step visual clarification:
+
+- Active branch: `codex/flow-matching-series-review-revisions`.
+- User review correctly flagged that the original Part 2 solver-step figure
+  looked visually identical across 4/8/16/32 steps at page scale.
+- Revision updated `scripts/blog_pipeline/examples/flow_matching_solver_steps.py`
+  and regenerated
+  `assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg` with
+  clipped panels, purple 128-step reference endpoint rings, and orange residual
+  segments from each coarse endpoint to its matching reference endpoint.
+- Revision updated `_drafts/flow-matching-guide-part-2.md` to explain that the
+  blue trajectories can look similar because the learned field and starts are
+  fixed, and that the orange residuals plus the drift column are the diagnostic.
+- Revision updated `visual_sources.yml`, `series_plan.yml`,
+  `export_manifest.yml`, and the existing solver-step run metadata. No files
+  were copied or edited under `/Users/quan238/personal/cv`.
+- Visual evidence screenshot:
+  `_blog_work/flow-matching-guide/evidence/2026-05-20-solver-steps-svg.png`.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Rendered checks passed: `/blog/` has expected tags; Part 2 contains
+  Contents and the revised alt text; footer/copyright/powered-by strings are
+  absent from `/blog/` and Part 2.
+
 ## Next Recommended Session
 
-FM-10 through FM-15 are passing and no review/revision task is active. The next
+FM-10 through FM-16 are passing and no review/revision task is active. The next
 step is not an export by default. If the user asks to publish, first present the
 updated `_blog_work/flow-matching-guide/export_manifest.yml` for explicit
 approval, including the source-to-target post list, final assets, required site
@@ -500,7 +531,7 @@ FM-04 through FM-08 and rechecked during this review pass where needed.
 
 ## Clean Exit Requirements
 
-- `series_tasks.yml` records `current_state: "fm-15-passing"` and
+- `series_tasks.yml` records `current_state: "fm-16-passing"` and
   `active_task: null`.
 - This handoff records the final review/revision suite and rendered HTML checks.
 - Generated assets remain local and registered in `visual_sources.yml`.

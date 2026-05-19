@@ -103,6 +103,7 @@ figure_briefs:
     must_show:
       - "Separate panels or clearly separated traces for 4, 8, 16, and 32 solver steps."
       - "Initial noise samples, ODE trajectories, and final generated samples for the same trained field."
+      - "128-step reference endpoints and visible residuals from each coarse endpoint to its reference endpoint."
       - "A compact metric table or companion table keyed by step count."
       - "Short labels that identify the solver and toy scope."
     avoid:
@@ -269,7 +270,7 @@ remote_code_figures:
     source_post: "_posts/2026-05-19-flow-matching-guide-part-1.md"
     ownership_decision: "local-original/reproducible-code-result"
     paper_figure_extraction: false
-    run_id: "20260519T105934Z"
+    run_id: "20260519T151120Z_fm04_solver_steps"
     status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-paths.svg"
     alt: "Paths moving source samples toward a two-cluster target distribution."
@@ -279,7 +280,8 @@ remote_code_figures:
     run_id: "20260519T105934Z"
     status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg"
-    alt: "Euler solver step sweep showing 4, 8, 16, and 32 step trajectories for the same toy flow matching field."
+    alt: "Euler solver step sweep showing 4, 8, 16, and 32 step trajectories with orange endpoint residuals to purple 128-step reference endpoints."
+    source_post: "_drafts/flow-matching-guide-part-2.md"
     run_id: "20260519T151120Z_fm04_solver_steps"
     ownership_decision: "local-original/reproducible-code-result"
     paper_figure_extraction: false
@@ -320,6 +322,7 @@ evaluator_notes:
   - "FM-03 evaluator decision: PASS_WITH_NOTES. Planned briefs for Parts 2-6 match the series plan and keep future visuals scoped to data plots or Mermaid diagrams with cited inspirations."
   - "Future visual gates: Part 2 needs generated step-count plots before drafting; Part 3 needs verified theorem notation; Part 5 needs verified path schedule equations; Part 6 needs package install/run evidence."
   - "FM-04 evaluator decision: approved. The solver-step SVG uses the same trained toy field and initial samples across 4, 8, 16, and 32 Euler steps; labels state the toy scope, metrics are registered in remote run metadata, and the figure has local alt text."
+  - "FM-16 visual revision: user review correctly noted that the original 4/8/16/32 trajectory panels looked nearly identical at page scale. The regenerated solver-step SVG clips each panel, marks 128-step reference endpoints with purple rings, and adds orange residual segments from each coarse endpoint to its matching reference endpoint so the step-count drift is visible."
   - "FM-05 evaluator decision: approved. The Mermaid argument map has accessibility metadata, the conditional-to-marginal SVG distinguishes conditional arrows from the averaged marginal direction, theorem wording is source-verified, and all reader-facing assets are local."
   - "FM-06 evaluator decision: approved. The coupling diagnostic uses one displayed minibatch, labels minibatch OT as batch-local, reports toy transport cost and crossings, and avoids global OT claims."
   - "FM-07 evaluator decision: approved. The path-family SVG compares only source-verified Conditional OT and Linear VP schedules, keeps equations in Markdown, reports matched-time velocity magnitudes, and scopes the diffusion connection to Gaussian paths and probability-flow ODEs."

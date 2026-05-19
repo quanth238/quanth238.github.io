@@ -35,5 +35,6 @@
       "mean_nearest_mode_distance": 1.5271885999735255
     }
   ],
+  "visual_encoding": "Purple rings mark 128-step Euler reference endpoints. Orange line segments connect each coarse endpoint to its matching reference endpoint, making the step-count drift visible even when trajectories overlap at page scale.",
   "asset": "assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg"
 }

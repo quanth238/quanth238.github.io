@@ -6,11 +6,12 @@ publication_target: "/Users/quan238/personal/cv"
 status: "approval_required"
 export_performed: false
 review_revision_update:
-  updated_at: "2026-05-19"
+  updated_at: "2026-05-20"
   branch: "codex/flow-matching-series-review-revisions"
   scope:
     - "Parts 1-6 received review/revision edits in the harness checkout."
     - "Part 6 official package bridge SVG and smoke-test JSON were regenerated after correcting the solver-to-path metric semantics."
+    - "Part 2 solver-step SVG and prose were regenerated after user review found that the original trajectory panels made step-count differences hard to see."
     - "Visual metadata now records local ownership decisions and paper_figure_extraction: false for final reader-facing Flow Matching visuals."
   exportable_files_changed:
     reader_facing_posts:
@@ -21,6 +22,7 @@ review_revision_update:
       - "_drafts/flow-matching-guide-part-5.md"
       - "_drafts/flow-matching-guide-part-6.md"
     final_assets:
+      - "assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg"
       - "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
   export_performed: false
   approval_required_before_export: true
@@ -211,3 +213,9 @@ verification_snapshot:
     - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
     - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
     - "Rendered HTML check: /blog/ has expected flow-matching/tutorial/generative-modeling tags; Flow Matching Parts 1-6 have Contents; footer/copyright/powered-by strings absent from /blog/ and Flow Matching Parts 1-6."
+  fm16_solver_step_visual_clarity_update:
+    - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
+    - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+    - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+    - "Rendered HTML check: /blog/ has expected tags; Part 2 has Contents and revised solver-step alt text; footer/copyright/powered-by strings absent from /blog/ and Part 2."
