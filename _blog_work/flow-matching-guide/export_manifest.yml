@@ -3,8 +3,11 @@ prepared_at: "2026-05-19"
 prepared_on_branch: "codex/flow-matching-series-review-revisions"
 harness_checkout: "/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline"
 publication_target: "/Users/quan238/personal/cv"
-status: "approval_required"
-export_performed: false
+status: "exported"
+export_performed: true
+exported_at: "2026-05-20"
+export_target_branch: "codex/cv-research-blog-pipeline"
+export_target_commit: "a44e1f8"
 review_revision_update:
   updated_at: "2026-05-20"
   branch: "codex/flow-matching-series-review-revisions"
@@ -27,7 +30,7 @@ review_revision_update:
       - "assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg"
       - "assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg"
       - "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
-  export_performed: false
+  export_performed: true
   approval_required_before_export: true
 approval_gate:
   required_before_copying: true
