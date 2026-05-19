@@ -1,0 +1,216 @@
+series: "flow-matching-guide"
+updated_at: "2026-05-19"
+task_id: "FM-03"
+artifact_owner: "Generator / Artifact Builder"
+artifact_scope:
+  worktree: "/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline"
+  task_source_of_truth: "_blog_work/flow-matching-guide/series_tasks.yml"
+  visual_source_of_truth: "_blog_work/flow-matching-guide/visual_sources.yml"
+  reader_facing_files: "not edited"
+  constraint: "Planning metadata only; do not draft Part 2 prose or edit _drafts/_posts."
+  allowed_write_set:
+    - "_blog_work/flow-matching-guide/series_plan.yml"
+    - "_blog_work/flow-matching-guide/visual_sources.yml"
+    - "_blog_work/flow-matching-guide/series_tasks.yml"
+    - "_blog_work/flow-matching-guide/HANDOFF.md"
+
+planner_handoff:
+  source: "Planner handoff supplied for FM-03 on 2026-05-19."
+  rule: "Unsupported claims stay as verification gaps; future drafts must use primary sources before reader-facing claims."
+  blocking_gaps_for_artifact_creation: []
+
+global_sources:
+  flow_matching_guide: "https://arxiv.org/abs/2412.06264"
+  lipman_flow_matching: "https://arxiv.org/abs/2210.02747"
+  tong_cfm_ot_cfm: "https://arxiv.org/abs/2302.00482"
+  rectified_flow: "https://arxiv.org/abs/2209.03003"
+  stochastic_interpolants: "https://arxiv.org/abs/2303.08797"
+  official_repo: "https://github.com/facebookresearch/flow_matching"
+  visual_dive_cfm: "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
+  wei_deng_minimal_guide: "https://www.weideng.org/posts/flow_matching/"
+  flow_matching_from_scratch: "https://daddaops.com/blog/flow-matching-from-scratch/"
+
+parts:
+  - part: 1
+    status: "published"
+    title: "Path, velocity target, loss, and first 2D check"
+    reader_question: "What exactly does flow matching regress, and how does that become a sampler?"
+    objective: "Establish x_t, u_t, MSE velocity regression, and ODE sampling."
+    sources:
+      - "https://arxiv.org/abs/2412.06264"
+      - "https://arxiv.org/abs/2210.02747"
+      - "https://arxiv.org/abs/2302.00482"
+      - "https://arxiv.org/abs/2209.03003"
+      - "https://arxiv.org/abs/2303.08797"
+      - "https://github.com/facebookresearch/flow_matching"
+      - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
+      - "https://www.weideng.org/posts/flow_matching/"
+      - "https://daddaops.com/blog/flow-matching-from-scratch/"
+    allowed_claims:
+      - "Flow matching is simulation-free vector-field regression for continuous normalizing flows."
+      - "Conditional paths give tractable target velocities."
+      - "Sampling integrates the learned velocity field."
+    code_target: "Complete: toy loss and path SVGs from run 20260519T105934Z."
+    visual_intent: "Complete: approved overview SVG, pipeline Mermaid, and loss/path plots."
+    transition: "Part 2 implements the sampling loop and compares solver step counts."
+
+  - part: 2
+    status: "planned"
+    title: "Sampling loop and solver steps"
+    reader_question: "How do I turn a trained velocity field into samples, and what changes when I change ODE step count?"
+    objective: "Make Euler or midpoint/RK sampling concrete before deeper theory."
+    sources:
+      - "https://arxiv.org/abs/2412.06264"
+      - "https://arxiv.org/abs/2210.02747"
+      - "https://github.com/facebookresearch/flow_matching"
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T105934Z/"
+    allowed_claims:
+      - "After training, generation follows an ODE under v_theta."
+      - "Numerical solvers approximate the ODE integral."
+      - "In the toy setting, fewer steps are faster but can expose field or path errors."
+    claim_scope: "Keep solver-step conclusions toy-scoped; do not imply ImageNet-scale behavior."
+    needs_verification:
+      - "Verify exact solver APIs and naming in facebookresearch/flow_matching before mapping tutorial code to official components."
+    outline:
+      - "Trained field input"
+      - "Euler sampler"
+      - "Step-count sweep"
+      - "Visual diagnostics"
+      - "Limits of the toy field"
+      - "Next step"
+    code_target: "Extend the 2D toy to compare 4, 8, 16, and 32 solver steps; output sample/path panels and a small metric table."
+    visual_intent: "Data plot with trajectories by step count plus final samples; labels must make the toy scope explicit."
+    transition: "Part 3 explains why conditional endpoint regression can learn the marginal field."
+
+  - part: 3
+    status: "planned"
+    title: "Conditional to marginal velocity"
+    reader_question: "Why is it valid to train on paired endpoints but sample without a target endpoint?"
+    objective: "Give the conditional-expectation argument in inspectable form."
+    sources:
+      - "https://arxiv.org/abs/2210.02747"
+      - "https://arxiv.org/abs/2302.00482"
+      - "https://www.weideng.org/posts/flow_matching/"
+      - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
+    allowed_claims:
+      - "The ideal marginal velocity is intractable in general."
+      - "Conditional flow matching uses cheap conditional velocities."
+      - "The population optimum matches the marginal velocity under the standard CFM argument."
+    needs_verification:
+      - "Verify the exact theorem statement and notation from the Flow Matching Guide before drafting."
+    outline:
+      - "Ideal FM loss"
+      - "Conditional path"
+      - "Conditional velocity"
+      - "Averaging intuition"
+      - "Population objective"
+      - "Sampling implication"
+    code_target: "Create a grid/quiver toy showing many conditional arrows near (x,t) and their average direction."
+    visual_intent: "Math-light Mermaid schematic plus local quiver plot; labels must distinguish conditional arrows from the learned marginal field."
+    transition: "Part 4 changes the endpoint coupling and studies path quality."
+
+  - part: 4
+    status: "planned"
+    title: "Couplings, minibatch OT, and rectified paths"
+    reader_question: "How does endpoint pairing change path quality and sampling cost?"
+    objective: "Compare independent pairing, minibatch OT pairing, and rectified-flow motivation."
+    sources:
+      - "https://arxiv.org/abs/2302.00482"
+      - "https://arxiv.org/abs/2209.03003"
+      - "https://arxiv.org/abs/2412.06264"
+      - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
+    allowed_claims:
+      - "Conditional flow matching permits different endpoint couplings."
+      - "OT-CFM aims for simpler flows and faster inference in reported experiments."
+      - "Rectified Flow studies straighter transports and coarse discretization."
+    guardrails:
+      - "Do not claim minibatch OT is globally optimal; state it as an approximation."
+      - "Cite Visual Dive only as conceptual inspiration, not as a copied layout."
+    outline:
+      - "Coupling definition"
+      - "Independent pairing pathology"
+      - "Minibatch OT pairing"
+      - "Rectified-flow view"
+      - "Diagnostics"
+    code_target: "Create a 2D endpoint pairing comparison with transport cost, line-crossing count, and sampled trajectories."
+    visual_intent: "Side-by-side pairing lines and path plots."
+    transition: "Part 5 asks what else can change besides coupling."
+
+  - part: 5
+    status: "planned"
+    title: "Probability paths and diffusion connection"
+    reader_question: "What changes when the path is not the simple straight interpolation?"
+    objective: "Introduce path families without turning the post into a survey."
+    sources:
+      - "https://arxiv.org/abs/2412.06264"
+      - "https://arxiv.org/abs/2210.02747"
+      - "https://arxiv.org/abs/2303.08797"
+      - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
+    allowed_claims:
+      - "Path choice defines the probability path and associated velocity."
+      - "Gaussian or diffusion-like paths connect flow and diffusion views."
+      - "Stochastic interpolants unify deterministic and stochastic generative processes."
+    needs_verification:
+      - "Verify equations for conical Gaussian or diffusion path schedules from primary sources before drafting."
+    outline:
+      - "Why path choice matters"
+      - "Linear path baseline"
+      - "Gaussian or conical path"
+      - "Diffusion and probability-flow connection"
+      - "Practical selection rule"
+    code_target: "Plot p_t snapshots and velocity magnitude for two path families on the same toy data."
+    visual_intent: "Time-slice density/path SVGs; keep equations in Markdown, not inside images."
+    transition: "Part 6 maps the concepts to the official package and scaling workflow."
+
+  - part: 6
+    status: "planned"
+    title: "From toy code to the official flow_matching package"
+    reader_question: "How do the loss, path, and solver concepts map onto real library components?"
+    objective: "Bridge tutorial code to the official PyTorch package without overpromising production training."
+    sources:
+      - "https://arxiv.org/abs/2412.06264"
+      - "https://github.com/facebookresearch/flow_matching"
+    allowed_claims:
+      - "The official repository provides continuous and discrete implementations, path, scheduler, loss, and solver modules, and synthetic, image, and text examples."
+    needs_verification:
+      - "Verify install and run feasibility in this worktree before any reader-facing package claim."
+      - "If package install or a minimal official run fails, keep this part blocked."
+    outline:
+      - "Package anatomy"
+      - "Minimal continuous example"
+      - "Solver, loss, and path mapping"
+      - "What to inspect before scaling"
+      - "Optional discrete/text pointer"
+    code_target: "Run a minimal official or official-inspired continuous synthetic example and store one verified output plot."
+    visual_intent: "Component map Mermaid plus one verified output plot."
+    transition: "End the series with a concise checklist, not a new unpublished part."
+
+gaps_for_evaluator_or_future_parts:
+  - part: 2
+    gap: "Exact official solver APIs and naming are not verified."
+    owner: "Evaluator/Main or future Part 2 implementer"
+  - part: 3
+    gap: "Exact theorem statement and notation from the Flow Matching Guide are not verified."
+    owner: "Evaluator/Main or future Part 3 planner"
+  - part: 5
+    gap: "Conical Gaussian or diffusion schedule equations require primary-source verification."
+    owner: "Evaluator/Main or future Part 5 planner"
+  - part: 6
+    gap: "Official package install/run feasibility in this worktree is unverified."
+    owner: "Evaluator/Main or future Part 6 implementer"
+
+completion_gate:
+  generator_artifacts_created: true
+  evaluator_status: "PASS_WITH_NOTES"
+  evaluator_notes:
+    - "Each planned part has one clear reader question and a concrete teaching job."
+    - "The order teaches naturally: path/loss/sampler, sampling mechanics, conditional-to-marginal justification, couplings, path families, and package mapping."
+    - "The outlines avoid shallow summaries by tying each part to diagnostics, code output, or a specific conceptual bottleneck."
+    - "Visual briefs match the planned content and code targets are feasible."
+    - "Part 2 is ready to draft later only after official solver API names are verified and the step-count result is generated."
+    - "No FM-03 reader-facing _drafts or _posts files were created or edited."
+  completed_checks:
+    - "YAML parse of manifest.yml, series_plan.yml, visual_sources.yml, and series_tasks.yml."
+    - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+    - "git diff --name-only and git status --short show only allowed planning artifacts changed, including new untracked planning files."
+    - "Evaluator/Main confirms each part has one reader question, supported claims, feasible code target, visual brief intent, and no Part 2 prose."

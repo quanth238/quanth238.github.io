@@ -1,7 +1,7 @@
 series: "flow-matching-guide"
 updated_at: "2026-05-19"
 wip_limit: 1
-current_state: "part-1-pr-open"
+current_state: "fm-03-passing"
 active_task: null
 state_policy:
   valid_states: ["not_started", "active", "blocked", "passing"]
@@ -62,13 +62,31 @@ tasks:
   - id: "FM-03"
     title: "Plan the full Flow Matching series"
     behavior: "Create a one-task-at-a-time series map where each part has a practical reader question, cited sources, visual plan, code target, and handoff."
-    state: "not_started"
+    state: "passing"
     depends_on: ["FM-01"]
     verification:
       - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "YAML parse of _blog_work/flow-matching-guide/manifest.yml, series_plan.yml, visual_sources.yml, and series_tasks.yml"
+      - "git diff --name-only and git status --short confirm only allowed planning artifacts changed"
     acceptance:
       - "Each part has one practical reader question."
       - "Each part has cited core sources, visual plan, code-result target, and next-part transition."
+      - "No reader-facing _drafts or _posts files are created or edited."
+    evidence:
+      - "Activated FM-03 on branch codex/flow-matching-series-fm-03 after cold-start verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide."
+      - "Generator artifact created: _blog_work/flow-matching-guide/series_plan.yml."
+      - "Generator artifact updated: _blog_work/flow-matching-guide/visual_sources.yml with planned figure briefs for Parts 2-6."
+      - "Generator artifact updated: _blog_work/flow-matching-guide/HANDOFF.md with FM-03 status and remaining gates."
+      - "Verification passed after artifact edits: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide -> [harness-check] passed: flow-matching-guide."
+      - "YAML parse passed after artifact edits for manifest.yml, series_plan.yml, visual_sources.yml, and series_tasks.yml."
+      - "Diff scope check: git diff --name-only showed only tracked allowed planning artifacts: HANDOFF.md, series_tasks.yml, and visual_sources.yml."
+      - "Status scope check: git status --short showed only allowed planning artifacts, including new untracked series_plan.yml."
+      - "Evaluator decision: PASS_WITH_NOTES. Each part has one reader question, the sequence teaches naturally, planned sections are diagnostic rather than shallow summaries, citations support the planned claims, visual briefs match the content, and code targets are feasible."
+      - "Evaluator verified no FM-03 reader-facing _drafts or _posts changes were present."
+      - "Future-part verification gaps recorded in series_plan.yml; they do not block FM-03 artifact creation but block reader-facing drafting where noted."
+    next_gates:
+      - "FM-04 can start only after verifying official solver API names and generating the Part 2 step-count result."
+      - "Part 3 theorem wording, Part 5 path schedule equations, and Part 6 package install/run feasibility remain future drafting gates."
   - id: "FM-04"
     title: "Implement Flow Matching Part 2"
     behavior: "Draft and verify Part 2 after its Planner visual plan exists, focusing on one sampling question and one code result."
