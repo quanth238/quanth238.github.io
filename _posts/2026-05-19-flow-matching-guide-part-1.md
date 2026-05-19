@@ -11,6 +11,17 @@ series: "flow-matching-guide"
 part: 1
 draft_stage: "published"
 publish_ready: true
+hide_footer: true
+toc:
+  - name: "Introduction"
+  - name: "Problem setup"
+  - name: "Path and velocity target"
+  - name: "Training objective"
+  - name: "Minimal implementation"
+  - name: "Code result"
+  - name: "Sampling procedure"
+  - name: "Next part"
+  - name: "References and visual resources"
 mermaid:
   enabled: true
   zoomable: true
