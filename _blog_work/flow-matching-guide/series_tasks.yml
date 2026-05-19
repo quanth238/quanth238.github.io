@@ -1,7 +1,7 @@
 series: "flow-matching-guide"
 updated_at: "2026-05-19"
 wip_limit: 1
-current_state: "fm-06-passing"
+current_state: "fm-07-passing"
 active_task: null
 state_policy:
   valid_states: ["not_started", "active", "blocked", "passing"]
@@ -164,7 +164,7 @@ tasks:
   - id: "FM-07"
     title: "Implement Flow Matching Part 5"
     behavior: "Draft and verify Part 5 on probability path families after schedule equations are checked against primary sources."
-    state: "not_started"
+    state: "passing"
     depends_on: ["FM-06"]
     verification:
       - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
@@ -175,6 +175,17 @@ tasks:
       - "Answer one practical question about what changes when the probability path changes."
       - "Verify path schedule equations before reader-facing claims."
       - "Include local path-family snapshots with alt text and visual-source evidence."
+    evidence:
+      - "Activated on branch codex/flow-matching-series-complete-drafts after FM-06 passed and was committed as 568d615."
+      - "Planner verified affine schedule equations and diffusion connection; evidence: _blog_work/flow-matching-guide/remote_runs/20260519T154000Z_fm07_source_check/source_verification.md."
+      - "Generator created draft: _drafts/flow-matching-guide-part-5.md."
+      - "Generator created path-family example: scripts/blog_pipeline/examples/flow_matching_path_families.py."
+      - "Code-result metadata: _blog_work/flow-matching-guide/remote_runs/20260519T154210Z_fm07_path_families/path_family_metrics.json."
+      - "Local figure: assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg."
+      - "Verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide -> [harness-check] passed: flow-matching-guide."
+      - "Verification passed: python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md -> [blog-check] passed."
+      - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
+      - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
   - id: "FM-08"
     title: "Implement Flow Matching Part 6"
     behavior: "Draft and verify Part 6 mapping the toy series concepts to the official flow_matching package after install/run feasibility is checked."

@@ -148,7 +148,7 @@ parts:
     transition: "Part 5 asks what else can change besides coupling."
 
   - part: 5
-    status: "planned"
+    status: "draft-passing"
     title: "Probability paths and diffusion connection"
     reader_question: "What changes when the path is not the simple straight interpolation?"
     objective: "Introduce path families without turning the post into a survey."
@@ -161,16 +161,18 @@ parts:
       - "Path choice defines the probability path and associated velocity."
       - "Gaussian or diffusion-like paths connect flow and diffusion views."
       - "Stochastic interpolants unify deterministic and stochastic generative processes."
-    needs_verification:
-      - "Verify equations for conical Gaussian or diffusion path schedules from primary sources before drafting."
+    verification_evidence:
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T154000Z_fm07_source_check/source_verification.md"
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T154210Z_fm07_path_families/path_family_metrics.json"
+      - "assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg"
     outline:
       - "Why path choice matters"
       - "Linear path baseline"
       - "Gaussian or conical path"
       - "Diffusion and probability-flow connection"
       - "Practical selection rule"
-    code_target: "Plot p_t snapshots and velocity magnitude for two path families on the same toy data."
-    visual_intent: "Time-slice density/path SVGs; keep equations in Markdown, not inside images."
+    code_target: "Complete: plotted matched-time snapshots and velocity magnitudes for source-verified Conditional OT and Linear VP schedules."
+    visual_intent: "Complete: approved local SVG with time-slice snapshots and separate velocity-magnitude bars; equations remain in Markdown."
     transition: "Part 6 maps the concepts to the official package and scaling workflow."
 
   - part: 6

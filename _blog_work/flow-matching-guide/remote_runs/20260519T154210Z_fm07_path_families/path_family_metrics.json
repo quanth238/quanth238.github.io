@@ -1,0 +1,39 @@
+{
+  "task": "FM-07",
+  "seed": 73,
+  "times": [
+    0.0,
+    0.33,
+    0.66,
+    0.9
+  ],
+  "families": {
+    "conditional_ot": {
+      "alpha": "t",
+      "sigma": "1-t"
+    },
+    "linear_vp": {
+      "alpha": "t",
+      "sigma": "sqrt(1-t^2)"
+    }
+  },
+  "metrics": {
+    "Conditional OT": {
+      "mean_velocity_magnitude": {
+        "0.0": 2.504080642259906,
+        "0.33": 2.504080642259906,
+        "0.66": 2.504080642259906,
+        "0.9": 2.504080642259906
+      }
+    },
+    "Linear VP": {
+      "mean_velocity_magnitude": {
+        "0.0": 2.293822563130083,
+        "0.33": 2.3068447196185757,
+        "0.66": 2.4475506732327066,
+        "0.9": 3.3524212059819947
+      }
+    }
+  },
+  "asset": "assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg"
+}

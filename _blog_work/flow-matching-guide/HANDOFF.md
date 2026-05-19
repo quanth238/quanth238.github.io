@@ -51,6 +51,28 @@ verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
 
+2026-05-19 FM-07 Part 5 draft check:
+
+- Active branch: `codex/flow-matching-series-complete-drafts`.
+- FM-07 is passing and no task is currently active.
+- Planner verified Conditional OT, Linear VP, Gaussian path, and
+  probability-flow ODE claim scope; retained evidence is in
+  `_blog_work/flow-matching-guide/remote_runs/20260519T154000Z_fm07_source_check/source_verification.md`.
+- Generator created `_drafts/flow-matching-guide-part-5.md`, the deterministic
+  example `scripts/blog_pipeline/examples/flow_matching_path_families.py`, run
+  metadata under
+  `_blog_work/flow-matching-guide/remote_runs/20260519T154210Z_fm07_path_families/`,
+  and the local figure
+  `assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg`.
+- Evaluator decision: passed. The draft uses only source-verified schedules,
+  keeps schedule equations in Markdown, scopes the diffusion discussion to
+  Gaussian paths and probability-flow ODEs, and registers the local figure with
+  alt text.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+
 2026-05-19 FM-06 Part 4 draft check:
 
 - Active branch: `codex/flow-matching-series-complete-drafts`.
