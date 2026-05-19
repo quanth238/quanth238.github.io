@@ -1,0 +1,144 @@
+series: "flow-matching-guide"
+prepared_at: "2026-05-19"
+prepared_on_branch: "codex/flow-matching-series-complete-drafts"
+harness_checkout: "/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline"
+publication_target: "/Users/quan238/personal/cv"
+status: "approval_required"
+export_performed: false
+approval_gate:
+  required_before_copying: true
+  note: "Do not copy, create, or modify files under /Users/quan238/personal/cv until the user explicitly approves this manifest."
+
+post_publication_cleanup:
+  parts_2_to_6:
+    - "Promote each draft into the listed _posts target after approval."
+    - "Set draft_stage to published."
+    - "Set publish_ready to true."
+    - "Remove the visual_plan front matter entry because it points to harness metadata."
+    - "Remove internal _blog_work/ entries from source_materials; keep only public URLs."
+  part_1:
+    - "Source is already a harness _posts file."
+    - "Before export, remove the visual_plan front matter entry so the personal site does not reference harness metadata."
+
+reader_facing_posts:
+  - part: 1
+    title: "Flow Matching Guide and Code, part 1"
+    harness_source: "_posts/2026-05-19-flow-matching-guide-part-1.md"
+    target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-1.md"
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+    export_action_after_approval: "copy reader-facing post with publication cleanup"
+  - part: 2
+    title: "Flow Matching Guide and Code, part 2"
+    harness_source: "_drafts/flow-matching-guide-part-2.md"
+    target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-2.md"
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+    export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
+  - part: 3
+    title: "Flow Matching Guide and Code, part 3"
+    harness_source: "_drafts/flow-matching-guide-part-3.md"
+    target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-3.md"
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+    export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
+  - part: 4
+    title: "Flow Matching Guide and Code, part 4"
+    harness_source: "_drafts/flow-matching-guide-part-4.md"
+    target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-4.md"
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+    export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
+  - part: 5
+    title: "Flow Matching Guide and Code, part 5"
+    harness_source: "_drafts/flow-matching-guide-part-5.md"
+    target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-5.md"
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+    export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
+  - part: 6
+    title: "Flow Matching Guide and Code, part 6"
+    harness_source: "_drafts/flow-matching-guide-part-6.md"
+    target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-6.md"
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+    export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
+
+final_assets:
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-overview.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-overview.svg"
+    used_by_parts: [1]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-loss.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-loss.svg"
+    used_by_parts: [1]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-paths.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-paths.svg"
+    used_by_parts: [1]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg"
+    used_by_parts: [2]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg"
+    used_by_parts: [3]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg"
+    used_by_parts: [4]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg"
+    used_by_parts: [5]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
+    used_by_parts: [6]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+
+minimal_required_site_changes:
+  bibliography: []
+  config: []
+  data: []
+  dependencies: []
+
+excluded_from_export:
+  - "_blog_work/"
+  - "scripts/blog_pipeline/"
+  - "codex/skills/"
+  - "_drafts/"
+  - "remote-run logs"
+  - "evidence screenshots"
+  - "source notebooks or helper scripts used only to generate figures"
+  - "assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png"
+
+verification_snapshot:
+  latest_full_suite_after_fm08:
+    - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md"
+    - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+    - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+  fm09_final_verification:
+    - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+    - "YAML parse of manifest.yml, series_plan.yml, visual_sources.yml, series_tasks.yml, and export_manifest.yml"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md"
+    - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md"
+    - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+    - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"

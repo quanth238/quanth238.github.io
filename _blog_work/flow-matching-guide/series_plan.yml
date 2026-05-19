@@ -200,9 +200,12 @@ parts:
     transition: "End the series with a concise checklist, not a new unpublished part."
 
 export_plan:
-  status: "planned"
+  status: "manifest_prepared_approval_required"
   export_task: "FM-09"
   rule: "After Parts 2-6 pass in the harness and the user approves publication, prepare a source-to-target manifest before touching /Users/quan238/personal/cv."
+  manifest: "_blog_work/flow-matching-guide/export_manifest.yml"
+  export_performed: false
+  approval_required_before_export: true
   exportable:
     - "Approved _posts/2026-...-flow-matching-guide-part-N.md files."
     - "Final local assets under assets/img/blog/flow-matching-guide/."
@@ -217,17 +220,17 @@ export_plan:
 
 gaps_for_evaluator_or_future_parts:
   - part: 2
-    gap: "Exact official solver APIs and naming are not verified."
-    owner: "Evaluator/Main or future Part 2 implementer"
+    gap: "Resolved in FM-04; official continuous solver API was verified against facebookresearch/flow_matching commit 11568d37f8d5a080e12aa7b5305d9c35ae07d136."
+    owner: "None"
   - part: 3
-    gap: "Exact theorem statement and notation from the Flow Matching Guide are not verified."
-    owner: "Evaluator/Main or future Part 3 planner"
+    gap: "Resolved in FM-05; the marginalization and CFM/FM gradient-equivalence claims were verified from source material."
+    owner: "None"
   - part: 5
-    gap: "Conical Gaussian or diffusion schedule equations require primary-source verification."
-    owner: "Evaluator/Main or future Part 5 planner"
+    gap: "Resolved in FM-07; Conditional OT, Linear VP, Gaussian path, and probability-flow ODE scope were verified from source material."
+    owner: "None"
   - part: 6
-    gap: "Official package install/run feasibility in this worktree is unverified."
-    owner: "Evaluator/Main or future Part 6 implementer"
+    gap: "Resolved in FM-08; flow_matching==1.0.10 was installed in a temporary venv and component exports were verified."
+    owner: "None"
 
 completion_gate:
   generator_artifacts_created: true

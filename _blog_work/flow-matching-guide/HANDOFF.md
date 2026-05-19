@@ -5,8 +5,7 @@ State date: 2026-05-19
 ## Current State
 
 - Worktree: `/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline`
-- Branch: `main` after FM-03 merge; create a fresh
-  `codex/flow-matching-series-*` branch for the next harness task.
+- Branch: `codex/flow-matching-series-complete-drafts`.
 - Previous PR: `https://github.com/quanth238/quanth238.github.io/pull/1` (merged before FM-03).
 - Main CV checkout at `/Users/quan238/personal/cv` is the clean publication
   target, not the working tree for this pipeline.
@@ -21,6 +20,10 @@ State date: 2026-05-19
 - `FM-03` is passing. The full-series plan is stored in
   `_blog_work/flow-matching-guide/series_plan.yml`, with planned visual briefs
   for Parts 2-6 in `_blog_work/flow-matching-guide/visual_sources.yml`.
+- `FM-04` through `FM-08` are passing. Drafts for Parts 2-6 are in `_drafts/`.
+- `FM-09` is passing. The clean export manifest is
+  `_blog_work/flow-matching-guide/export_manifest.yml`; no export has been
+  performed and `/Users/quan238/personal/cv` was not modified.
 
 ## Harness Files To Read First
 
@@ -34,6 +37,7 @@ State date: 2026-05-19
 - `_blog_work/flow-matching-guide/series_plan.yml`
 - `_blog_work/flow-matching-guide/series_prompt.md`
 - `_blog_work/flow-matching-guide/EXPORT_POLICY.md`
+- `_blog_work/flow-matching-guide/export_manifest.yml` when reviewing export readiness
 
 ## Bootstrap Check
 
@@ -50,6 +54,32 @@ screenshot. A task should not be marked `passing` in `series_tasks.yml` until it
 verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
+
+2026-05-19 FM-09 export manifest check:
+
+- Active branch: `codex/flow-matching-series-complete-drafts`.
+- FM-09 is passing and no task is currently active.
+- Generator created `_blog_work/flow-matching-guide/export_manifest.yml`.
+- The manifest lists Part 1 as an existing harness `_posts` source and Parts 2-6
+  as draft-to-post promotions that require explicit approval before export.
+- The manifest lists final assets under `assets/img/blog/flow-matching-guide/`
+  and excludes `_blog_work/`, `scripts/blog_pipeline/`, `codex/skills/`,
+  `_drafts/`, remote-run logs, evidence screenshots, helper scripts, and the
+  unused AI overview PNG.
+- Read-only target checks found no existing personal CV target files for the
+  proposed posts or final assets at manifest time; `overwrites_existing_target`
+  is false for every listed item.
+- No files were copied, created, or modified under `/Users/quan238/personal/cv`.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- YAML parse of `manifest.yml`, `series_plan.yml`, `visual_sources.yml`,
+  `series_tasks.yml`, and `export_manifest.yml`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
 
 2026-05-19 FM-08 Part 6 draft check:
 

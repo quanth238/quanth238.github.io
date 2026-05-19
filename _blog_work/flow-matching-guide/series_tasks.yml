@@ -1,7 +1,7 @@
 series: "flow-matching-guide"
 updated_at: "2026-05-19"
 wip_limit: 1
-current_state: "fm-08-passing"
+current_state: "fm-09-passing"
 active_task: null
 state_policy:
   valid_states: ["not_started", "active", "blocked", "passing"]
@@ -215,7 +215,7 @@ tasks:
   - id: "FM-09"
     title: "Prepare clean export manifest for personal website"
     behavior: "After Parts 2-6 pass in the harness, list only approved reader-facing posts, final assets, and required minimal site changes for export to /Users/quan238/personal/cv."
-    state: "not_started"
+    state: "passing"
     depends_on: ["FM-08"]
     verification:
       - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
@@ -225,6 +225,18 @@ tasks:
       - "Export manifest excludes _blog_work/, scripts/blog_pipeline/, codex/skills/, _drafts/, remote-run logs, and evidence screenshots."
       - "Manifest lists exact source-to-target paths and any overwrites."
       - "No files are copied into /Users/quan238/personal/cv until the user explicitly approves the export."
+    evidence:
+      - "Activated on branch codex/flow-matching-series-complete-drafts after FM-08 passed, was committed as 312f005, and the post-FM-08 full draft verification suite passed."
+      - "Generator created export manifest: _blog_work/flow-matching-guide/export_manifest.yml."
+      - "Manifest lists Part 1 as an existing harness _posts source and Parts 2-6 as draft-to-post promotions requiring explicit approval before export."
+      - "Manifest lists final assets under assets/img/blog/flow-matching-guide/ and excludes _blog_work/, scripts/blog_pipeline/, codex/skills/, _drafts/, remote-run logs, evidence screenshots, helper scripts, and the unused AI overview PNG."
+      - "Read-only target snapshot found no existing personal CV target files for the proposed posts or final assets, so overwrites_existing_target is false for all listed entries at manifest time."
+      - "No files were copied, created, or modified under /Users/quan238/personal/cv."
+      - "Verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide -> [harness-check] passed: flow-matching-guide."
+      - "Verification passed: YAML parse of manifest.yml, series_plan.yml, visual_sources.yml, series_tasks.yml, and export_manifest.yml."
+      - "Verification passed: check_post.py for _drafts/flow-matching-guide-part-2.md through _drafts/flow-matching-guide-part-6.md."
+      - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
+      - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
 
 completion_evidence_required:
   - "python3 scripts/blog_pipeline/check_post.py <draft-or-post>"
