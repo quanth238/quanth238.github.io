@@ -88,6 +88,7 @@ mermaid:
 - Show at least one diagram before long derivations, and cite useful external visual explanations.
 - Keep visual-source planning explicit: at least two cited visual/blog references before publication.
 - Save original bitmap figures in `assets/img/blog/<series-slug>/` with alt text and prompt provenance.
+- In `distill` posts, render local images with `{% include figure.liquid ... class="img-fluid rounded z-depth-1" width="..." height="..." zoomable=true alt="..." %}` so large figures stay responsive and SVGs keep nonzero height.
 - Include toy code when the topic is algorithmic.
 - Prefer remote runnable examples when the post claims code results.
 - Preserve uncertainty: mark unverified claims instead of inventing support.

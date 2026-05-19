@@ -32,7 +32,7 @@ Flow matching is a generative modeling framework built around a velocity field. 
 
 The practical object is simple: learn $v_\theta(x, t)$, a neural velocity field. During sampling, start from $x_0 \sim p_0$ and integrate the learned field until $t=1$. If the field is good, the final sample follows the data distribution.
 
-![Original flow matching overview showing source noise, paths, velocity arrows, a learned field, and generated samples.](/assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png)
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png" class="img-fluid rounded z-depth-1" width="1693" height="929" zoomable=true alt="Original flow matching overview showing source noise, paths, velocity arrows, a learned field, and generated samples." %}
 
 The figure is original, but its visual plan is based on cited explanations of probability paths and velocity fields rather than copied diagrams. The goal of the first part is to keep the usable sequence visible: path, target velocity, loss, code result, then the theory that justifies the regression target.
 
@@ -109,11 +109,11 @@ This objective is attractive because it avoids solving the sampling ODE during t
 
 I ran a small dependency-light 2D example on the remote WSL server through `scripts/blog_pipeline/run_remote_example.py`. The toy model is intentionally simple: it uses a linear velocity field and a two-cluster target distribution, so the result should be read as a sanity check for the training loop, not as a high-quality generative model. The run completed with Python 3.12.3 and reduced the velocity-regression loss from 3.479 to 2.010 over 520 steps.
 
-![Remote WSL toy run loss curve for velocity regression.](/assets/img/blog/flow-matching-guide/flow-matching-loss.svg)
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-loss.svg" class="img-fluid rounded z-depth-1" width="760" height="360" zoomable=true alt="Remote WSL toy run loss curve for velocity regression." %}
 
 The path plot makes the sampling side concrete. Black dots are initial source samples, blue curves are Euler-integrated trajectories under the learned field, and red points are the target data cloud.
 
-![Remote WSL toy run paths moving source samples toward a two-cluster target distribution.](/assets/img/blog/flow-matching-guide/flow-matching-paths.svg)
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-paths.svg" class="img-fluid rounded z-depth-1" width="760" height="460" zoomable=true alt="Remote WSL toy run paths moving source samples toward a two-cluster target distribution." %}
 
 The limitation is also visible. A straight line between independently paired noise and data points is easy to teach, but it is not always the best path for every domain. The full guide discusses richer probability paths, discrete flow matching, Riemannian settings, and design choices that matter once the basic construction is clear.
 
