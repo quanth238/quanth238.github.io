@@ -23,8 +23,8 @@ pagination:
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.25rem 0.5rem;
-    max-width: 330px;
+    gap: 0.35rem 1rem;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -34,7 +34,17 @@ pagination:
   }
 
   .post .tag-category-list ul li {
-    padding: 0.5rem 0.15rem;
+    padding: 0.45rem 0;
+    white-space: nowrap;
+  }
+
+  .post .header-bar {
+    padding-top: 1.5rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .post .header-bar h1 {
+    font-size: 4.5rem;
   }
 
   .post .post-list > li > .row {
@@ -57,6 +67,19 @@ pagination:
   }
 
   @media (max-width: 575.98px) {
+    .post .header-bar {
+      padding-top: 1rem;
+      padding-bottom: 1.75rem;
+    }
+
+    .post .header-bar h1 {
+      font-size: 3.5rem;
+    }
+
+    .post .tag-category-list ul {
+      justify-content: flex-start;
+    }
+
     .post .post-list > li > .row {
       display: block;
       width: 100%;
