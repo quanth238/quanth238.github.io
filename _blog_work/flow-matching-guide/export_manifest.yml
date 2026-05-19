@@ -17,6 +17,7 @@ review_revision_update:
     - "Part 2 solver-step SVG and prose were regenerated after user review found that the original trajectory panels made step-count differences hard to see."
     - "FM-17 regenerated the Part 3 conditional-to-marginal SVG, Part 5 path-family SVG, and Part 6 official-package bridge SVG from local generators for a visual quality pass."
     - "Visual metadata now records local ownership decisions and paper_figure_extraction: false for final reader-facing Flow Matching visuals."
+    - "FM-18 replaced generic part-number titles with compact concept-specific titles, added six card-thumbnail SVGs, and changed the blog index to show thumbnails without cropping."
   exportable_files_changed:
     reader_facing_posts:
       - "_posts/2026-05-19-flow-matching-guide-part-1.md"
@@ -30,6 +31,12 @@ review_revision_update:
       - "assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg"
       - "assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg"
       - "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
+      - "assets/img/blog/flow-matching-guide/flow-matching-card-part-1.svg"
+      - "assets/img/blog/flow-matching-guide/flow-matching-card-part-2.svg"
+      - "assets/img/blog/flow-matching-guide/flow-matching-card-part-3.svg"
+      - "assets/img/blog/flow-matching-guide/flow-matching-card-part-4.svg"
+      - "assets/img/blog/flow-matching-guide/flow-matching-card-part-5.svg"
+      - "assets/img/blog/flow-matching-guide/flow-matching-card-part-6.svg"
   export_performed: true
   approval_required_before_export: true
 approval_gate:
@@ -49,42 +56,42 @@ post_publication_cleanup:
 
 reader_facing_posts:
   - part: 1
-    title: "Flow Matching Guide and Code, part 1"
+    title: "Flow Matching: Velocity Fields"
     harness_source: "_posts/2026-05-19-flow-matching-guide-part-1.md"
     target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-1.md"
     target_exists_at_manifest_time: false
     overwrites_existing_target: false
     export_action_after_approval: "copy reader-facing post with publication cleanup"
   - part: 2
-    title: "Flow Matching Guide and Code, part 2"
+    title: "Flow Matching: ODE Sampling"
     harness_source: "_drafts/flow-matching-guide-part-2.md"
     target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-2.md"
     target_exists_at_manifest_time: false
     overwrites_existing_target: false
     export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
   - part: 3
-    title: "Flow Matching Guide and Code, part 3"
+    title: "Flow Matching: Local Averages"
     harness_source: "_drafts/flow-matching-guide-part-3.md"
     target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-3.md"
     target_exists_at_manifest_time: false
     overwrites_existing_target: false
     export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
   - part: 4
-    title: "Flow Matching Guide and Code, part 4"
+    title: "Flow Matching: Endpoint Pairing"
     harness_source: "_drafts/flow-matching-guide-part-4.md"
     target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-4.md"
     target_exists_at_manifest_time: false
     overwrites_existing_target: false
     export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
   - part: 5
-    title: "Flow Matching Guide and Code, part 5"
+    title: "Flow Matching: Path Design"
     harness_source: "_drafts/flow-matching-guide-part-5.md"
     target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-5.md"
     target_exists_at_manifest_time: false
     overwrites_existing_target: false
     export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
   - part: 6
-    title: "Flow Matching Guide and Code, part 6"
+    title: "Flow Matching: Official API"
     harness_source: "_drafts/flow-matching-guide-part-6.md"
     target: "/Users/quan238/personal/cv/_posts/2026-05-19-flow-matching-guide-part-6.md"
     target_exists_at_manifest_time: false
@@ -92,6 +99,36 @@ reader_facing_posts:
     export_action_after_approval: "promote draft to reader-facing post with publication cleanup"
 
 final_assets:
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-card-part-1.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-card-part-1.svg"
+    used_by_parts: [1]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-card-part-2.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-card-part-2.svg"
+    used_by_parts: [2]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-card-part-3.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-card-part-3.svg"
+    used_by_parts: [3]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-card-part-4.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-card-part-4.svg"
+    used_by_parts: [4]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-card-part-5.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-card-part-5.svg"
+    used_by_parts: [5]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
+  - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-card-part-6.svg"
+    target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-card-part-6.svg"
+    used_by_parts: [6]
+    target_exists_at_manifest_time: false
+    overwrites_existing_target: false
   - harness_source: "assets/img/blog/flow-matching-guide/flow-matching-overview.svg"
     target: "/Users/quan238/personal/cv/assets/img/blog/flow-matching-guide/flow-matching-overview.svg"
     used_by_parts: [1]

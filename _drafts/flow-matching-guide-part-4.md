@@ -1,10 +1,10 @@
 ---
 layout: distill
-title: "Flow Matching Guide and Code, part 4"
-description: "Compare endpoint couplings and inspect how pairing changes path geometry."
+title: "Flow Matching: Endpoint Pairing"
+description: "Compare random and OT pairing."
 date: 2026-05-19
 author: "Quan Tran Hong"
-thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg
+thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-card-part-4.svg
 tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"

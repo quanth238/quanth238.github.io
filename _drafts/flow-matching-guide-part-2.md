@@ -1,10 +1,10 @@
 ---
 layout: distill
-title: "Flow Matching Guide and Code, part 2"
-description: "Build the ODE sampling loop and inspect how Euler step count changes a toy flow."
+title: "Flow Matching: ODE Sampling"
+description: "Compare coarse and fine ODE steps."
 date: 2026-05-19
 author: "Quan Tran Hong"
-thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg
+thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-card-part-2.svg
 tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"

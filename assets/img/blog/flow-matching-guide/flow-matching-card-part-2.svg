@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Flow Matching Part 2: Sampling is an ODE</title>
+  <desc id="desc">Coarse and fine solver paths are compared against the same learned field.</desc>
+  <rect width="1200" height="675" rx="34" fill="#111827"/>
+  <rect x="34" y="34" width="1132" height="607" rx="28" fill="#172033" stroke="#2B3548" stroke-width="2"/>
+  <text x="72" y="96" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="1.5">PART 2 / SAMPLER</text>
+  <text x="72" y="154" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="47" font-weight="760">Sampling is an ODE</text>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#F8FAFC"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2DD4BF"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#FB923C"/>
+    </marker>
+  </defs>
+  <path d="M140 505 C295 450 380 335 510 360 C640 390 700 300 840 300 C930 302 990 260 1080 218" fill="none" stroke="#344155" stroke-width="12" stroke-linecap="round"/>
+  <path d="M140 505 L292 452 L440 382 L590 368 L740 317 L890 284 L1080 218" fill="none" stroke="#FDE68A" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow-orange)"/>
+  <path d="M140 505 C285 454 377 342 510 361 C641 380 708 305 840 300 C932 300 997 262 1080 218" fill="none" stroke="#60A5FA" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <text x="150" y="250" fill="#FB923C" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="760">4 steps</text>
+  <text x="780" y="184" fill="#60A5FA" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="760">128-step reference</text>
+  <circle cx="140" cy="505" r="18" fill="#60A5FA"/>
+  <circle cx="1080" cy="218" r="18" fill="#2DD4BF"/>
+  <text x="415" y="560" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="35" font-weight="700">same field, different numerical path</text>
+</svg>

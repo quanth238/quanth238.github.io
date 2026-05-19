@@ -56,6 +56,10 @@ State date: 2026-05-20
   Planner, Critic, and Revision. The pass confirmed that direct paper figure
   extraction is not needed, then regenerated the Part 3, Part 5, and Part 6
   SVGs from local scripts to improve rendered teaching quality and story flow.
+- `FM-18` is passing. The published title/thumbnail polish pass replaced the
+  generic part-number titles with compact concept titles, added six local
+  card-thumbnail SVGs, changed the blog index to show thumbnails without
+  cropping, and verified desktop/mobile screenshots.
 - No review/revision task is currently active.
 
 ## Harness Files To Read First

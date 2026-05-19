@@ -1,7 +1,7 @@
 series: "flow-matching-guide"
 updated_at: "2026-05-20"
 wip_limit: 1
-current_state: "fm-17-passing"
+current_state: "fm-18-passing"
 active_task: null
 state_policy:
   valid_states: ["not_started", "active", "blocked", "passing"]
@@ -9,6 +9,38 @@ state_policy:
   source_of_truth: "_blog_work/flow-matching-guide/series_tasks.yml"
 
 tasks:
+  - id: "FM-18"
+    title: "Polish published blog titles and card thumbnails"
+    behavior: "Replace generic part-number titles and dense plot thumbnails with professional, concept-specific titles, descriptions, and card assets for the published Flow Matching series."
+    state: "passing"
+    depends_on: ["FM-17"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build"
+    acceptance:
+      - "Use content-specific titles instead of generic part-number titles."
+      - "Use short concrete descriptions that state the reader-facing payoff."
+      - "Use local card-thumbnail SVGs with large readable marks at blog-list size."
+      - "Keep dense technical figures inside the posts rather than as blog-card thumbnails."
+    evidence:
+      - "Generated local card-thumbnail SVGs: assets/img/blog/flow-matching-guide/flow-matching-card-part-1.svg through flow-matching-card-part-6.svg."
+      - "Generator source: _blog_work/flow-matching-guide/make_blog_card_thumbnails.py."
+      - "Updated harness post/draft front matter with compact titles, card-copy descriptions, and thumbnail paths."
+      - "Updated personal CV _posts/ front matter and copied the six card-thumbnail SVGs."
+      - "Updated _pages/blog.md in harness and personal CV so blog thumbnails use object-fit: contain, meaningful alt text, and responsive wrapping for tags/cards."
+      - "Visual metadata updated in _blog_work/flow-matching-guide/visual_sources.yml with a card-thumbnail figure brief, local ownership, prompts, and paper_figure_extraction: false."
+      - "Verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide."
+      - "Verification passed: python3 scripts/blog_pipeline/check_post.py for Part 1 and Parts 2-6 drafts."
+      - "Verification passed: python3 -m py_compile _blog_work/flow-matching-guide/make_blog_card_thumbnails.py scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
+      - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build."
+      - "Rendered HTML check passed: /blog/ shows compact Flow Matching titles, card SVG thumbnails, visible tags, title-based thumbnail alt text, no footer/copyright/powered-by text, and no visual_plan/_blog_work leaks."
+      - "Headless Chrome screenshots checked at 1600x1100 and 390x1000; titles, tags, descriptions, and thumbnails render without visible clipping in the inspected viewport."
   - id: "FM-00"
     title: "Establish CV blog visual harness"
     behavior: "Provide an agent-readable writing and visual pipeline with source intake, figure briefs, code runs, quality checks, and durable handoff files."

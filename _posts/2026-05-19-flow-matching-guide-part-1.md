@@ -1,10 +1,10 @@
 ---
 layout: distill
-title: "Flow Matching Guide and Code, part 1"
-description: "A practical first pass at flow matching: path, velocity target, loss, and a 2D check."
+title: "Flow Matching: Velocity Fields"
+description: "Train the basic velocity target."
 date: 2026-05-19
 author: "Quan Tran Hong"
-thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-overview.svg
+thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-card-part-1.svg
 tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"

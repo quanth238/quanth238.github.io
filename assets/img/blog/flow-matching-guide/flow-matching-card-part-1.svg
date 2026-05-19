@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Flow Matching Part 1: Train a velocity field</title>
+  <desc id="desc">Source samples move along a path; velocity arrows define the regression target.</desc>
+  <rect width="1200" height="675" rx="34" fill="#111827"/>
+  <rect x="34" y="34" width="1132" height="607" rx="28" fill="#172033" stroke="#2B3548" stroke-width="2"/>
+  <text x="72" y="96" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="1.5">PART 1 / TRAINING TARGET</text>
+  <text x="72" y="154" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="47" font-weight="760">Train a velocity field</text>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#F8FAFC"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2DD4BF"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#FB923C"/>
+    </marker>
+  </defs>
+  <circle cx="170" cy="395" r="13" fill="#60A5FA" opacity="0.95"/>
+  <circle cx="212" cy="363" r="13" fill="#60A5FA" opacity="0.95"/>
+  <circle cx="230" cy="430" r="13" fill="#60A5FA" opacity="0.95"/>
+  <circle cx="185" cy="475" r="13" fill="#60A5FA" opacity="0.95"/>
+  <circle cx="265" cy="385" r="13" fill="#60A5FA" opacity="0.95"/>
+  <circle cx="275" cy="462" r="13" fill="#60A5FA" opacity="0.95"/>  <circle cx="936" cy="348" r="13" fill="#FB923C" opacity="0.95"/>
+  <circle cx="992" cy="382" r="13" fill="#FB923C" opacity="0.95"/>
+  <circle cx="1018" cy="318" r="13" fill="#FB923C" opacity="0.95"/>
+  <circle cx="910" cy="424" r="13" fill="#FB923C" opacity="0.95"/>
+  <circle cx="1050" cy="420" r="13" fill="#FB923C" opacity="0.95"/>
+  <circle cx="962" cy="472" r="13" fill="#FB923C" opacity="0.95"/>  <circle cx="420" cy="390" r="10" fill="#2DD4BF" opacity="0.95"/>
+  <circle cx="520" cy="360" r="10" fill="#2DD4BF" opacity="0.95"/>
+  <circle cx="610" cy="338" r="10" fill="#2DD4BF" opacity="0.95"/>
+  <circle cx="710" cy="346" r="10" fill="#2DD4BF" opacity="0.95"/>
+  <circle cx="805" cy="382" r="10" fill="#2DD4BF" opacity="0.95"/>  <path d="M205 430 C345 330 465 340 585 355 C720 375 820 340 985 382" fill="none" stroke="#E5E7EB" stroke-width="8" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M425 458 l88 -58 M565 430 l95 -55 M705 424 l98 -52" stroke="#FDE68A" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow-orange)"/>
+  <text x="160" y="544" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="28">source noise</text>
+  <text x="886" y="544" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="28">data cloud</text>
+  <text x="470" y="535" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">path + velocity target</text>
+</svg>

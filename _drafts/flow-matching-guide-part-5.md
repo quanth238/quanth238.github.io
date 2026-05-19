@@ -1,10 +1,10 @@
 ---
 layout: distill
-title: "Flow Matching Guide and Code, part 5"
-description: "Change the probability path and inspect how scheduler choice changes intermediate samples and velocity scale."
+title: "Flow Matching: Path Design"
+description: "Compare two path schedules."
 date: 2026-05-19
 author: "Quan Tran Hong"
-thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg
+thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-card-part-5.svg
 tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"

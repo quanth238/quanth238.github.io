@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Flow Matching Part 4: Pairing shapes paths</title>
+  <desc id="desc">Endpoint assignment controls path length, crossings, and transport cost.</desc>
+  <rect width="1200" height="675" rx="34" fill="#111827"/>
+  <rect x="34" y="34" width="1132" height="607" rx="28" fill="#172033" stroke="#2B3548" stroke-width="2"/>
+  <text x="72" y="96" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="1.5">PART 4 / COUPLING</text>
+  <text x="72" y="154" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="47" font-weight="760">Pairing shapes paths</text>
+  <rect x="105" y="240" width="470" height="350" rx="22" fill="#111827" stroke="#344155"/>
+  <rect x="625" y="240" width="470" height="350" rx="22" fill="#111827" stroke="#344155"/>
+  <path d="M150 360 L506 398" stroke="#FB7185" stroke-width="5" opacity="0.8"/>
+  <path d="M170 435 L430 345" stroke="#FB7185" stroke-width="5" opacity="0.8"/>
+  <path d="M205 500 L520 535" stroke="#FB7185" stroke-width="5" opacity="0.8"/>
+  <path d="M245 392 L460 472" stroke="#FB7185" stroke-width="5" opacity="0.8"/>
+  <path d="M685 360 L940 355" stroke="#2DD4BF" stroke-width="5" opacity="0.9"/>
+  <path d="M705 435 L958 425" stroke="#2DD4BF" stroke-width="5" opacity="0.9"/>
+  <path d="M740 500 L1000 488" stroke="#2DD4BF" stroke-width="5" opacity="0.9"/>
+  <path d="M780 392 L1025 542" stroke="#2DD4BF" stroke-width="5" opacity="0.9"/>
+  <circle cx="150" cy="360" r="12" fill="#60A5FA" opacity="1.0"/>
+  <circle cx="170" cy="435" r="12" fill="#60A5FA" opacity="1.0"/>
+  <circle cx="205" cy="500" r="12" fill="#60A5FA" opacity="1.0"/>
+  <circle cx="245" cy="392" r="12" fill="#60A5FA" opacity="1.0"/>  <circle cx="430" cy="345" r="12" fill="#FB923C" opacity="1.0"/>
+  <circle cx="460" cy="472" r="12" fill="#FB923C" opacity="1.0"/>
+  <circle cx="506" cy="398" r="12" fill="#FB923C" opacity="1.0"/>
+  <circle cx="520" cy="535" r="12" fill="#FB923C" opacity="1.0"/>  <circle cx="685" cy="360" r="12" fill="#60A5FA" opacity="1.0"/>
+  <circle cx="705" cy="435" r="12" fill="#60A5FA" opacity="1.0"/>
+  <circle cx="740" cy="500" r="12" fill="#60A5FA" opacity="1.0"/>
+  <circle cx="780" cy="392" r="12" fill="#60A5FA" opacity="1.0"/>  <circle cx="940" cy="355" r="12" fill="#FB923C" opacity="1.0"/>
+  <circle cx="958" cy="425" r="12" fill="#FB923C" opacity="1.0"/>
+  <circle cx="1000" cy="488" r="12" fill="#FB923C" opacity="1.0"/>
+  <circle cx="1025" cy="542" r="12" fill="#FB923C" opacity="1.0"/>  <text x="145" y="305" fill="#FB7185" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="760">random pairing</text>
+  <text x="675" y="305" fill="#2DD4BF" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="760">minibatch OT</text>
+</svg>

@@ -1,10 +1,10 @@
 ---
 layout: distill
-title: "Flow Matching Guide and Code, part 3"
-description: "Connect endpoint-conditioned velocity targets to the marginal field used at sampling time."
+title: "Flow Matching: Local Averages"
+description: "Average arrows into a field."
 date: 2026-05-19
 author: "Quan Tran Hong"
-thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg
+thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-card-part-3.svg
 tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"

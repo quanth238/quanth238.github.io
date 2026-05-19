@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Flow Matching Part 6: Official API, explained</title>
+  <desc id="desc">The tutorial objects map cleanly to path, scheduler, loss, model, and solver components.</desc>
+  <rect width="1200" height="675" rx="34" fill="#111827"/>
+  <rect x="34" y="34" width="1132" height="607" rx="28" fill="#172033" stroke="#2B3548" stroke-width="2"/>
+  <text x="72" y="96" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="1.5">PART 6 / OFFICIAL API</text>
+  <text x="72" y="154" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="47" font-weight="760">Official API, explained</text>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#F8FAFC"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2DD4BF"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#FB923C"/>
+    </marker>
+  </defs>
+  <rect x="135" y="300" width="155" height="92" rx="18" fill="#101827" stroke="#40506A" stroke-width="3"/>
+  <text x="213" y="357" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="760">path</text>
+  <rect x="335" y="300" width="155" height="92" rx="18" fill="#101827" stroke="#40506A" stroke-width="3"/>
+  <text x="413" y="357" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="760">scheduler</text>
+  <rect x="565" y="300" width="155" height="92" rx="18" fill="#101827" stroke="#40506A" stroke-width="3"/>
+  <text x="643" y="357" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="760">loss</text>
+  <rect x="735" y="300" width="155" height="92" rx="18" fill="#101827" stroke="#40506A" stroke-width="3"/>
+  <text x="813" y="357" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="760">model</text>
+  <rect x="930" y="300" width="155" height="92" rx="18" fill="#101827" stroke="#40506A" stroke-width="3"/>
+  <text x="1008" y="357" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="760">solver</text>
+  <path d="M290 346 L335 346" stroke="#AEB8C8" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M490 346 L565 346" stroke="#AEB8C8" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M720 346 L735 346" stroke="#AEB8C8" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M890 346 L930 346" stroke="#AEB8C8" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M300 490 C445 555 730 555 915 480" fill="none" stroke="#2DD4BF" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="980" cy="470" r="44" fill="#052E2B" stroke="#2DD4BF" stroke-width="5"/>
+  <path d="M958 470 L977 489 L1010 445" fill="none" stroke="#2DD4BF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="350" y="565" fill="#2DD4BF" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="760">verified continuous smoke test</text>
+</svg>
