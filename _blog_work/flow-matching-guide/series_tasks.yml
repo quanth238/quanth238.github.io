@@ -36,7 +36,7 @@ tasks:
   - id: "FM-02"
     title: "Redesign Part 1 overview figure to match the professional visual standard"
     behavior: "Replace or revise the overview bitmap with a precise local technical figure that shows the exact flow-matching objects without generic stock styling."
-    state: "not_started"
+    state: "passing"
     depends_on: ["FM-01"]
     verification:
       - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
@@ -48,6 +48,17 @@ tasks:
       - "Prefer local SVG/matplotlib schematic or a cleaner AI bitmap with verified labels."
       - "Keep the visual original and cite inspirations only as conceptual references."
       - "Pass check_post.py and Jekyll build after replacing the figure."
+    evidence:
+      - "Revised figure brief in _blog_work/flow-matching-guide/visual_sources.yml."
+      - "Local SVG asset: assets/img/blog/flow-matching-guide/flow-matching-overview.svg."
+      - "Generator source: _blog_work/flow-matching-guide/make_overview_schematic.py."
+      - "Post now uses the SVG thumbnail and figure include: _posts/2026-05-19-flow-matching-guide-part-1.md."
+      - "Desktop evidence screenshot: _blog_work/flow-matching-guide/evidence/2026-05-19-overview-desktop-fullpage.jpg."
+      - "Mobile evidence screenshot: _blog_work/flow-matching-guide/evidence/2026-05-19-overview-mobile.jpg."
+      - "Verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide."
+      - "Verification passed: python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md."
+      - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build."
+      - "Browser verification passed at 1280x720 and 390x844: SVG loaded, preserved 1600x900 natural size, and did not overflow the viewport."
   - id: "FM-03"
     title: "Plan the full Flow Matching series"
     behavior: "Create a one-task-at-a-time series map where each part has a practical reader question, cited sources, visual plan, code target, and handoff."

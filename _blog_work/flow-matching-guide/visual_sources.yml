@@ -52,21 +52,25 @@ references:
     use: "implementation-reference"
 figure_briefs:
   - id: "flow-matching-overview"
-    kind: "ai-bitmap"
-    reader_question: "How do source samples, paths, velocity arrows, a learned field, and ODE sampling fit together?"
-    purpose: "Give a first visual map of the flow matching loop before equations."
+    kind: "svg-schematic"
+    reader_question: "How do endpoint samples, interpolation times, velocity targets, a learned field, and ODE sampling fit together?"
+    purpose: "Give a precise first visual map of the flow matching loop before equations."
     must_show:
-      - "Source noise samples on the left and target samples on the right."
-      - "Interpolated paths with velocity arrows along the paths."
-      - "A learned vector field and one sampling trajectory."
+      - "Source noise samples x0 on the left and target data samples x1 on the right."
+      - "Straight interpolation path points at t=0, t=0.5, and t=1."
+      - "Velocity target arrows u_t = x1 - x0 drawn along the conditional path."
+      - "Learned vector field arrows v_theta(x,t) as local directions."
+      - "One ODE sampling trajectory from fresh noise into the target cloud."
     avoid:
       - "Copied layout from external blogs."
-      - "Dense labels, equations inside the bitmap, blurry text, logos, or decorative style."
+      - "Dense labels, blurry text, logos, decorative style, or equations embedded inside the figure."
       - "A generic stock-art look that does not show the actual flow matching objects."
+      - "Arrows that imply diffusion denoising steps rather than an ODE velocity field."
     cited_inspirations:
       - "https://arxiv.org/abs/2412.06264"
       - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
-    status: "redesign"
+      - "https://arxiv.org/abs/2210.02747"
+    status: "approved"
   - id: "flow-matching-pipeline"
     kind: "mermaid"
     reader_question: "What is the sequence from sampled endpoints to training loss and sampler?"
@@ -93,6 +97,16 @@ figure_briefs:
       - "https://daddaops.com/blog/flow-matching-from-scratch/"
     status: "approved"
 generated_figures:
+  - path: "assets/img/blog/flow-matching-guide/flow-matching-overview.svg"
+    alt: "Flow matching schematic showing source and target samples, interpolation times, velocity target arrows, a learned vector field, and one ODE sampling trajectory."
+    prompt: |
+      Local SVG schematic specification: draw a deterministic, original technical overview for Flow Matching Part 1. Use a clean coordinate plane with source samples x0 from p0, target samples x1 from p1, straight conditional interpolation at t=0, t=0.5, and t=1, velocity target arrows along the highlighted path, learned vector-field arrows v_theta(x,t), and one ODE sampling trajectory from fresh noise into the target cloud. Use colorblind-aware blue, vermillion, teal, gray, and black marks; keep labels short; avoid copied layouts, dense text, decorative stock-art styling, logos, watermarks, and embedded derivations.
+    source: "_blog_work/flow-matching-guide/make_overview_schematic.py"
+    inspiration_sources:
+      - "https://arxiv.org/abs/2412.06264"
+      - "https://arxiv.org/abs/2210.02747"
+      - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
+    status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png"
     alt: "Flow matching overview showing source noise, paths, velocity arrows, a learned vector field, and generated samples."
     prompt: |
@@ -100,7 +114,7 @@ generated_figures:
     inspiration_sources:
       - "https://arxiv.org/abs/2412.06264"
       - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
-    status: "created"
+    status: "replaced-by-local-svg"
 mermaid_figures:
   - id: "flow-matching-pipeline"
     purpose: "Editable diagram linking endpoint samples, interpolated path, velocity target, training loss, and ODE sampling."
@@ -116,8 +130,10 @@ remote_code_figures:
     status: "created"
 quality_gate:
   required_before_publish: "Evaluator checks conceptual correctness, reader flow, label quality, originality, accessibility, and Jekyll rendering."
-  evaluator_status: "passed-with-redesign-backlog"
-  current_visual_risk: "The overview bitmap is useful but not yet at the professional figure quality expected for later parts; redesign it before using this style as the series standard."
+  evaluator_status: "passed"
+  current_visual_risk: "The Part 1 overview has been redesigned as a local SVG schematic; keep using local SVGs, Mermaid, and data plots as the visual baseline for later parts."
 evaluator_notes:
   - "Mermaid and code-result plots are the strongest visuals for Part 1 because they are editable and tied to exact objects."
-  - "For the next Flow Matching session, redesign the overview as a cleaner local schematic or SVG-style figure before moving to Part 2 visuals."
+  - "FM-02 replaced the draft AI bitmap with assets/img/blog/flow-matching-guide/flow-matching-overview.svg, generated by _blog_work/flow-matching-guide/make_overview_schematic.py."
+  - "Evaluator decision: approved. The SVG shows source and target endpoint samples, straight interpolation times, velocity target arrows, learned vector-field arrows, and one ODE sampling trajectory without copied layout or decorative stock styling."
+  - "Browser verification: 1280x720 and 390x844 renders loaded the SVG at natural size 1600x900, scaled responsively, and did not overflow the viewport. Evidence screenshots are stored in _blog_work/flow-matching-guide/evidence/."

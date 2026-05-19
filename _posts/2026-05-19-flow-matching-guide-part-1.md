@@ -4,7 +4,7 @@ title: "Flow Matching Guide and Code, part 1"
 description: "A practical first pass at flow matching: path, velocity target, loss, and a 2D check."
 date: 2026-05-19
 author: "Quan Tran Hong"
-thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png
+thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-overview.svg
 tags: ["tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"
@@ -36,7 +36,7 @@ Flow matching is a generative modeling framework built around a velocity field. 
 
 The object we train is $v_\theta(x, t)$, a neural velocity field. During sampling, start from $x_0 \sim p_0$ and integrate the learned field until $t=1$. If the field points in the right direction along the path, the final sample should look like data.
 
-{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png" class="img-fluid rounded z-depth-1" width="1693" height="929" zoomable=true alt="Flow matching overview showing source noise, paths, velocity arrows, a learned field, and generated samples." %}
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-overview.svg" class="img-fluid rounded z-depth-1" width="1600" height="900" zoomable=true alt="Flow matching schematic showing source and target samples, interpolation times, velocity target arrows, a learned vector field, and one ODE sampling trajectory." %}
 
 The useful sequence is short: choose a path, compute its velocity target, train with a regression loss, then sample by integrating the learned field.
 
