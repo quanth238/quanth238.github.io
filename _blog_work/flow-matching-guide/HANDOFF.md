@@ -51,6 +51,31 @@ verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
 
+2026-05-19 FM-08 Part 6 draft check:
+
+- Active branch: `codex/flow-matching-series-complete-drafts`.
+- FM-08 is passing and no task is currently active.
+- Planner verified package install/run feasibility with `flow_matching==1.0.10`
+  in a temporary venv; retained evidence is in
+  `_blog_work/flow-matching-guide/remote_runs/20260519T155000Z_fm08_official_package/package_verification.md`.
+- The installed package exports `CondOTProbPath`, not `CondOTPath`; Part 6 uses
+  the verified installed name.
+- Generator created `_drafts/flow-matching-guide-part-6.md`, the deterministic
+  example `scripts/blog_pipeline/examples/flow_matching_official_package_bridge.py`,
+  run metadata under
+  `_blog_work/flow-matching-guide/remote_runs/20260519T155000Z_fm08_official_package/`,
+  and the local figure
+  `assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg`.
+- Evaluator decision: passed. The draft maps toy concepts to verified package
+  components, includes Mermaid accessibility metadata, records the package API
+  naming difference, and keeps the output claim to a component run check.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Post-FM-08 full draft suite passed for Parts 2-6: `check_harness`, all
+  draft `check_post.py` commands, `py_compile`, and the Jekyll drafts build.
+
 2026-05-19 FM-07 Part 5 draft check:
 
 - Active branch: `codex/flow-matching-series-complete-drafts`.

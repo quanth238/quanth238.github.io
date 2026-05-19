@@ -176,7 +176,7 @@ parts:
     transition: "Part 6 maps the concepts to the official package and scaling workflow."
 
   - part: 6
-    status: "planned"
+    status: "draft-passing"
     title: "From toy code to the official flow_matching package"
     reader_question: "How do the loss, path, and solver concepts map onto real library components?"
     objective: "Bridge tutorial code to the official PyTorch package without overpromising production training."
@@ -185,17 +185,18 @@ parts:
       - "https://github.com/facebookresearch/flow_matching"
     allowed_claims:
       - "The official repository provides continuous and discrete implementations, path, scheduler, loss, and solver modules, and synthetic, image, and text examples."
-    needs_verification:
-      - "Verify install and run feasibility in this worktree before any reader-facing package claim."
-      - "If package install or a minimal official run fails, keep this part blocked."
+    verification_evidence:
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T155000Z_fm08_official_package/package_verification.md"
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T155000Z_fm08_official_package/official_package_smoke_test.json"
+      - "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
     outline:
       - "Package anatomy"
       - "Minimal continuous example"
       - "Solver, loss, and path mapping"
       - "What to inspect before scaling"
       - "Optional discrete/text pointer"
-    code_target: "Run a minimal official or official-inspired continuous synthetic example and store one verified output plot."
-    visual_intent: "Component map Mermaid plus one verified output plot."
+    code_target: "Complete: installed flow_matching==1.0.10 in a temporary venv, verified exports, and ran CondOTProbPath plus ODESolver on a continuous conditional path check."
+    visual_intent: "Complete: approved component-map Mermaid plus verified official-package output SVG."
     transition: "End the series with a concise checklist, not a new unpublished part."
 
 export_plan:

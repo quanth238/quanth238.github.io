@@ -203,7 +203,7 @@ figure_briefs:
     cited_inspirations:
       - "https://arxiv.org/abs/2412.06264"
       - "https://github.com/facebookresearch/flow_matching"
-    status: "planned"
+    status: "approved"
   - id: "part-6-official-synthetic-output"
     kind: "data-plot"
     reader_question: "Can a minimal official or official-inspired continuous synthetic example run in this worktree?"
@@ -218,7 +218,7 @@ figure_briefs:
     cited_inspirations:
       - "https://github.com/facebookresearch/flow_matching"
       - "https://arxiv.org/abs/2412.06264"
-    status: "planned"
+    status: "approved"
 generated_figures:
   - path: "assets/img/blog/flow-matching-guide/flow-matching-overview.svg"
     alt: "Flow matching schematic showing source and target samples, interpolation times, velocity target arrows, a learned vector field, and one ODE sampling trajectory."
@@ -267,6 +267,10 @@ remote_code_figures:
     alt: "Probability path snapshots comparing Conditional OT and Linear VP schedules on the same toy endpoint pairs."
     run_id: "20260519T154210Z_fm07_path_families"
     status: "approved"
+  - path: "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
+    alt: "Official flow_matching package smoke test using CondOTProbPath and ODESolver on conditional endpoint trajectories."
+    run_id: "20260519T155000Z_fm08_official_package"
+    status: "approved"
 quality_gate:
   required_before_publish: "Evaluator checks conceptual correctness, reader flow, label quality, originality, accessibility, and Jekyll rendering."
   evaluator_status: "passed"
@@ -282,3 +286,4 @@ evaluator_notes:
   - "FM-05 evaluator decision: approved. The Mermaid argument map has accessibility metadata, the conditional-to-marginal SVG distinguishes conditional arrows from the averaged marginal direction, theorem wording is source-verified, and all reader-facing assets are local."
   - "FM-06 evaluator decision: approved. The coupling diagnostic uses one displayed minibatch, labels minibatch OT as batch-local, reports toy transport cost and crossings, and avoids global OT claims."
   - "FM-07 evaluator decision: approved. The path-family SVG compares only source-verified Conditional OT and Linear VP schedules, keeps equations in Markdown, reports matched-time velocity magnitudes, and scopes the diffusion connection to Gaussian paths and probability-flow ODEs."
+  - "FM-08 evaluator decision: approved. The package bridge uses verified flow_matching==1.0.10 exports, records the CondOTProbPath naming difference, runs CondOTProbPath with ODESolver, and registers the local output SVG with alt text."

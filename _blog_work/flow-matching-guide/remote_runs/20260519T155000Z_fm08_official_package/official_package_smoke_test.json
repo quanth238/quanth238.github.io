@@ -1,0 +1,16 @@
+{
+  "task": "FM-08",
+  "flow_matching_version": "1.0.10",
+  "flow_matching_module": "/private/tmp/fm08-flow-matching-venv/lib/python3.9/site-packages/flow_matching/__init__.py",
+  "torch_version": "2.8.0",
+  "components": [
+    "CondOTProbPath",
+    "ODESolver"
+  ],
+  "method": "midpoint",
+  "step_size": 0.02,
+  "time_grid_end": 0.98,
+  "mean_endpoint_error": 0.052367109805345535,
+  "max_endpoint_error": 0.09761476516723633,
+  "asset": "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
+}
