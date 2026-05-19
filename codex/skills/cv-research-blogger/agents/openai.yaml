@@ -1,0 +1,7 @@
+interface:
+  display_name: "CV Research Blogger"
+  short_description: "Checkpointed research tutorials with visual planning"
+  default_prompt: "Use $cv-research-blogger to plan a source-backed tutorial with figure briefs, original visuals, code results, and publish checks."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,13 @@
+{
+  "slug": "flow-matching-guide",
+  "run_id": "20260519T105934Z",
+  "ssh": "Admin@desktop-a4ko83o.tail7cb6d9.ts.net",
+  "wsl_distro": "Ubuntu-24.04",
+  "remote_dir": "cv_blog_runs/flow-matching-guide/20260519T105934Z",
+  "script": "/Users/quan238/personal/code_space/cv-research-blog-pipeline-worktree/scripts/blog_pipeline/examples/flow_matching_toy.py",
+  "copied_assets": [
+    "assets/img/blog/flow-matching-guide/flow-matching-loss.svg",
+    "assets/img/blog/flow-matching-guide/flow-matching-paths.svg"
+  ],
+  "created_at": "2026-05-19T10:59:38.924334+00:00"
+}

@@ -138,6 +138,15 @@ d-article {
     }
   }
 
+  /* MathJax display equations should fit the article column without showing
+     an internal scrollbar. Keep equations short in source; this only prevents
+     browser scrollbar chrome on equations that already fit. */
+  mjx-container[display="true"] {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    max-width: 100%;
+  }
+
   /* Citations */
   d-cite a,
   a.citation {

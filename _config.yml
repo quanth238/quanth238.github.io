@@ -175,6 +175,9 @@ kramdown:
 include: [".nojekyll", "_pages", "_scripts"]
 exclude:
   - bin/
+  - codex/
+  - scripts/
+  - _blog_work/
   - .all-contributorsrc
   - .bundle/
   - .devcontainer/

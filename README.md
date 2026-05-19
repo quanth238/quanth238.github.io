@@ -1,3 +1,34 @@
+# CV Research Blog Visual Harness
+
+This worktree is the dedicated blog-writing harness for Quan's CV site.
+
+- Directory: `/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline`
+- Branch: `codex/cv-research-blog-visual-pipeline`
+- Skill: [`codex/skills/cv-research-blogger/SKILL.md`](codex/skills/cv-research-blogger/SKILL.md)
+- Pipeline scripts: [`scripts/blog_pipeline/`](scripts/blog_pipeline/)
+- Flow Matching post: [`_posts/2026-05-19-flow-matching-guide-part-1.md`](_posts/2026-05-19-flow-matching-guide-part-1.md)
+- Visual plan: [`_blog_work/flow-matching-guide/visual_sources.yml`](_blog_work/flow-matching-guide/visual_sources.yml)
+
+The harness cites external visual explanations but does not copy or hotlink their images. It creates original visuals and stores them locally:
+
+![Original Flow Matching overview](assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png)
+
+Remote WSL result figures:
+
+![Flow Matching toy loss curve](assets/img/blog/flow-matching-guide/flow-matching-loss.svg)
+
+![Flow Matching toy paths](assets/img/blog/flow-matching-guide/flow-matching-paths.svg)
+
+Core checks:
+
+```bash
+python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md
+python3 scripts/blog_pipeline/new_series.py --slug flow-matching-guide --part 2
+BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build \
+  --source /Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline \
+  --destination /Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline/_site
+```
+
 # al-folio
 
 <div align="center">
