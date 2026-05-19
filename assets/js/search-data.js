@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "news-started-the-master-of-science-in-computer-science-at-vinuniversity-through-the-graduate-research-excellence-program",
+        },{id: "post-flow-matching-guide-and-code-part-1",
+        
+          title: "Flow Matching Guide and Code, part 1",
+        
+        description: "A practical first pass at flow matching: path, velocity target, loss, and a 2D check.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/flow-matching-guide-part-1/";
+          
+        },
+      },{id: "news-started-the-master-of-science-in-computer-science-at-vinuniversity-through-the-graduate-research-excellence-program",
           title: 'Started the Master of Science in Computer Science at VinUniversity through the Graduate...',
           description: "",
           section: "News",},{id: "news-gave-an-invited-talk-on-3d-gaussian-splatting-at-the-cair-monthly-reading-group-vinuniversity",
