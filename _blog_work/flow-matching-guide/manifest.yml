@@ -1,0 +1,39 @@
+series:
+  slug: "flow-matching-guide"
+  title: "Flow Matching Guide and Code"
+  audience: "CS/ML students"
+  status: "published"
+  created_at: "2026-05-19"
+  updated_at: "2026-05-19"
+  default_layout: "distill"
+  owner: "Quan Tran Hong"
+
+source_materials:
+  - "https://arxiv.org/abs/2412.06264"
+  - "https://github.com/facebookresearch/flow_matching"
+  - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
+  - "https://www.weideng.org/posts/flow_matching/"
+  - "https://daddaops.com/blog/flow-matching-from-scratch/"
+
+checkpoints:
+  intake: "created"
+  outline: "topic_outline_scaffolded"
+  visual_plan: "external_sources_collected_original_ai_figure_registered"
+  draft: "revised_with_visual_plan_and_remote_code_results"
+  code_run: "passed_remote_wsl_20260519T105934Z"
+  human_voice_pass: "revised_for_direct_professional_style"
+  citation_check: "external_links_collected"
+  jekyll_render_check: "passed_with_drafts_build"
+  publish_approval: "approved_by_user_request"
+
+approval:
+  outline: true
+  final_draft: true
+  publish: true
+
+notes:
+  personal_angle: "Explain the topic directly with concise theory, visual structure, and code."
+  visual_default: "Plan visual sources first; use Mermaid for editable structure and original AI figures when they improve intuition."
+  style_reference: "Robot Learning: A Tutorial style: scoped tutorial, named topic sections, concise theory, code examples."
+  local_style_reference: "/Users/quan238/Library/CloudStorage/GoogleDrive-1959030@itec.hcmus.edu.vn/My Drive/Papers/storage/E9KBH4KD/Capuano et al. - 2025 - Robot Learning A Tutorial.pdf"
+  publication_rule: "Keep drafts in _drafts until explicit approval."

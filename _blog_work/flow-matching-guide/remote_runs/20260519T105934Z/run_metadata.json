@@ -1,0 +1,9 @@
+{
+  "slug": "flow-matching-guide",
+  "run_id": "20260519T105934Z",
+  "script": "flow_matching_toy.py",
+  "status": 0,
+  "started_at": "2026-05-19T10:59:38Z",
+  "finished_at": "2026-05-19T10:59:38Z",
+  "python": "Python 3.12.3"
+}

@@ -1,0 +1,3 @@
+final_loss=2.010320
+wrote flow-matching-loss.svg
+wrote flow-matching-paths.svg

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360" role="img" aria-label="Flow matching toy loss curve">
+<rect width="100%" height="100%" fill="#fbfbf8"/>
+<line x1="58" y1="312" x2="718" y2="312" stroke="#222" stroke-width="1"/>
+<line x1="58" y1="42" x2="58" y2="312" stroke="#222" stroke-width="1"/>
+<polyline points="58.0,48.0 70.7,151.5 83.4,131.3 96.1,231.3 108.8,224.6 121.5,174.7 134.2,192.8 146.8,229.1 159.5,267.3 172.2,226.4 184.9,234.3 197.6,225.0 210.3,156.6 223.0,222.0 235.7,224.6 248.4,188.6 261.1,217.1 273.8,174.9 286.5,222.5 299.2,144.1 311.8,240.9 324.5,219.0 337.2,120.9 349.9,155.2 362.6,179.1 375.3,185.6 388.0,212.8 400.7,260.8 413.4,259.6 426.1,209.0 438.8,185.0 451.5,251.3 464.2,283.8 476.8,221.4 489.5,256.5 502.2,257.0 514.9,209.9 527.6,237.1 540.3,245.1 553.0,312.0 565.7,274.1 578.4,279.3 591.1,255.4 603.8,261.2 616.5,232.2 629.2,207.3 641.8,218.4 654.5,259.5 667.2,190.4 679.9,180.3 692.6,213.8 705.3,220.6 718.0,253.8" fill="none" stroke="#2f6f8f" stroke-width="3"/>
+<text x="58" y="28" font-family="Arial, sans-serif" font-size="18" fill="#222">Toy velocity-regression loss</text>
+<text x="515" y="342" font-family="Arial, sans-serif" font-size="13" fill="#444">training checkpoints</text>
+<text x="64" y="64" font-family="Arial, sans-serif" font-size="13" fill="#444">start 3.479</text>
+<text x="600" y="64" font-family="Arial, sans-serif" font-size="13" fill="#444">final 2.010</text>
+</svg>
