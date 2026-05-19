@@ -3,13 +3,25 @@
   "flow_matching_version": "1.0.10",
   "flow_matching_module": "/private/tmp/fm15-flow-matching-venv/lib/python3.9/site-packages/flow_matching/__init__.py",
   "torch_version": "2.8.0",
-  "components": ["CondOTProbPath", "ODESolver"],
+  "components": [
+    "CondOTProbPath",
+    "ODESolver"
+  ],
   "method": "midpoint",
   "step_size": 0.02,
   "time_grid_end": 0.98,
-  "mean_solver_path_gap_at_final_time": 1.433954537333193e-7,
-  "max_solver_path_gap_at_final_time": 2.4575624024691933e-7,
+  "mean_solver_path_gap_at_final_time": 1.433954537333193e-07,
+  "max_solver_path_gap_at_final_time": 2.4575624024691933e-07,
   "mean_remaining_distance_to_endpoint_at_final_time": 0.05236712470650673,
   "max_remaining_distance_to_endpoint_at_final_time": 0.09761498123407364,
+  "visual_encoding": {
+    "layout": "api_wiring_path_overlay_and_verified_output_panel",
+    "exact_paths_drawn_after_solver": true,
+    "exact_path_style": "dashed_orange",
+    "solver_path_style": "solid_blue",
+    "terminal_residuals": "magnified_in_inset_only",
+    "terminal_residual_magnification_px_per_data_unit": 80000000.0,
+    "paper_figure_extraction": false
+  },
   "asset": "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
 }

@@ -113,7 +113,7 @@ parts:
       - "Population objective"
       - "Sampling implication"
     code_target: "Complete: created a local quiver-style diagnostic showing endpoint-conditioned arrows near one (x,t) and their empirical average."
-    visual_intent: "Complete: approved Mermaid argument map plus local SVG that distinguishes conditional arrows from the marginal direction."
+    visual_intent: "Complete: approved Mermaid argument map plus regenerated local SVG with a global query-neighborhood panel, zoomed conditional arrows, and a teal empirical local estimate rather than an exact marginal oracle."
     transition: "Part 4 changes the endpoint coupling and studies endpoint/path geometry."
 
   - part: 4
@@ -172,7 +172,7 @@ parts:
       - "Diffusion and probability-flow connection"
       - "Practical selection rule"
     code_target: "Complete: plotted matched-time snapshots and velocity magnitudes for source-verified Conditional OT and Linear VP schedules."
-    visual_intent: "Complete: approved local SVG with time-slice snapshots and separate velocity-magnitude bars; equations remain in Markdown."
+    visual_intent: "Complete: approved local SVG with time-slice snapshots, same-axes cue, and separate velocity-magnitude bars; equations remain in Markdown."
     transition: "Part 6 maps the concepts to the official package and scaling workflow."
 
   - part: 6
@@ -196,7 +196,7 @@ parts:
       - "What to inspect before scaling"
       - "Optional discrete/text pointer"
     code_target: "Complete: installed flow_matching==1.0.10 in a temporary venv, verified exports, and ran CondOTProbPath plus ODESolver on a continuous conditional path check."
-    visual_intent: "Complete: approved component-map Mermaid plus verified official-package output SVG."
+    visual_intent: "Complete: approved component-map Mermaid plus regenerated verified official-package output SVG with API wiring, dashed exact paths drawn on top of solver paths, scoped gap metrics, and a magnified terminal residual inset."
     transition: "End the series with a concise checklist, not a new unpublished part."
 
 export_plan:

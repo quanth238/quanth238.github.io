@@ -118,12 +118,14 @@ figure_briefs:
   - id: "part-3-conditional-to-marginal-arrows"
     kind: "data-plot"
     reader_question: "Why can many conditional endpoint velocities near one location be summarized by a marginal direction?"
-    purpose: "Show the conditional-to-marginal averaging idea with local arrows that remain visually distinct from the learned marginal field."
+    purpose: "Show the conditional-to-marginal averaging idea with a visible query neighborhood and local arrows that remain visually distinct from the empirical field estimate."
     must_show:
       - "A marked query location and time, written as (x,t) in the caption or label."
+      - "A global panel that shows which interpolated points are selected near the query."
+      - "A zoom panel that makes the query neighborhood visible."
       - "Several conditional velocity arrows from endpoint pairs near that location."
-      - "One averaged direction drawn with a different visual weight."
-      - "A legend that distinguishes conditional arrows from the marginal or learned field direction."
+      - "One empirical local average drawn with a different visual weight."
+      - "A legend that distinguishes conditional arrows from the empirical local estimate and avoids implying an exact marginal oracle."
     avoid:
       - "Labels that imply the target endpoint is available at sampling time."
       - "Conflating a single conditional arrow with the learned marginal field."
@@ -178,6 +180,7 @@ figure_briefs:
       - "Matched time slices for the baseline linear path and one verified Gaussian or diffusion-like path."
       - "Comparable velocity-magnitude visualization for both path families."
       - "Consistent axes, color scale, and sampling seed across path families."
+      - "A subtle same-axes cue so readers know the two rows are comparable on one coordinate scale."
       - "Captions or metadata that keep equations in Markdown rather than inside the image."
     avoid:
       - "Unverified conical Gaussian or diffusion schedule equations."
@@ -207,10 +210,13 @@ figure_briefs:
     status: "approved"
   - id: "part-6-official-synthetic-output"
     kind: "data-plot"
-    reader_question: "Can a minimal official or official-inspired continuous synthetic example run in this worktree?"
-    purpose: "Provide one verified output plot for the package bridge, or keep Part 6 blocked if the run cannot be verified."
+    reader_question: "Can a minimal official continuous example make exact path and ODESolver agreement inspectable?"
+    purpose: "Provide one verified output plot that shows package API wiring, exact path samples, solver trajectories, and scoped agreement metrics."
     must_show:
       - "The output of one install-verified minimal continuous synthetic run."
+      - "A visible distinction between exact CondOTProbPath samples and ODESolver trajectories."
+      - "A verified-output panel with solver-to-path gap at the same final time."
+      - "A separate remaining-distance-to-endpoint metric that is not labeled as solver error."
       - "Run metadata path and local asset path in planning metadata."
       - "A caption that distinguishes official code from official-inspired local code."
     avoid:
@@ -287,7 +293,8 @@ remote_code_figures:
     paper_figure_extraction: false
     status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg"
-    alt: "Conditional endpoint velocity arrows near one query point averaged into a local marginal direction."
+    alt: "Two-panel conditional-to-marginal diagnostic showing a query neighborhood and conditional endpoint velocity arrows averaged into an empirical local field estimate."
+    source_post: "_drafts/flow-matching-guide-part-3.md"
     run_id: "20260519T152215Z_fm05_conditional_marginal"
     ownership_decision: "local-original/reproducible-code-result"
     paper_figure_extraction: false
@@ -299,13 +306,15 @@ remote_code_figures:
     paper_figure_extraction: false
     status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg"
-    alt: "Probability path snapshots comparing Conditional OT and Linear VP schedules on the same toy endpoint pairs."
+    alt: "Probability path snapshots comparing Conditional OT and Linear VP schedules on the same toy endpoint pairs and shared x-y axes."
+    source_post: "_drafts/flow-matching-guide-part-5.md"
     run_id: "20260519T154210Z_fm07_path_families"
     ownership_decision: "local-original/reproducible-code-result"
     paper_figure_extraction: false
     status: "approved"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg"
-    alt: "Official flow_matching package smoke test using CondOTProbPath and ODESolver on conditional endpoint trajectories."
+    alt: "Official flow_matching package check showing API wiring, dashed exact CondOTProbPath samples, solid ODESolver trajectories, and a verified solver-to-path residual panel."
+    source_post: "_drafts/flow-matching-guide-part-6.md"
     run_id: "20260519T155000Z_fm08_official_package"
     ownership_decision: "local-original/reproducible-code-result"
     paper_figure_extraction: false
@@ -323,7 +332,10 @@ evaluator_notes:
   - "Future visual gates: Part 2 needs generated step-count plots before drafting; Part 3 needs verified theorem notation; Part 5 needs verified path schedule equations; Part 6 needs package install/run evidence."
   - "FM-04 evaluator decision: approved. The solver-step SVG uses the same trained toy field and initial samples across 4, 8, 16, and 32 Euler steps; labels state the toy scope, metrics are registered in remote run metadata, and the figure has local alt text."
   - "FM-16 visual revision: user review correctly noted that the original 4/8/16/32 trajectory panels looked nearly identical at page scale. The regenerated solver-step SVG clips each panel, marks 128-step reference endpoints with purple rings, and adds orange residual segments from each coarse endpoint to its matching reference endpoint so the step-count drift is visible."
-  - "FM-05 evaluator decision: approved. The Mermaid argument map has accessibility metadata, the conditional-to-marginal SVG distinguishes conditional arrows from the averaged marginal direction, theorem wording is source-verified, and all reader-facing assets are local."
+  - "FM-05 evaluator decision: approved. The Mermaid argument map has accessibility metadata, the conditional-to-marginal SVG distinguishes conditional arrows from the averaged local direction, theorem wording is source-verified, and all reader-facing assets are local."
+  - "FM-17 visual revision: Part 3 conditional-to-marginal SVG was regenerated from scripts/blog_pipeline/examples/flow_matching_conditional_marginal.py as a two-panel global-selection plus zoom-neighborhood figure. Labels now call the teal direction an empirical local estimate rather than an exact marginal oracle."
   - "FM-06 evaluator decision: approved. The coupling diagnostic uses one displayed minibatch, labels minibatch OT as batch-local, reports toy transport cost and crossings, and avoids global OT claims."
   - "FM-07 evaluator decision: approved. The path-family SVG compares only source-verified Conditional OT and Linear VP schedules, keeps equations in Markdown, reports matched-time velocity magnitudes, and scopes the diffusion connection to Gaussian paths and probability-flow ODEs."
+  - "FM-17 visual revision: Part 5 path-family SVG was regenerated from scripts/blog_pipeline/examples/flow_matching_path_families.py with a same-axes subtitle and repeated axis glyphs; the draft alt text and prose now state that rows share x-y axes."
   - "FM-08 evaluator decision: approved. The package bridge uses verified flow_matching==1.0.10 exports, records the CondOTProbPath naming difference, runs CondOTProbPath with ODESolver, and registers the local output SVG with alt text."
+  - "FM-17 visual revision: Part 6 official-package bridge SVG was regenerated from scripts/blog_pipeline/examples/flow_matching_official_package_bridge.py with an API wiring strip, dashed exact paths drawn on top of solver paths, a verified-output metric panel, and magnified terminal residual inset."

@@ -52,6 +52,10 @@ State date: 2026-05-20
   endpoints, and orange coarse-to-reference endpoint residuals. Part 2 prose,
   visual metadata, export manifest, and run metadata were updated in the
   harness only.
+- `FM-17` is passing. Exactly three sub-agents ran a visual quality pass:
+  Planner, Critic, and Revision. The pass confirmed that direct paper figure
+  extraction is not needed, then regenerated the Part 3, Part 5, and Part 6
+  SVGs from local scripts to improve rendered teaching quality and story flow.
 - No review/revision task is currently active.
 
 ## Harness Files To Read First
@@ -516,9 +520,50 @@ sampling trajectory. The replaced AI bitmap remains registered in
   Contents and the revised alt text; footer/copyright/powered-by strings are
   absent from `/blog/` and Part 2.
 
+2026-05-20 FM-17 series visual quality pass:
+
+- Active branch: `codex/flow-matching-series-review-revisions`.
+- Used exactly three sub-agents: Planner Agent, Critic Agent, and Revision
+  Agent. The coordinator handled task state, checks, commit, and push.
+- Planner and Critic both concluded that no direct paper figure extraction is
+  justified; final reader-facing visuals remain local-original, export-safe,
+  and marked `paper_figure_extraction: false`.
+- Revision regenerated Part 3
+  `assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg`
+  from `scripts/blog_pipeline/examples/flow_matching_conditional_marginal.py`
+  as a two-panel global-selection plus zoom-neighborhood figure. The teal
+  direction is now labeled as an empirical local estimate rather than an exact
+  marginal oracle.
+- Revision regenerated Part 5
+  `assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg`
+  from `scripts/blog_pipeline/examples/flow_matching_path_families.py` with
+  a same-axes subtitle and axis glyphs; Part 5 prose and alt text now say the
+  rows share x-y axes.
+- Revision regenerated Part 6
+  `assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg`
+  from `scripts/blog_pipeline/examples/flow_matching_official_package_bridge.py`
+  with an API wiring strip, dashed exact CondOTProbPath paths drawn above solid
+  ODESolver paths, a verified-output metric panel, and a magnified terminal
+  residual inset.
+- Evidence screenshots:
+  `_blog_work/flow-matching-guide/evidence/fm17_visual_check/conditional-marginal.png`,
+  `_blog_work/flow-matching-guide/evidence/fm17_visual_check/path-family.png`,
+  and `_blog_work/flow-matching-guide/evidence/fm17_visual_check/official-package-bridge.png`.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py` passed for Part 1 and draft
+  Parts 2-6.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+- Rendered checks passed: `/blog/` contains the expected tags; Flow Matching
+  Parts 1-6 contain Contents; footer/copyright/powered-by strings are absent
+  from `/blog/` and Parts 1-6; revised Part 3/5/6 alt text appears in built HTML.
+- Policy checks passed: no `paper_figure_extraction: true`, external image
+  hotlinks, raw image tags, adapted/reproduced/extracted final figures, or XML
+  errors were found in reader-facing posts/assets.
+
 ## Next Recommended Session
 
-FM-10 through FM-16 are passing and no review/revision task is active. The next
+FM-10 through FM-17 are passing and no review/revision task is active. The next
 step is not an export by default. If the user asks to publish, first present the
 updated `_blog_work/flow-matching-guide/export_manifest.yml` for explicit
 approval, including the source-to-target post list, final assets, required site
@@ -531,7 +576,7 @@ FM-04 through FM-08 and rechecked during this review pass where needed.
 
 ## Clean Exit Requirements
 
-- `series_tasks.yml` records `current_state: "fm-16-passing"` and
+- `series_tasks.yml` records `current_state: "fm-17-passing"` and
   `active_task: null`.
 - This handoff records the final review/revision suite and rendered HTML checks.
 - Generated assets remain local and registered in `visual_sources.yml`.

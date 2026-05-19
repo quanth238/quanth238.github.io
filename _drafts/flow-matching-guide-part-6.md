@@ -157,11 +157,11 @@ The velocity model can be a callable or a `ModelWrapper`. Extra keyword argument
 
 ## Code result
 
-The package bridge run uses `CondOTProbPath` to sample exact conditional path points, then uses `ODESolver` with the matching conditional velocity to integrate the same endpoints up to $t=0.98$. Dotted gray curves are path-object samples. Solid blue curves are solver trajectories.
+The package bridge run uses `CondOTProbPath` to sample exact conditional path points, then uses `ODESolver` with the matching conditional velocity to integrate the same endpoints up to $t=0.98$. The figure separates the API wiring from the verified output. In the path panel, solid blue curves are solver trajectories and dashed orange curves are the exact path samples drawn on top of them.
 
-{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg" class="img-fluid rounded z-depth-1" width="980" height="620" zoomable=true alt="Official flow_matching package smoke test using CondOTProbPath and ODESolver on conditional endpoint trajectories." %}
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg" class="img-fluid rounded z-depth-1" width="1120" height="700" zoomable=true alt="Official flow_matching package check showing API wiring, dashed exact CondOTProbPath samples, solid ODESolver trajectories, and a verified solver-to-path residual panel." %}
 
-The solver-to-path agreement metric compares the final solver state with the `CondOTProbPath` sample at the same final time, $t=0.98$. The displayed remaining distance to the endpoint is separate: it is the intentional path segment from $t=0.98$ to $t=1$, not solver error. The point of the run is API wiring: the path object, velocity callable, and solver agree on tensor shapes and time arguments.
+The solver-to-path agreement metric compares the final solver state with the `CondOTProbPath` sample at the same final time, $t=0.98$. The residual inset magnifies only that tiny terminal gap. The displayed remaining distance to the endpoint is separate: it is the intentional path segment from $t=0.98$ to $t=1$, not solver error. The point of the run is API wiring: the path object, velocity callable, and solver agree on tensor shapes and time arguments.
 
 ## Sampling procedure
 

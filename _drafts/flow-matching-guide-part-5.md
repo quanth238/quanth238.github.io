@@ -175,9 +175,9 @@ The clamp is the epsilon guard for the Linear VP endpoint. It keeps the toy comp
 
 ## Code result
 
-The figure uses the same endpoint pairs for both rows. The top row uses Conditional OT. The bottom row uses the guide-listed Linear VP schedule.
+The figure uses the same endpoint pairs and the same x-y axes for both rows. The top row uses Conditional OT. The bottom row uses the guide-listed Linear VP schedule.
 
-{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg" class="img-fluid rounded z-depth-1" width="1180" height="760" zoomable=true alt="Probability path snapshots comparing Conditional OT and Linear VP schedules on the same toy endpoint pairs." %}
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg" class="img-fluid rounded z-depth-1" width="1180" height="760" zoomable=true alt="Probability path snapshots comparing Conditional OT and Linear VP schedules on the same toy endpoint pairs and shared x-y axes." %}
 
 The middle-time snapshots differ because the schedules mix source and data with different weights. Conditional OT moves mass linearly toward the target. Linear VP keeps a wider source-noise component for longer, then pays for that with larger late-time velocity magnitudes.
 

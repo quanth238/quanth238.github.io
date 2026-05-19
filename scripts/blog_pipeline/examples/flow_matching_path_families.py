@@ -73,6 +73,8 @@ def panel(
     parts = [
         f'<rect x="{left:.1f}" y="{top:.1f}" width="{width:.1f}" height="{height:.1f}" fill="#fff" stroke="#ddd"/>',
         f'<text x="{left + 10:.1f}" y="{top + 19:.1f}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#222">{label}</text>',
+        f'<line x1="{left + width - 52:.1f}" y1="{top + height - 20:.1f}" x2="{left + width - 18:.1f}" y2="{top + height - 20:.1f}" stroke="#9a9a9a" stroke-width="1.0" opacity="0.55"/>',
+        f'<line x1="{left + width - 52:.1f}" y1="{top + height - 20:.1f}" x2="{left + width - 52:.1f}" y2="{top + height - 48:.1f}" stroke="#9a9a9a" stroke-width="1.0" opacity="0.55"/>',
     ]
     for x, y in samples:
         sx, sy = scale_point(x, y, left + 8, top + 26, width - 16, height - 34)
@@ -113,8 +115,8 @@ def build(run_dir: Path) -> dict[str, object]:
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="Probability path snapshots comparing Conditional OT and Linear VP schedules">',
         '<rect width="100%" height="100%" fill="#fbfbf8"/>',
-        '<text x="54" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#222">Changing the scheduler changes intermediate distributions and velocity scale</text>',
-        '<text x="54" y="62" font-family="Arial, sans-serif" font-size="14" fill="#555">Same endpoint pairs; top row uses alpha=t, sigma=1-t; bottom row uses alpha=t, sigma=sqrt(1-t^2).</text>',
+        '<text x="54" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#222">Same endpoints, different probability paths</text>',
+        '<text x="54" y="62" font-family="Arial, sans-serif" font-size="14" fill="#555">All eight snapshots share the same x-y scale; only the scheduler changes between rows.</text>',
     ]
     metrics: dict[str, object] = {}
     all_mags: list[float] = []
@@ -154,6 +156,12 @@ def build(run_dir: Path) -> dict[str, object]:
             "linear_vp": {"alpha": "t", "sigma": "sqrt(1-t^2)"},
         },
         "metrics": metrics,
+        "visual_encoding": {
+            "same_endpoint_pairs": True,
+            "same_axes_across_snapshots": True,
+            "same_axes_cue": "shared-axis note in subtitle plus repeated L-shaped axis glyphs",
+            "paper_figure_extraction": False,
+        },
         "asset": str(figure_path.relative_to(ROOT)),
     }
     (run_dir / "path_family_metrics.json").write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")

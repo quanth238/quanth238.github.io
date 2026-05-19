@@ -13,5 +13,12 @@
     0.13117977520997687
   ],
   "nearest_radius": 0.18185808548943222,
+  "visual_encoding": {
+    "layout": "two_panel_global_selection_and_zoom",
+    "query_neighborhood_visible": true,
+    "conditional_arrows": "gray normalized directions in zoom panel",
+    "empirical_average": "teal local finite-sample estimate",
+    "paper_figure_extraction": false
+  },
   "asset": "assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg"
 }

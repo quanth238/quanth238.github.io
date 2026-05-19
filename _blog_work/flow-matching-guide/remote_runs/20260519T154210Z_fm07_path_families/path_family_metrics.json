@@ -35,5 +35,11 @@
       }
     }
   },
+  "visual_encoding": {
+    "same_endpoint_pairs": true,
+    "same_axes_across_snapshots": true,
+    "same_axes_cue": "shared-axis note in subtitle plus repeated L-shaped axis glyphs",
+    "paper_figure_extraction": false
+  },
   "asset": "assets/img/blog/flow-matching-guide/flow-matching-path-family-snapshots.svg"
 }

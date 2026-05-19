@@ -166,11 +166,11 @@ The first function is the training target. The second function is a diagnostic v
 
 ## Code result
 
-The local plot fixes $t=0.55$ and marks one query location. Gray arrows are endpoint-conditioned velocities from sampled pairs whose interpolated points land near the query. The teal arrow is their empirical average.
+The local plot fixes $t=0.55$ and marks one query location. The left panel shows which interpolated points form the neighborhood. The right panel zooms into that neighborhood: gray arrows are endpoint-conditioned velocity directions from sampled pairs, and the teal arrow is their empirical local average.
 
-{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg" class="img-fluid rounded z-depth-1" width="920" height="640" zoomable=true alt="Conditional endpoint velocity arrows near one query point averaged into a local marginal direction." %}
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg" class="img-fluid rounded z-depth-1" width="1120" height="680" zoomable=true alt="Two-panel conditional-to-marginal diagnostic showing a query neighborhood and conditional endpoint velocity arrows averaged into an empirical local field estimate." %}
 
-The run sampled 5,000 endpoint pairs and kept the 26 nearest interpolated points around the query. The local average velocity was approximately $(-0.126, 0.131)$. The exact number is not the point; the useful object is the distinction between many conditional arrows and one marginal direction.
+The run sampled 5,000 endpoint pairs and kept the 26 nearest interpolated points around the query. The local average velocity was approximately $(-0.126, 0.131)$. The exact number is not the point; the useful object is the distinction between many conditional arrows and one finite-sample estimate of the marginal direction.
 
 ## Sampling procedure
 

@@ -1,7 +1,7 @@
 series: "flow-matching-guide"
 updated_at: "2026-05-20"
 wip_limit: 1
-current_state: "fm-16-passing"
+current_state: "fm-17-passing"
 active_task: null
 state_policy:
   valid_states: ["not_started", "active", "blocked", "passing"]
@@ -428,6 +428,44 @@ tasks:
       - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
       - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
       - "Rendered checks passed: _site/blog/index.html has flow-matching/tutorial/generative-modeling tags; Part 2 contains Contents and the revised alt text; footer/copyright/powered-by strings are absent from /blog/ and Part 2."
+  - id: "FM-17"
+    title: "Series visual quality audit and redesign pass"
+    behavior: "Run a three-agent visual audit and revise weak Flow Matching figures so the series has stronger reader flow, story, and rendered visual quality before export."
+    state: "passing"
+    depends_on: ["FM-16"]
+    verification:
+      - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
+      - "python3 scripts/blog_pipeline/check_post.py _posts/2026-05-19-flow-matching-guide-part-1.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-5.md"
+      - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-6.md"
+      - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+      - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
+    acceptance:
+      - "Use exactly three sub-agents: Planner Agent, Critic Agent, and Revision Agent."
+      - "Double-check paper-figure policy and direct extraction decisions."
+      - "Identify missing, weak, redundant, or visually bad diagrams from rendered screenshots."
+      - "Revise accepted weak figures and nearby prose without editing /Users/quan238/personal/cv."
+      - "Update visual_sources.yml, series_tasks.yml, HANDOFF.md, and export_manifest.yml as needed."
+    evidence:
+      - "Activated after user requested a similar three-agent pass to improve story, intrigue, and visual quality across the Flow Matching blog series."
+      - "Used exactly three sub-agents: Planner Agent, Critic Agent, and Revision Agent. Coordinator handled state, verification, commit, and push."
+      - "Planner Agent finding: no direct paper figure extraction is justified; keep papers and visual blogs as conceptual references only, with final figures local-original and paper_figure_extraction: false."
+      - "Critic Agent finding: no final hotlinked or paper-extracted visuals were found; strongest visual blockers were Part 3 conditional-to-marginal clarity and Part 6 exact-path-vs-solver inspectability, with a smaller Part 5 shared-axis cue."
+      - "Revision Agent regenerated Part 3 from scripts/blog_pipeline/examples/flow_matching_conditional_marginal.py as a two-panel global selection plus zoomed neighborhood figure, labeling the teal direction as an empirical local estimate."
+      - "Revision Agent regenerated Part 6 from scripts/blog_pipeline/examples/flow_matching_official_package_bridge.py with API wiring, dashed exact CondOTProbPath paths drawn above solver paths, a verified-output metric panel, and a magnified residual inset."
+      - "Revision Agent regenerated Part 5 from scripts/blog_pipeline/examples/flow_matching_path_families.py with a same-axes subtitle and axis glyphs; Part 5 prose and alt text now state that rows share x-y axes."
+      - "Updated assets: flow-matching-conditional-marginal-arrows.svg, flow-matching-path-family-snapshots.svg, and flow-matching-official-package-bridge.svg."
+      - "Updated visual metadata and export manifest to record the FM-17 regenerated assets; export remains approval-gated and no files were edited under /Users/quan238/personal/cv."
+      - "Visual evidence screenshots: _blog_work/flow-matching-guide/evidence/fm17_visual_check/conditional-marginal.png, path-family.png, and official-package-bridge.png."
+      - "Verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide -> [harness-check] passed: flow-matching-guide."
+      - "Verification passed: check_post.py for Part 1 and draft Parts 2-6."
+      - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
+      - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
+      - "Rendered checks passed: _site/blog/index.html has flow-matching/tutorial/generative-modeling tags; Flow Matching Parts 1-6 contain Contents; footer/copyright/powered-by strings are absent from /blog/ and Parts 1-6; revised Part 3/5/6 alt text appears in built HTML."
+      - "Policy checks passed: SVG XML parse, YAML parse, and no paper_figure_extraction: true, external image hotlinks, adapted/reproduced/extracted final figures, or raw img tags were found in reader-facing posts/assets."
 
 completion_evidence_required:
   - "python3 scripts/blog_pipeline/check_post.py <draft-or-post>"
