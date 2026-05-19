@@ -1,10 +1,10 @@
 ---
 layout: distill
-title: "Flow Matching Guide and Code, part 6"
-description: "Map the toy flow-matching pieces to official package components."
+title: "Flow Matching: Official API"
+description: "Map toy code to the package."
 date: 2026-05-19
 author: "Quan Tran Hong"
-thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-official-package-bridge.svg
+thumbnail: /assets/img/blog/flow-matching-guide/flow-matching-card-part-6.svg
 tags: ["flow-matching", "tutorial", "reading-notes", "generative-modeling"]
 categories: ["tutorial"]
 series: "flow-matching-guide"

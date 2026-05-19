@@ -17,6 +17,68 @@ pagination:
     after: 3 # The number of links after the current page
 ---
 
+<style>
+  .post .tag-category-list ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+    max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .post .tag-category-list ul p {
+    display: none;
+  }
+
+  .post .tag-category-list ul li {
+    padding: 0.5rem 0.15rem;
+  }
+
+  .post .post-list > li > .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .post .post-list > li > .row > [class*="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .post .post-title {
+    overflow-wrap: anywhere;
+  }
+
+  .post .post-list .card-img {
+    display: block;
+    margin-left: auto;
+  }
+
+  @media (max-width: 575.98px) {
+    .post .post-list > li > .row {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .post .post-list > li > .row > [class*="col-"] {
+      width: 100%;
+      max-width: 100%;
+      flex: 0 0 100%;
+    }
+
+    .post .post-list .card-img {
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 190px;
+    }
+  }
+</style>
+
 <div class="post">
 
 {% assign blog_name_size = site.blog_name | size %}
@@ -180,7 +242,7 @@ pagination:
 </div>
 
   <div class="col-sm-3">
-    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="image">
+    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: contain; width: 100%; max-height: 170px" alt="{{ post.title }} thumbnail">
   </div>
 </div>
 {% endif %}
