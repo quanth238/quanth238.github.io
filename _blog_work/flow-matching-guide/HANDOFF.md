@@ -11,6 +11,7 @@ State date: 2026-05-19
 - Part 1 is published on the branch as `_posts/2026-05-19-flow-matching-guide-part-1.md`.
 - The cold-start contract is `_blog_work/flow-matching-guide/SESSION_BOOTSTRAP.md`.
 - The task source of truth is `_blog_work/flow-matching-guide/series_tasks.yml`; keep `wip_limit: 1`.
+- Runtime rule: use `ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net` / WSL for code examples, training, figure generation, and expensive build/render checks.
 
 ## Harness Files To Read First
 
@@ -36,6 +37,19 @@ python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/
 For visual changes, also run the Jekyll build and inspect the rendered page or a
 screenshot. A task should not be marked `passing` in `series_tasks.yml` until its
 verification command succeeds and the evidence is recorded.
+
+## Remote Runtime
+
+Use the Mac for editing, git, and lightweight static checks only. Run compute
+work on the WSL server:
+
+```bash
+python3 scripts/blog_pipeline/run_remote_example.py --slug flow-matching-guide --script scripts/blog_pipeline/examples/<example>.py
+```
+
+The script defaults to `Admin@desktop-a4ko83o.tail7cb6d9.ts.net` and
+`Ubuntu-24.04`, imports remote outputs into `_blog_work/flow-matching-guide/`,
+and copies figures into `assets/img/blog/flow-matching-guide/`.
 
 ## Latest Verification
 

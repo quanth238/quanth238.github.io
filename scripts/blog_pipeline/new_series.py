@@ -127,6 +127,10 @@ def manifest_content(args: argparse.Namespace, today: str) -> str:
           handoff: "_blog_work/{args.slug}/HANDOFF.md"
           wip_limit: 1
           cold_start_target: "A fresh agent can recover state and choose one verified task from repo files alone."
+          remote_runtime:
+            ssh: "Admin@desktop-a4ko83o.tail7cb6d9.ts.net"
+            wsl_distro: "Ubuntu-24.04"
+            policy: "Use WSL for code examples, training, figure generation, and expensive build/render checks; keep the Mac for editing, git, and lightweight static checks."
 
         checkpoints:
           intake: "created"
@@ -326,14 +330,15 @@ def series_tasks_content(args: argparse.Namespace, today: str) -> str:
               - "Draft has required sections, source links, local visuals or Mermaid, and non-empty alt text."
           - id: "P{args.part:02d}-03"
             title: "Run Part {args.part} example"
-            behavior: "Generate inspectable local code-result figures and remote/local run metadata for the draft's claimed result."
+            behavior: "Generate inspectable code-result figures on the WSL server and import run metadata for the draft's claimed result."
             state: "not_started"
             depends_on: ["P{args.part:02d}-02"]
             verification:
-              - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
+              - "python3 scripts/blog_pipeline/run_remote_example.py --slug {args.slug} --script scripts/blog_pipeline/examples/<example>.py"
             acceptance:
               - "Figures are saved under assets/img/blog/{args.slug}/."
-              - "Run metadata is saved under _blog_work/{args.slug}/remote_runs/ or equivalent local evidence."
+              - "Run metadata is saved under _blog_work/{args.slug}/remote_runs/."
+              - "Remote metadata records ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net or the approved WSL target."
           - id: "P{args.part:02d}-04"
             title: "Review and publish-check Part {args.part}"
             behavior: "Evaluate citations, visual quality, local assets, equation width, human voice, Jekyll rendering, and handoff readiness."
@@ -350,8 +355,8 @@ def series_tasks_content(args: argparse.Namespace, today: str) -> str:
           - "python3 scripts/blog_pipeline/check_harness.py {args.slug}"
           - "python3 scripts/blog_pipeline/check_post.py <draft-or-post>"
           - "python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py"
-          - "BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts"
-          - "Browser or screenshot verification when reader-facing visuals change."
+          - "Run code examples and figure-generation scripts on WSL through scripts/blog_pipeline/run_remote_example.py."
+          - "Run Jekyll/browser or screenshot verification on WSL when the render check is compute-heavy."
         """
     )
 
@@ -395,6 +400,22 @@ def bootstrap_content(args: argparse.Namespace) -> str:
           `check_post.py`, and `check_harness.py`.
         - Feedback: blog checker, Python compile check, Jekyll build,
           browser/screenshot visual review, and evaluator notes.
+
+        ## Remote Runtime
+
+        Use the Mac as the control and editing machine. Run code examples,
+        training, figure-generation scripts, and expensive build/render checks on
+        the WSL server:
+
+        ```bash
+        ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net
+        python3 scripts/blog_pipeline/run_remote_example.py --slug {args.slug} --script scripts/blog_pipeline/examples/<example>.py
+        ```
+
+        `run_remote_example.py` defaults to
+        `Admin@desktop-a4ko83o.tail7cb6d9.ts.net` and `Ubuntu-24.04`. Local Mac
+        commands are acceptable for file inspection, git, `check_harness.py`,
+        `check_post.py`, and Python syntax checks because they are lightweight.
 
         ## Start Commands
 
@@ -441,6 +462,7 @@ def handoff_content(args: argparse.Namespace, today: str) -> str:
         - Task source of truth: `_blog_work/{args.slug}/series_tasks.yml`
         - Visual source of truth: `_blog_work/{args.slug}/visual_sources.yml`
         - Cold-start contract: `_blog_work/{args.slug}/SESSION_BOOTSTRAP.md`
+        - Remote runtime: `ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net`, WSL `Ubuntu-24.04`
         - Keep WIP to one active task.
 
         ## Harness Files To Read First
@@ -464,6 +486,20 @@ def handoff_content(args: argparse.Namespace, today: str) -> str:
 
         The draft check is expected to fail until the visual plan, draft prose,
         local visuals, and references are complete.
+
+        ## Remote Runtime
+
+        Use the Mac for editing, git, and lightweight static checks only. Run
+        code examples, training, figure generation, and expensive build/render
+        checks on the WSL server:
+
+        ```bash
+        python3 scripts/blog_pipeline/run_remote_example.py --slug {args.slug} --script scripts/blog_pipeline/examples/<example>.py
+        ```
+
+        The script defaults to `Admin@desktop-a4ko83o.tail7cb6d9.ts.net` and
+        `Ubuntu-24.04`, imports remote outputs into `_blog_work/{args.slug}/`,
+        and copies figures into `assets/img/blog/{args.slug}/`.
 
         ## Next Recommended Session
 
@@ -524,6 +560,10 @@ def series_prompt_content(args: argparse.Namespace) -> str:
         - Treat series_tasks.yml as the only source of truth for active work.
         - Keep WIP to one task. Valid states are not_started, active, blocked, and passing.
         - Do not mark a task passing until verification commands pass and evidence is recorded.
+        - Run code examples, training, figure-generation scripts, and expensive
+          build/render checks on the WSL server through
+          ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net or run_remote_example.py.
+          Use the Mac only for editing, git, and lightweight static checks.
         - Store visual decisions in visual_sources.yml and final assets under assets/img/blog/{args.slug}/.
         - End every session by updating HANDOFF.md and task evidence.
 

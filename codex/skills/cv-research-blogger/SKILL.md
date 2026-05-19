@@ -73,6 +73,15 @@ changed, what passed, what is blocked, and the next recommended task. A clean
 exit requires passing blog checks, current progress, no stale generated assets,
 and an explicit startup path for the next session.
 
+## Remote Runtime
+
+Use the local Mac as the control/editing machine only. Run code examples,
+training jobs, figure-generation scripts, and expensive build/render checks on
+the WSL server through `ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net` or
+`scripts/blog_pipeline/run_remote_example.py`. Lightweight local commands such
+as `rg`, `git`, `check_harness.py`, `check_post.py`, and Python syntax checks are
+acceptable when they do not create meaningful compute load.
+
 ## Professional Visual Standard
 
 Read `visual_quality.md` before `visual-plan`, `draft`, `review`, or

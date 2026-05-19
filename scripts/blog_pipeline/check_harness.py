@@ -97,6 +97,13 @@ def validate_manifest(slug: str, manifest: dict[str, Any], errors: list[str]) ->
         local_path_exists(str(value), errors, f"manifest.yml harness.{key}")
     if harness.get("wip_limit") != 1:
         errors.append("manifest.yml harness.wip_limit must be 1")
+    remote_runtime = harness.get("remote_runtime") or {}
+    if remote_runtime.get("ssh") != "Admin@desktop-a4ko83o.tail7cb6d9.ts.net":
+        errors.append("manifest.yml harness.remote_runtime.ssh must point to Admin@desktop-a4ko83o.tail7cb6d9.ts.net")
+    if not remote_runtime.get("wsl_distro"):
+        errors.append("manifest.yml harness.remote_runtime.wsl_distro is missing")
+    if "WSL" not in str(remote_runtime.get("policy", "")):
+        errors.append("manifest.yml harness.remote_runtime.policy must state the WSL runtime rule")
 
 
 def validate_visual_plan(plan: dict[str, Any], errors: list[str], warnings: list[str]) -> None:
@@ -189,6 +196,8 @@ def validate_markdown_handoff(series_dir: Path, errors: list[str]) -> None:
             (r"Read Order", "bootstrap must include a read order"),
             (r"Cold-Start Questions", "bootstrap must include cold-start questions"),
             (r"Start Commands", "bootstrap must include start commands"),
+            (r"Remote Runtime", "bootstrap must include remote runtime rules"),
+            (r"Admin@desktop-a4ko83o\.tail7cb6d9\.ts\.net", "bootstrap must name the WSL SSH target"),
             (r"Task Rules", "bootstrap must include task rules"),
             (r"Clean Exit", "bootstrap must include clean exit rules"),
         ],
@@ -200,6 +209,8 @@ def validate_markdown_handoff(series_dir: Path, errors: list[str]) -> None:
             (r"Current State", "handoff must include current state"),
             (r"Harness Files To Read First", "handoff must include the required read files"),
             (r"Bootstrap Check", "handoff must include bootstrap checks"),
+            (r"Remote Runtime", "handoff must include remote runtime rules"),
+            (r"Admin@desktop-a4ko83o\.tail7cb6d9\.ts\.net", "handoff must name the WSL SSH target"),
             (r"Clean Exit", "handoff must include clean exit requirements"),
         ],
         errors,
@@ -210,6 +221,7 @@ def validate_markdown_handoff(series_dir: Path, errors: list[str]) -> None:
             (r"\$cv-research-blogger", "series prompt must invoke the CV blogger skill"),
             (r"Three-role workflow", "series prompt must include Planner/Generator/Evaluator workflow"),
             (r"Harness rules", "series prompt must include harness rules"),
+            (r"Admin@desktop-a4ko83o\.tail7cb6d9\.ts\.net", "series prompt must name the WSL SSH target"),
             (r"Writing constraints", "series prompt must include writing constraints"),
         ],
         errors,

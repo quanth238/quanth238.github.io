@@ -53,6 +53,10 @@ Harness rules:
   passing.
 - Do not mark a task passing until its verification commands pass and evidence
   is recorded.
+- Run code examples, training, figure-generation scripts, and expensive
+  build/render checks on the WSL server through
+  ssh Admin@desktop-a4ko83o.tail7cb6d9.ts.net or run_remote_example.py. Use the
+  Mac only for editing, git, and lightweight static checks.
 - Store visual decisions in visual_sources.yml, code-run logs under
   _blog_work/flow-matching-guide/remote_runs/, and final assets under
   assets/img/blog/flow-matching-guide/.
