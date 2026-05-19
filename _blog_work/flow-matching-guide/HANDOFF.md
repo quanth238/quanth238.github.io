@@ -5,14 +5,17 @@ State date: 2026-05-19
 ## Current State
 
 - Worktree: `/Users/quan238/personal/code_space/research-harness-cookiecutter-blog-visual-pipeline`
-- Branch: `codex/cv-research-blog-visual-pipeline`
-- PR: `https://github.com/quanth238/quanth238.github.io/pull/1`
+- Branch: `codex/flow-matching-series-fm-03`
+- Previous PR: `https://github.com/quanth238/quanth238.github.io/pull/1` (merged before FM-03).
 - Main CV checkout at `/Users/quan238/personal/cv` is not the working tree for this pipeline.
 - Part 1 is published on the branch as `_posts/2026-05-19-flow-matching-guide-part-1.md`.
 - The cold-start contract is `_blog_work/flow-matching-guide/SESSION_BOOTSTRAP.md`.
 - The task source of truth is `_blog_work/flow-matching-guide/series_tasks.yml`; keep `wip_limit: 1`.
 - `FM-02` is passing. The Part 1 overview figure is now a local SVG schematic:
   `assets/img/blog/flow-matching-guide/flow-matching-overview.svg`.
+- `FM-03` is passing. The full-series plan is stored in
+  `_blog_work/flow-matching-guide/series_plan.yml`, with planned visual briefs
+  for Parts 2-6 in `_blog_work/flow-matching-guide/visual_sources.yml`.
 
 ## Harness Files To Read First
 
@@ -23,6 +26,7 @@ State date: 2026-05-19
 - `_blog_work/flow-matching-guide/manifest.yml`
 - `_blog_work/flow-matching-guide/visual_sources.yml`
 - `_blog_work/flow-matching-guide/series_tasks.yml`
+- `_blog_work/flow-matching-guide/series_plan.yml`
 - `_blog_work/flow-matching-guide/series_prompt.md`
 
 ## Bootstrap Check
@@ -40,6 +44,31 @@ screenshot. A task should not be marked `passing` in `series_tasks.yml` until it
 verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
+
+2026-05-19 FM-03 series-planning artifact check:
+
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed after artifact edits.
+- YAML parse of `_blog_work/flow-matching-guide/manifest.yml`,
+  `_blog_work/flow-matching-guide/series_plan.yml`,
+  `_blog_work/flow-matching-guide/visual_sources.yml`, and
+  `_blog_work/flow-matching-guide/series_tasks.yml`: passed.
+- `git diff --name-only`: showed only tracked allowed planning artifacts:
+  `_blog_work/flow-matching-guide/HANDOFF.md`,
+  `_blog_work/flow-matching-guide/series_tasks.yml`, and
+  `_blog_work/flow-matching-guide/visual_sources.yml`.
+- `git status --short`: showed only allowed planning artifacts, including new
+  untracked `_blog_work/flow-matching-guide/series_plan.yml`.
+- Generator artifacts created or updated:
+  `_blog_work/flow-matching-guide/series_plan.yml`,
+  `_blog_work/flow-matching-guide/visual_sources.yml`,
+  `_blog_work/flow-matching-guide/series_tasks.yml`, and
+  `_blog_work/flow-matching-guide/HANDOFF.md`.
+- Reader-facing `_drafts` and `_posts` files were not created or edited.
+- Evaluator decision: `PASS_WITH_NOTES`. Each planned part has one clear reader
+  question, the sequence teaches naturally, planned sections are tied to
+  diagnostics or code results, citations support the planned claims, visual
+  briefs match the content, code targets are feasible, and no Part 2 prose was
+  drafted.
 
 2026-05-19 FM-02 overview redesign check:
 
@@ -63,11 +92,24 @@ sampling trajectory. The replaced AI bitmap remains registered in
 
 ## Next Recommended Session
 
-Use `$cv-research-blogger` and start with the Planner role. Keep WIP to one
-task. The next recommended task is `FM-03`: plan the full Flow Matching series.
+Use `$cv-research-blogger` and start with `FM-04` only if the user asks to draft
+Part 2. Keep WIP to one task. Before drafting, verify official solver API names
+and generate the Part 2 step-count result planned in `series_plan.yml` and
+`visual_sources.yml`.
 
 Do not move directly into drafting Part 2 until the visual plan for Part 2 has
 figure briefs and cited visual references.
+
+## FM-03 Gaps To Preserve
+
+- Part 2: exact solver APIs and naming in `facebookresearch/flow_matching` are
+  not verified.
+- Part 3: exact theorem statement and notation from the Flow Matching Guide are
+  not verified.
+- Part 5: conical Gaussian or diffusion schedule equations need primary-source
+  verification before drafting.
+- Part 6: official package install/run feasibility in this worktree is
+  unverified; keep Part 6 blocked if that check fails.
 
 ## Clean Exit Requirements
 
