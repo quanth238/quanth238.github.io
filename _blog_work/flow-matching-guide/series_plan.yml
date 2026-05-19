@@ -58,7 +58,7 @@ parts:
     transition: "Part 2 implements the sampling loop and compares solver step counts."
 
   - part: 2
-    status: "planned"
+    status: "draft-passing"
     title: "Sampling loop and solver steps"
     reader_question: "How do I turn a trained velocity field into samples, and what changes when I change ODE step count?"
     objective: "Make Euler or midpoint/RK sampling concrete before deeper theory."
@@ -72,8 +72,10 @@ parts:
       - "Numerical solvers approximate the ODE integral."
       - "In the toy setting, fewer steps are faster but can expose field or path errors."
     claim_scope: "Keep solver-step conclusions toy-scoped; do not imply ImageNet-scale behavior."
-    needs_verification:
-      - "Verify exact solver APIs and naming in facebookresearch/flow_matching before mapping tutorial code to official components."
+    verification_evidence:
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T150932Z_fm04_official_api/api_verification.md"
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T151120Z_fm04_solver_steps/solver_step_metrics.json"
+      - "assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg"
     outline:
       - "Trained field input"
       - "Euler sampler"
@@ -81,8 +83,8 @@ parts:
       - "Visual diagnostics"
       - "Limits of the toy field"
       - "Next step"
-    code_target: "Extend the 2D toy to compare 4, 8, 16, and 32 solver steps; output sample/path panels and a small metric table."
-    visual_intent: "Data plot with trajectories by step count plus final samples; labels must make the toy scope explicit."
+    code_target: "Complete: compared 4, 8, 16, and 32 Euler steps against a 128-step Euler reference on a fixed 2D toy field."
+    visual_intent: "Complete: approved local SVG with trajectories by step count, final samples, toy-scope labels, and metric summary."
     transition: "Part 3 explains why conditional endpoint regression can learn the marginal field."
 
   - part: 3

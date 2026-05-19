@@ -1,7 +1,7 @@
 series: "flow-matching-guide"
 updated_at: "2026-05-19"
 wip_limit: 1
-current_state: "fm-03-passing"
+current_state: "fm-04-passing"
 active_task: null
 state_policy:
   valid_states: ["not_started", "active", "blocked", "passing"]
@@ -90,7 +90,7 @@ tasks:
   - id: "FM-04"
     title: "Implement Flow Matching Part 2"
     behavior: "Draft and verify Part 2 after its Planner visual plan exists, focusing on one sampling question and one code result."
-    state: "not_started"
+    state: "passing"
     depends_on: ["FM-03"]
     verification:
       - "python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md"
@@ -100,6 +100,17 @@ tasks:
       - "Answer one practical sampling question."
       - "Include solver-step or path-quality code result."
       - "Use professional local diagrams and plots before publication."
+    evidence:
+      - "Activated on branch codex/flow-matching-series-complete-drafts after cold-start verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide -> [harness-check] passed: flow-matching-guide."
+      - "Planner verified official continuous solver API from facebookresearch/flow_matching commit 11568d37f8d5a080e12aa7b5305d9c35ae07d136; evidence: _blog_work/flow-matching-guide/remote_runs/20260519T150932Z_fm04_official_api/api_verification.md."
+      - "Generator created draft: _drafts/flow-matching-guide-part-2.md."
+      - "Generator created solver-step example: scripts/blog_pipeline/examples/flow_matching_solver_steps.py."
+      - "Code-result metadata: _blog_work/flow-matching-guide/remote_runs/20260519T151120Z_fm04_solver_steps/solver_step_metrics.json."
+      - "Local figure: assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg."
+      - "Verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide -> [harness-check] passed: flow-matching-guide."
+      - "Verification passed: python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md -> [blog-check] passed."
+      - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
+      - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
   - id: "FM-05"
     title: "Implement Flow Matching Part 3"
     behavior: "Draft and verify Part 3 after the conditional-to-marginal theorem wording and notation are checked against primary sources."

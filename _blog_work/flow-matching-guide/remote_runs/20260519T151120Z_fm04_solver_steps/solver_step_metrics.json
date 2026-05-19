@@ -1,0 +1,39 @@
+{
+  "task": "FM-04",
+  "seed": 19,
+  "training_steps": 640,
+  "batch_size": 128,
+  "loss_start": 3.268772879692945,
+  "loss_final": 2.1469256925147033,
+  "solver": "explicit Euler",
+  "step_counts": [
+    4,
+    8,
+    16,
+    32
+  ],
+  "reference_steps": 128,
+  "metrics": [
+    {
+      "steps": 4.0,
+      "mean_reference_drift": 0.238808260758179,
+      "mean_nearest_mode_distance": 1.423223614366899
+    },
+    {
+      "steps": 8.0,
+      "mean_reference_drift": 0.12583425875733736,
+      "mean_nearest_mode_distance": 1.4761549963433616
+    },
+    {
+      "steps": 16.0,
+      "mean_reference_drift": 0.061565260699349006,
+      "mean_nearest_mode_distance": 1.5090053946848103
+    },
+    {
+      "steps": 32.0,
+      "mean_reference_drift": 0.02705054963597448,
+      "mean_nearest_mode_distance": 1.5271885999735255
+    }
+  ],
+  "asset": "assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg"
+}

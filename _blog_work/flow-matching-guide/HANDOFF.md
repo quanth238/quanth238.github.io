@@ -51,6 +51,28 @@ verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
 
+2026-05-19 FM-04 Part 2 draft check:
+
+- Active branch: `codex/flow-matching-series-complete-drafts`.
+- FM-04 is passing and no task is currently active.
+- Planner verified the current official continuous solver API from
+  `facebookresearch/flow_matching` commit
+  `11568d37f8d5a080e12aa7b5305d9c35ae07d136`; retained evidence is in
+  `_blog_work/flow-matching-guide/remote_runs/20260519T150932Z_fm04_official_api/api_verification.md`.
+- Generator created `_drafts/flow-matching-guide-part-2.md`, the deterministic
+  example `scripts/blog_pipeline/examples/flow_matching_solver_steps.py`, run
+  metadata under
+  `_blog_work/flow-matching-guide/remote_runs/20260519T151120Z_fm04_solver_steps/`,
+  and the local figure
+  `assets/img/blog/flow-matching-guide/flow-matching-solver-steps.svg`.
+- Evaluator decision: passed. The draft keeps claims toy-scoped, registers the
+  local figure and alt text in `visual_sources.yml`, uses verified solver names
+  only, keeps equations narrow, and avoids reader-facing pipeline prose.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-2.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+
 2026-05-19 harness/website separation correction:
 
 - The harness checkout remains the workshop for `_blog_work/`,
