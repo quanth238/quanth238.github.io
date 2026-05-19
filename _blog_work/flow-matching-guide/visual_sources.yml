@@ -32,7 +32,7 @@ references:
     use: "implementation-reference"
 generated_figures:
   - path: "assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png"
-    alt: "Original flow matching overview showing source noise, paths, velocity arrows, a learned vector field, and generated samples."
+    alt: "Flow matching overview showing source noise, paths, velocity arrows, a learned vector field, and generated samples."
     prompt: |
       Use case: scientific-educational. Asset type: original blog figure for a generative modeling tutorial. Create a clean original scientific explainer figure for flow matching. Show a left cloud of blue Gaussian noise points, a right cloud of red data points with two clusters, several smooth paths moving from left to right, small arrows along the paths indicating target velocity, and a subtle learned vector field in the middle. Include a final sampling trajectory from noise through an ODE solver path into the data cloud. Style should be crisp, professional, light background, vector-like, suitable for a machine learning tutorial. Avoid copying any existing diagram. Avoid dense text, avoid equations, avoid logos, avoid watermarks. Use only a few short labels if text is reliable: source noise, path, velocity, learned field, sample.
     inspiration_sources:
@@ -45,10 +45,10 @@ mermaid_figures:
     status: "created"
 remote_code_figures:
   - path: "assets/img/blog/flow-matching-guide/flow-matching-loss.svg"
-    alt: "Remote WSL toy run loss curve for velocity regression."
+    alt: "Velocity-regression loss curve for a 2D flow matching check."
     run_id: "20260519T105934Z"
     status: "created"
   - path: "assets/img/blog/flow-matching-guide/flow-matching-paths.svg"
-    alt: "Remote WSL toy run paths moving source samples toward a two-cluster target distribution."
+    alt: "Paths moving source samples toward a two-cluster target distribution."
     run_id: "20260519T105934Z"
     status: "created"

@@ -32,9 +32,9 @@ Flow matching is a generative modeling framework built around a velocity field. 
 
 The practical object is simple: learn $v_\theta(x, t)$, a neural velocity field. During sampling, start from $x_0 \sim p_0$ and integrate the learned field until $t=1$. If the field is good, the final sample follows the data distribution.
 
-{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png" class="img-fluid rounded z-depth-1" width="1693" height="929" zoomable=true alt="Original flow matching overview showing source noise, paths, velocity arrows, a learned field, and generated samples." %}
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-ai-overview.png" class="img-fluid rounded z-depth-1" width="1693" height="929" zoomable=true alt="Flow matching overview showing source noise, paths, velocity arrows, a learned field, and generated samples." %}
 
-The figure is original, but its visual plan is based on cited explanations of probability paths and velocity fields rather than copied diagrams. The goal of the first part is to keep the usable sequence visible: path, target velocity, loss, code result, then the theory that justifies the regression target.
+The working sequence is: choose a path, compute its velocity target, train with a regression loss, then sample by integrating the learned field.
 
 ## Problem setup
 
@@ -91,7 +91,7 @@ flowchart LR
     solver --> generated
 ```
 
-The diagram hides one theoretical step. The model is trained on conditional targets, but sampling needs a marginal velocity field that moves the whole source distribution into the whole data distribution. The flow matching result is that the conditional regression objective has the right population optimum for that marginal field under the chosen probability path.
+For now, read this as a supervised velocity-prediction problem. The reason this conditional target can later be used for unconditional sampling comes after the code result.
 
 ## Training objective
 
@@ -106,32 +106,6 @@ $$
 $$
 
 This objective is attractive because it avoids solving the sampling ODE during training. Each training step only needs four operations: sample endpoints, sample time, interpolate, and regress the velocity.
-
-I ran a small dependency-light 2D example on the remote WSL server through `scripts/blog_pipeline/run_remote_example.py`. The toy model is intentionally simple: it uses a linear velocity field and a two-cluster target distribution, so the result should be read as a sanity check for the training loop, not as a high-quality generative model. The run completed with Python 3.12.3 and reduced the velocity-regression loss from 3.479 to 2.010 over 520 steps.
-
-{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-loss.svg" class="img-fluid rounded z-depth-1" width="760" height="360" zoomable=true alt="Remote WSL toy run loss curve for velocity regression." %}
-
-The path plot makes the sampling side concrete. Black dots are initial source samples, blue curves are Euler-integrated trajectories under the learned field, and red points are the target data cloud.
-
-{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-paths.svg" class="img-fluid rounded z-depth-1" width="760" height="460" zoomable=true alt="Remote WSL toy run paths moving source samples toward a two-cluster target distribution." %}
-
-The limitation is also visible. A straight line between independently paired noise and data points is easy to teach, but it is not always the best path for every domain. The full guide discusses richer probability paths, discrete flow matching, Riemannian settings, and design choices that matter once the basic construction is clear.
-
-## Sampling procedure
-
-After training, discard the paired endpoint construction. Sampling starts from fresh noise and follows the learned vector field:
-
-$$
-\frac{d x_t}{dt} = v_\theta(x_t, t), \qquad x_0 \sim p_0.
-$$
-
-A numerical ODE solver approximates
-
-$$
-x_1 = x_0 + \int_0^1 v_\theta(x_t, t)\,dt.
-$$
-
-The number of solver steps controls the speed-quality tradeoff. More steps usually track the learned field more accurately; fewer steps are faster but can expose errors in the learned trajectory. The official [`facebookresearch/flow_matching`](https://github.com/facebookresearch/flow_matching) library is the best place to check the current implementation patterns because it includes continuous and discrete flow matching examples.
 
 ## Minimal implementation
 
@@ -164,7 +138,41 @@ def flow_matching_loss(model, data: torch.Tensor) -> torch.Tensor:
     return torch.mean((velocity_pred - velocity_target) ** 2)
 ```
 
-This code does not implement conditioning, discrete state spaces, solver choices, or improved path design. It isolates the central training signal: velocity regression along a chosen probability path.
+This fragment is the training target in code. `x0` is fresh Gaussian noise, `x1` is a batch of real data, `t` chooses a point between them, `xt` is that interpolated point, and `x1 - x0` is the velocity the model learns to predict.
+
+## Code result
+
+A 2D check with a linear velocity model and a two-cluster target reduced the velocity-regression loss from 3.479 to 2.010 over 520 steps. This confirms that the training target is learnable in a controlled setting: the model sees interpolated points and learns the velocity direction that moves them toward the sampled data endpoint.
+
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-loss.svg" class="img-fluid rounded z-depth-1" width="760" height="360" zoomable=true alt="Velocity-regression loss curve for a 2D flow matching check." %}
+
+The path plot makes the sampling side concrete. Black dots are initial source samples, blue curves are Euler-integrated trajectories under the learned field, and red points are the target data cloud.
+
+{% include figure.liquid path="/assets/img/blog/flow-matching-guide/flow-matching-paths.svg" class="img-fluid rounded z-depth-1" width="760" height="460" zoomable=true alt="Paths moving source samples toward a two-cluster target distribution." %}
+
+The limitation is also visible. Straight lines between independently paired noise and data points are easy to teach, but they are not always the best path for every domain.
+
+## Sampling procedure
+
+One theoretical step remains. Training uses conditional endpoint pairs $(x_0, x_1)$, but sampling starts from fresh noise without choosing a target endpoint. Flow matching shows that the conditional regression objective has the right population optimum for the marginal velocity field under the chosen probability path.
+
+After training, discard the paired endpoint construction. Sampling starts from fresh noise and follows the learned vector field:
+
+$$
+\frac{d x_t}{dt} = v_\theta(x_t, t), \qquad x_0 \sim p_0.
+$$
+
+A numerical ODE solver approximates
+
+$$
+x_1 = x_0 + \int_0^1 v_\theta(x_t, t)\,dt.
+$$
+
+The number of solver steps controls the speed-quality tradeoff. More steps usually track the learned field more accurately; fewer steps are faster but can expose errors in the learned trajectory. The official [`facebookresearch/flow_matching`](https://github.com/facebookresearch/flow_matching) library is the best place to check the current implementation patterns because it includes continuous and discrete flow matching examples.
+
+## Next part
+
+Part 1 established the minimal loop: choose a path, regress its velocity, and use the learned field for sampling. The remaining question is how sampling quality changes when the solver, path, and model become less minimal. Part 2 will build the sampling loop around this loss, vary the ODE step count, and show why better probability paths can matter once the straight-line construction is clear.
 
 ## References and visual resources
 

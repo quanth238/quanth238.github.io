@@ -233,13 +233,21 @@ def draft_content(args: argparse.Namespace, today: str) -> str:
 
         <!-- State the objective in the same symbols introduced above. Explain what each term does before moving to code. -->
 
-        ## Sampling procedure
-
-        <!-- Describe how the trained or computed object is used. Include the first diagnostic a reader should check. -->
-
         ## Minimal implementation
 
         <!-- Add the smallest runnable fragment that matches the notation above. Keep imports and helper functions only when they are needed. -->
+
+        ## Code result
+
+        <!-- Describe what the result shows, not how the pipeline produced it. Add local figures from assets/img/blog/<series-slug>/. -->
+
+        ## Sampling procedure
+
+        <!-- Describe how the trained or computed object is used. Put theory here after the reader has seen the loss, code, and result. -->
+
+        ## Next part
+
+        <!-- State what this part established, what question remains, and what the next part will cover. -->
 
         ## References and visual resources
 

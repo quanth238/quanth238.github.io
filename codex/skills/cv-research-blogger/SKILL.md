@@ -68,8 +68,10 @@ Every tutorial draft should include these sections:
 - Problem setup
 - Core construction
 - Training objective
-- Sampling procedure
 - Minimal implementation
+- Code result
+- Sampling procedure
+- Next part
 - References and visual resources
 
 For math-heavy tutorials, use `layout: distill` with:
@@ -84,6 +86,7 @@ mermaid:
 
 - Explain from scratch but avoid shallow summaries.
 - Keep theory to the amount needed for a working mental model.
+- Order the tutorial as path, velocity target, loss, minimal code, code result, then theory/sampling.
 - Use named topic sections instead of generic sections such as "My mental model", "Minimum math", or "Common confusions".
 - Show at least one diagram before long derivations, and cite useful external visual explanations.
 - Keep visual-source planning explicit: at least two cited visual/blog references before publication.
@@ -91,6 +94,10 @@ mermaid:
 - In `distill` posts, render local images with `{% include figure.liquid ... class="img-fluid rounded z-depth-1" width="..." height="..." zoomable=true alt="..." %}` so large figures stay responsive and SVGs keep nonzero height.
 - Include toy code when the topic is algorithmic.
 - Prefer remote runnable examples when the post claims code results.
+- Keep provenance and process details out of the article body. Store visual inspiration, image prompts, remote execution details, and run metadata in `_blog_work/<series-slug>/`, not in reader-facing prose.
+- Code-result prose should describe what the result shows, not how the pipeline produced it. Do not write sentences such as "I ran a small dependency-light example..." or mention `scripts/blog_pipeline` in the post body.
+- State scope positively. Avoid caveats such as "This code does not implement..." unless the missing piece is necessary for correct use; explain what the shown code does and where the next part continues.
+- End every series part with a short `Next part` section that says what this part established, what question remains, and what the next part will cover.
 - Preserve uncertainty: mark unverified claims instead of inventing support.
 - Remove AI-sounding filler, inflated claims, chatbot phrases, generic conclusions, and draft-process notes.
 - Do not publish without `publish_ready: true`, `draft_stage: "published"`, and user approval.

@@ -29,8 +29,10 @@ REQUIRED_SECTIONS = [
     "Problem setup",
     "Core construction",
     "Training objective",
-    "Sampling procedure",
     "Minimal implementation",
+    "Code result",
+    "Sampling procedure",
+    "Next part",
     "References and visual resources",
 ]
 FORBIDDEN_SECTION_NAMES = [
@@ -88,6 +90,28 @@ BANNED_PATTERNS = [
     r"\bkey takeaways\b",
     r"\bgreat question\b",
     r"\bi hope this helps\b",
+    r"\bthe figure is original\b",
+    r"\bthis figure is original\b",
+    r"\bthis diagram is original\b",
+    r"\boriginal (?:figure|diagram|visual)\b",
+    r"\bvisual plan is based\b",
+    r"\bdo not copy\b",
+    r"\bnot copied diagrams\b",
+    r"\bi generated (?:this|the) (?:figure|diagram|image|visual)\b",
+    r"\bgenerated (?:with|by) (?:AI|ChatGPT|image generation)\b",
+    r"\bi ran a small\b",
+    r"\bi ran (?:a|the) (?:small|minimal|toy)\b",
+    r"\bdependency-light\b",
+    r"\bremote WSL server\b",
+    r"\bscripts/blog_pipeline\b",
+    r"\bthis code does not implement\b",
+    r"\bthe code does not implement\b",
+    r"\bdoes not implement the full\b",
+    r"\bthis is not a full implementation\b",
+    r"\bnot a production implementation\b",
+    r"\bfor provenance\b",
+    r"\bfigure provenance\b",
+    r"\bprompt provenance\b",
 ]
 
 
@@ -187,6 +211,23 @@ def local_asset_errors(value: str | None, label: str) -> list[str]:
     return []
 
 
+def section_order_errors(body: str) -> list[str]:
+    positions: dict[str, int] = {}
+    for section in REQUIRED_SECTIONS:
+        match = re.search(rf"^##\s+{re.escape(section)}\s*$", body, re.MULTILINE)
+        if match:
+            positions[section] = match.start()
+
+    ordered = [section for section in REQUIRED_SECTIONS if section in positions]
+    for left, right in zip(ordered, ordered[1:]):
+        if positions[left] > positions[right]:
+            return [
+                "sections are out of order; expected: "
+                + " -> ".join(REQUIRED_SECTIONS)
+            ]
+    return []
+
+
 def visual_plan_errors(front_matter: str, body: str) -> list[str]:
     errors: list[str] = []
     plan_value = front_matter_value(front_matter, "visual_plan")
@@ -264,6 +305,7 @@ def validate(path: Path) -> tuple[list[str], list[str]]:
     for section in REQUIRED_SECTIONS:
         if not re.search(rf"^##\s+{re.escape(section)}\s*$", body, re.MULTILINE):
             errors.append(f"missing required section: {section}")
+    errors.extend(section_order_errors(body))
 
     for section in FORBIDDEN_SECTION_NAMES:
         if re.search(rf"^##\s+{re.escape(section)}\s*$", body, re.MULTILINE):
