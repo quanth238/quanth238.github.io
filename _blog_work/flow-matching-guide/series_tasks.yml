@@ -1,7 +1,7 @@
 series: "flow-matching-guide"
 updated_at: "2026-05-19"
 wip_limit: 1
-current_state: "fm-04-passing"
+current_state: "fm-05-passing"
 active_task: null
 state_policy:
   valid_states: ["not_started", "active", "blocked", "passing"]
@@ -114,7 +114,7 @@ tasks:
   - id: "FM-05"
     title: "Implement Flow Matching Part 3"
     behavior: "Draft and verify Part 3 after the conditional-to-marginal theorem wording and notation are checked against primary sources."
-    state: "not_started"
+    state: "passing"
     depends_on: ["FM-04"]
     verification:
       - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
@@ -125,6 +125,17 @@ tasks:
       - "Answer one practical question about why conditional endpoint training supports endpoint-free sampling."
       - "Use source-verified theorem wording or mark unresolved claims as blocked."
       - "Include the planned conditional-to-marginal visual and local code-result evidence."
+    evidence:
+      - "Activated on branch codex/flow-matching-series-complete-drafts after FM-04 passed and was committed as c3aa014."
+      - "Planner verified theorem wording and notation against Flow Matching Guide and Code plus Flow Matching for Generative Modeling; evidence: _blog_work/flow-matching-guide/remote_runs/20260519T152000Z_fm05_source_check/source_verification.md."
+      - "Generator created draft: _drafts/flow-matching-guide-part-3.md."
+      - "Generator created conditional-to-marginal example: scripts/blog_pipeline/examples/flow_matching_conditional_marginal.py."
+      - "Code-result metadata: _blog_work/flow-matching-guide/remote_runs/20260519T152215Z_fm05_conditional_marginal/conditional_marginal_metrics.json."
+      - "Local figure: assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg."
+      - "Verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide -> [harness-check] passed: flow-matching-guide."
+      - "Verification passed: python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md -> [blog-check] passed."
+      - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
+      - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
   - id: "FM-06"
     title: "Implement Flow Matching Part 4"
     behavior: "Draft and verify Part 4 on endpoint couplings, minibatch OT, and rectified-path diagnostics."

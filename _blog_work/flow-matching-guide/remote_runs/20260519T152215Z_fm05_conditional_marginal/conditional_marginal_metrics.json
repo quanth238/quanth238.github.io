@@ -1,0 +1,17 @@
+{
+  "task": "FM-05",
+  "seed": 37,
+  "time": 0.55,
+  "query": [
+    0.05,
+    0.0
+  ],
+  "candidate_pairs": 5000,
+  "selected_pairs": 26,
+  "average_velocity": [
+    -0.12593217046549787,
+    0.13117977520997687
+  ],
+  "nearest_radius": 0.18185808548943222,
+  "asset": "assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg"
+}

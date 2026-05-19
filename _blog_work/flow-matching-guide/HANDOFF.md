@@ -51,6 +51,27 @@ verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
 
+2026-05-19 FM-05 Part 3 draft check:
+
+- Active branch: `codex/flow-matching-series-complete-drafts`.
+- FM-05 is passing and no task is currently active.
+- Planner verified theorem wording against `Flow Matching Guide and Code` and
+  `Flow Matching for Generative Modeling`; retained evidence is in
+  `_blog_work/flow-matching-guide/remote_runs/20260519T152000Z_fm05_source_check/source_verification.md`.
+- Generator created `_drafts/flow-matching-guide-part-3.md`, the deterministic
+  example `scripts/blog_pipeline/examples/flow_matching_conditional_marginal.py`,
+  run metadata under
+  `_blog_work/flow-matching-guide/remote_runs/20260519T152215Z_fm05_conditional_marginal/`,
+  and the local figure
+  `assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg`.
+- Evaluator decision: passed. The draft distinguishes conditional endpoint
+  velocities from the marginal sampling field, uses source-verified theorem
+  language, includes Mermaid accessibility metadata, and keeps all assets local.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-3.md`: passed.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+
 2026-05-19 FM-04 Part 2 draft check:
 
 - Active branch: `codex/flow-matching-series-complete-drafts`.

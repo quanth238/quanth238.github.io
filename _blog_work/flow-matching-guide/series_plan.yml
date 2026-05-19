@@ -88,7 +88,7 @@ parts:
     transition: "Part 3 explains why conditional endpoint regression can learn the marginal field."
 
   - part: 3
-    status: "planned"
+    status: "draft-passing"
     title: "Conditional to marginal velocity"
     reader_question: "Why is it valid to train on paired endpoints but sample without a target endpoint?"
     objective: "Give the conditional-expectation argument in inspectable form."
@@ -101,8 +101,10 @@ parts:
       - "The ideal marginal velocity is intractable in general."
       - "Conditional flow matching uses cheap conditional velocities."
       - "The population optimum matches the marginal velocity under the standard CFM argument."
-    needs_verification:
-      - "Verify the exact theorem statement and notation from the Flow Matching Guide before drafting."
+    verification_evidence:
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T152000Z_fm05_source_check/source_verification.md"
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T152215Z_fm05_conditional_marginal/conditional_marginal_metrics.json"
+      - "assets/img/blog/flow-matching-guide/flow-matching-conditional-marginal-arrows.svg"
     outline:
       - "Ideal FM loss"
       - "Conditional path"
@@ -110,8 +112,8 @@ parts:
       - "Averaging intuition"
       - "Population objective"
       - "Sampling implication"
-    code_target: "Create a grid/quiver toy showing many conditional arrows near (x,t) and their average direction."
-    visual_intent: "Math-light Mermaid schematic plus local quiver plot; labels must distinguish conditional arrows from the learned marginal field."
+    code_target: "Complete: created a local quiver-style diagnostic showing endpoint-conditioned arrows near one (x,t) and their empirical average."
+    visual_intent: "Complete: approved Mermaid argument map plus local SVG that distinguishes conditional arrows from the marginal direction."
     transition: "Part 4 changes the endpoint coupling and studies path quality."
 
   - part: 4
