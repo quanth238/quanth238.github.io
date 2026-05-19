@@ -49,6 +49,8 @@ BANNED_PATTERNS = [
     r"\bcheckpoint draft\b",
     r"\bthis file is a scaffold\b",
     r"\bconcise tutorial note that connects\b",
+    r"\bthis tutorial explains\b",
+    r"\bthis post explains\b",
     r"\bshould help a student answer\b",
     r"\bnotebook written after\b",
     r"\bthe reader should see\b",

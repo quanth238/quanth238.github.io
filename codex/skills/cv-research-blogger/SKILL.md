@@ -18,6 +18,23 @@ model, or what the post "should help" someone do.
 - Generator: draft prose, Mermaid diagrams, original AI image prompts, and runnable examples.
 - Evaluator: citation support, visual metadata, local asset checks, human voice, remote code-result presence, and Jekyll render checks.
 
+## Three-Role Execution
+
+Use the roles as an explicit handoff, even when one Codex session performs all
+of them:
+
+1. Planner decides the practical reader question, core sources, external visual
+   references, original-figure plan, and code-result target.
+2. Generator writes the outline, prose, Mermaid, image prompts, and runnable
+   example around that plan. The generator must not add uncited claims or
+   reader-facing process notes.
+3. Evaluator checks citations, visual metadata, local assets, equation width,
+   human voice, code-result presence, and Jekyll/browser rendering before any
+   post is considered publishable.
+
+Do not skip the Planner role for later posts in a series. The next part still
+needs its own practical question, visual plan, and code result.
+
 ## Routing
 
 Expected prompt:
