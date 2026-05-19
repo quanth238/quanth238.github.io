@@ -208,18 +208,18 @@ def draft_content(args: argparse.Namespace, today: str) -> str:
 
         <!-- Define the smallest notation needed for this topic. Keep the first equation close to the first implementation target. -->
 
-        ## Core construction
+        ## Path and velocity target
 
-        <!-- Explain the construction step that turns the source material into something a student can run or draw. -->
+        <!-- Explain the path and target quantity that turn the source material into something a student can run or draw. -->
 
         ```mermaid
         flowchart LR
             accTitle: {topic_label} Working Diagram
-            accDescr: The diagram should show the practical path from input assumptions to the quantity being optimized or computed.
+            accDescr: The diagram connects the input assumptions to the quantity being optimized or computed.
 
             source["Source material"]
             setup["Problem setup"]
-            construction["Core construction"]
+            construction["Path and target"]
             objective["Objective or computation"]
             result["Result to inspect"]
 
@@ -247,7 +247,7 @@ def draft_content(args: argparse.Namespace, today: str) -> str:
 
         ## Next part
 
-        <!-- State what this part established, what question remains, and what the next part will cover. -->
+        <!-- State only what the next part will cover, ideally in one short sentence. -->
 
         ## References and visual resources
 

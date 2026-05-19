@@ -20,6 +20,10 @@ chart:
 visual_plan: "_blog_work/flow-matching-guide/visual_sources.yml"
 source_materials:
   - "https://arxiv.org/abs/2412.06264"
+  - "https://arxiv.org/abs/2210.02747"
+  - "https://arxiv.org/abs/2302.00482"
+  - "https://arxiv.org/abs/2209.03003"
+  - "https://arxiv.org/abs/2303.08797"
   - "https://github.com/facebookresearch/flow_matching"
   - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
   - "https://www.weideng.org/posts/flow_matching/"
@@ -28,7 +32,7 @@ source_materials:
 
 ## Introduction
 
-Flow matching is a generative modeling framework built around a velocity field. Instead of learning a denoising step for a fixed noise schedule, the model learns how points should move along a continuous path from a source distribution to the data distribution. Lipman et al. present the framework as a self-contained guide with a PyTorch package and examples for image and text generation [Flow Matching Guide and Code](https://arxiv.org/abs/2412.06264).
+Flow matching is a generative modeling framework built around a velocity field. Instead of learning a denoising step for a fixed noise schedule, the model learns how points should move along a continuous path from a source distribution to the data distribution. The first flow matching paper introduced this as simulation-free regression for continuous normalizing flows [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747), while the newer guide collects the foundations, design choices, extensions, and PyTorch examples in one place [Flow Matching Guide and Code](https://arxiv.org/abs/2412.06264).
 
 The practical object is simple: learn $v_\theta(x, t)$, a neural velocity field. During sampling, start from $x_0 \sim p_0$ and integrate the learned field until $t=1$. If the field is good, the final sample follows the data distribution.
 
@@ -41,14 +45,16 @@ The working sequence is: choose a path, compute its velocity target, train with 
 Let $p_0$ be an easy source distribution, usually a standard Gaussian, and let $p_1$ be the target data distribution. A time-dependent flow moves a point by the ordinary differential equation
 
 $$
-\frac{d x_t}{dt} = v_t(x_t), \qquad x_0 \sim p_0.
+\frac{d x_t}{dt} = v_t(x_t).
 $$
+
+The initial sample is $x_0 \sim p_0$.
 
 The distribution of $x_t$ changes over time. We can call this changing distribution $p_t$. The ideal goal is to choose a velocity field $v_t$ such that $p_t$ starts at $p_0$ and ends at $p_1$.
 
 The direct regression target is not available in real data. At intermediate times, we do not know the exact marginal distribution $p_t$ or the exact global velocity $v_t$. This is why conditional flow matching is useful: it creates tractable supervised targets by conditioning on sampled endpoints.
 
-## Core construction
+## Path and velocity target
 
 Sample a source point $x_0 \sim p_0$, a data point $x_1 \sim p_1$, and a time $t \sim \mathcal{U}(0, 1)$. The simplest conditional path is a straight line:
 
@@ -91,18 +97,18 @@ flowchart LR
     solver --> generated
 ```
 
-For now, read this as a supervised velocity-prediction problem. The reason this conditional target can later be used for unconditional sampling comes after the code result.
+At this point, the learning problem is just supervised velocity prediction. The later sampling step uses the learned average direction at each location and time, rather than the original endpoint pair.
 
 ## Training objective
 
 For the straight-line path, the training loss is
 
 $$
-\mathcal{L}(\theta)
-= \mathbb{E}_{t, x_0, x_1}
-\left[
-\left\|v_\theta(x_t, t) - (x_1 - x_0)\right\|_2^2
-\right].
+\mathcal{L}(\theta)=\mathbb{E}_{t,x_0,x_1}[\ell_\theta],
+$$
+
+$$
+\ell_\theta=\left\|v_\theta(x_t,t)-(x_1-x_0)\right\|_2^2.
 $$
 
 This objective is attractive because it avoids solving the sampling ODE during training. Each training step only needs four operations: sample endpoints, sample time, interpolate, and regress the velocity.
@@ -154,29 +160,35 @@ The limitation is also visible. Straight lines between independently paired nois
 
 ## Sampling procedure
 
-One theoretical step remains. Training uses conditional endpoint pairs $(x_0, x_1)$, but sampling starts from fresh noise without choosing a target endpoint. Flow matching shows that the conditional regression objective has the right population optimum for the marginal velocity field under the chosen probability path.
+One theoretical step remains. Training uses conditional endpoint pairs $(x_0, x_1)$, but sampling starts from fresh noise without choosing a target endpoint. Flow matching shows that the conditional regression objective has the right population optimum for the marginal velocity field under the chosen probability path. This conditional-to-marginal argument is the core idea behind flow matching and conditional flow matching [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747), [Improving and Generalizing Flow-Based Generative Models with Minibatch Optimal Transport](https://arxiv.org/abs/2302.00482).
 
 After training, discard the paired endpoint construction. Sampling starts from fresh noise and follows the learned vector field:
 
 $$
-\frac{d x_t}{dt} = v_\theta(x_t, t), \qquad x_0 \sim p_0.
+\frac{d x_t}{dt} = v_\theta(x_t,t).
 $$
+
+Again, the initial sample is $x_0 \sim p_0$.
 
 A numerical ODE solver approximates
 
 $$
-x_1 = x_0 + \int_0^1 v_\theta(x_t, t)\,dt.
+x_1 \approx x_0+\int_0^1 v_\theta(x_t,t)\,dt.
 $$
 
-The number of solver steps controls the speed-quality tradeoff. More steps usually track the learned field more accurately; fewer steps are faster but can expose errors in the learned trajectory. The official [`facebookresearch/flow_matching`](https://github.com/facebookresearch/flow_matching) library is the best place to check the current implementation patterns because it includes continuous and discrete flow matching examples.
+The number of solver steps controls the speed-quality tradeoff. More steps usually track the learned field more accurately; fewer steps are faster but can expose errors in the learned trajectory. This is why path design matters: rectified flow studies straight transports for fast sampling [Flow Straight and Fast](https://arxiv.org/abs/2209.03003), while stochastic interpolants connect flow and diffusion viewpoints through broader interpolating processes [Stochastic Interpolants](https://arxiv.org/abs/2303.08797). The official [`facebookresearch/flow_matching`](https://github.com/facebookresearch/flow_matching) library is the best place to check current implementation patterns.
 
 ## Next part
 
-Part 1 established the minimal loop: choose a path, regress its velocity, and use the learned field for sampling. The remaining question is how sampling quality changes when the solver, path, and model become less minimal. Part 2 will build the sampling loop around this loss, vary the ODE step count, and show why better probability paths can matter once the straight-line construction is clear.
+Part 2 will implement the sampling loop and compare how ODE step count and path choice change the generated samples.
 
 ## References and visual resources
 
 - Primary guide and paper: [Flow Matching Guide and Code](https://arxiv.org/abs/2412.06264).
+- Core paper: [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747).
+- Conditional flow matching and minibatch OT: [Improving and Generalizing Flow-Based Generative Models with Minibatch Optimal Transport](https://arxiv.org/abs/2302.00482).
+- Related straight-path view: [Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow](https://arxiv.org/abs/2209.03003).
+- Related interpolant view: [Stochastic Interpolants: A Unifying Framework for Flows and Diffusions](https://arxiv.org/abs/2303.08797).
 - Official codebase: [`facebookresearch/flow_matching`](https://github.com/facebookresearch/flow_matching).
 - Visual reference: [A Visual Dive into Conditional Flow Matching](https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/) uses diagrams for the probability path and velocity field.
 - Compact technical reference: [Flow Matching: A Minimal Guide](https://www.weideng.org/posts/flow_matching/) lays out the ODE, continuity equation, and flow matching loss.

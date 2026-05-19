@@ -10,6 +10,10 @@ series:
 
 source_materials:
   - "https://arxiv.org/abs/2412.06264"
+  - "https://arxiv.org/abs/2210.02747"
+  - "https://arxiv.org/abs/2302.00482"
+  - "https://arxiv.org/abs/2209.03003"
+  - "https://arxiv.org/abs/2303.08797"
   - "https://github.com/facebookresearch/flow_matching"
   - "https://dl.heeere.com/conditional-flow-matching/blog/conditional-flow-matching/"
   - "https://www.weideng.org/posts/flow_matching/"
@@ -22,7 +26,7 @@ checkpoints:
   draft: "revised_with_visual_plan_and_remote_code_results"
   code_run: "passed_remote_wsl_20260519T105934Z"
   human_voice_pass: "revised_for_direct_professional_style"
-  citation_check: "external_links_collected"
+  citation_check: "core_papers_and_external_links_collected"
   jekyll_render_check: "passed_with_drafts_build"
   publish_approval: "approved_by_user_request"
 

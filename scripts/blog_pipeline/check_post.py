@@ -27,7 +27,7 @@ REQUIRED_FRONT_MATTER = {
 REQUIRED_SECTIONS = [
     "Introduction",
     "Problem setup",
-    "Core construction",
+    "Path and velocity target",
     "Training objective",
     "Minimal implementation",
     "Code result",
@@ -43,6 +43,7 @@ FORBIDDEN_SECTION_NAMES = [
     "Toy code",
     "Common confusions",
     "References and next reading",
+    "Core construction",
 ]
 BANNED_PATTERNS = [
     r"\bcheckpoint draft\b",
@@ -108,11 +109,19 @@ BANNED_PATTERNS = [
     r"\bthe code does not implement\b",
     r"\bdoes not implement the full\b",
     r"\bthis is not a full implementation\b",
+    r"\bpart 1 established\b",
+    r"\bthe remaining question is\b",
     r"\bnot a production implementation\b",
     r"\bfor provenance\b",
     r"\bfigure provenance\b",
     r"\bprompt provenance\b",
 ]
+SCHOLARLY_SOURCE_RE = re.compile(
+    r"(arxiv\.org|doi\.org|openreview\.net|semanticscholar\.org|aclanthology\.org|"
+    r"proceedings\.mlr\.press|neurips\.cc|icml\.cc|openaccess\.thecvf\.com|"
+    r"\.pdf(?:$|[?#]))",
+    flags=re.IGNORECASE,
+)
 
 
 def split_front_matter(text: str) -> tuple[str, str]:
@@ -142,6 +151,26 @@ def front_matter_value(front_matter: str, key: str) -> str | None:
     return match.group(1).strip().strip('"').strip("'")
 
 
+def front_matter_list(front_matter: str, key: str) -> list[str]:
+    lines = front_matter.splitlines()
+    values: list[str] = []
+    in_block = False
+    indent = 0
+    for line in lines:
+        if not in_block:
+            match = re.match(rf"^(\s*){re.escape(key)}:\s*$", line)
+            if match:
+                in_block = True
+                indent = len(match.group(1))
+            continue
+        if line and not line.startswith(" " * (indent + 2)):
+            break
+        item = re.match(r"^\s*-\s*(.+?)\s*$", line)
+        if item:
+            values.append(item.group(1).strip().strip('"').strip("'"))
+    return values
+
+
 def is_post_path(path: Path) -> bool:
     return "_posts" in path.parts or bool(re.match(r"\d{4}-\d{2}-\d{2}-", path.name))
 
@@ -155,15 +184,30 @@ def has_visual(body: str) -> bool:
     )
 
 
+def attribute_value(text: str, attr: str) -> str | None:
+    pattern = re.compile(rf"\b{re.escape(attr)}\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
+    match = pattern.search(text)
+    if not match:
+        return None
+    return next(value for value in match.groups() if value is not None)
+
+
 def image_alt_errors(body: str) -> list[str]:
     errors: list[str] = []
     for match in re.finditer(r"!\[([^\]]*)\]\(([^)]+)\)", body):
         if not match.group(1).strip():
             errors.append(f"image {match.group(2)} is missing alt text")
     for match in re.finditer(r"{%\s*include\s+figure\.liquid\b([^%]*)%}", body):
-        include = match.group(0)
-        if " alt=" not in include and " alt='" not in include and ' alt="' not in include:
+        include = match.group(1)
+        alt = attribute_value(include, "alt")
+        if alt is None or not alt.strip():
             errors.append("figure include is missing alt text")
+    for match in re.finditer(r"<img\b([^>]*)>", body, flags=re.IGNORECASE):
+        tag = match.group(1)
+        src = attribute_value(tag, "src") or "<unknown>"
+        alt = attribute_value(tag, "alt")
+        if alt is None or not alt.strip():
+            errors.append(f"HTML image {src} is missing alt text")
     return errors
 
 
@@ -187,16 +231,35 @@ def liquid_figure_errors(body: str) -> list[str]:
     errors: list[str] = []
     for match in re.finditer(r"{%\s*include\s+figure\.liquid\b([^%]*)%}", body):
         include = match.group(1)
-        path_match = re.search(r'\bpath=(?:"([^"]+)"|\'([^\']+)\'|([^\s]+))', include)
-        if not path_match:
+        target = attribute_value(include, "path")
+        if not target:
             continue
-        target = next(value for value in path_match.groups() if value)
         if re.match(r"https?://", target):
             errors.append(f"external figure hotlink is not allowed: {target}")
             continue
         local_path = ROOT / target.lstrip("/")
         if not local_path.exists():
             errors.append(f"local figure does not exist: {target}")
+    return errors
+
+
+def html_image_errors(body: str) -> list[str]:
+    errors: list[str] = []
+    for match in re.finditer(r"<img\b([^>]*)>", body, flags=re.IGNORECASE):
+        tag = match.group(1)
+        target = attribute_value(tag, "src")
+        if not target:
+            errors.append("HTML image is missing src")
+            continue
+        if re.match(r"https?://", target):
+            errors.append(f"external HTML image hotlink is not allowed: {target}")
+            continue
+        if target.startswith(("#", "mailto:", "data:")):
+            continue
+        local = target.split("#", 1)[0].split("?", 1)[0]
+        local_path = ROOT / local.lstrip("/")
+        if not local_path.exists():
+            errors.append(f"local HTML image does not exist: {target}")
     return errors
 
 
@@ -209,6 +272,32 @@ def local_asset_errors(value: str | None, label: str) -> list[str]:
     if not local_path.exists():
         return [f"{label} does not exist: {value}"]
     return []
+
+
+def source_material_errors(front_matter: str) -> list[str]:
+    sources = front_matter_list(front_matter, "source_materials")
+    scholarly_sources = sorted({source for source in sources if SCHOLARLY_SOURCE_RE.search(source)})
+    if len(sources) < 2:
+        return ["source_materials should include the primary source plus at least one supporting reference"]
+    if len(scholarly_sources) < 2:
+        return ["source_materials should include at least two scholarly/core sources such as arXiv, DOI, OpenReview, PMLR, CVF, or PDFs"]
+    return []
+
+
+def reference_link_errors(body: str) -> list[str]:
+    errors: list[str] = []
+    reference_body = section_body(body, "References and visual resources")
+    if not reference_body:
+        return errors
+
+    links = re.findall(r"https?://[^\s)>\"]+", reference_body)
+    distinct_links = sorted(set(links))
+    scholarly_links = sorted({link for link in distinct_links if SCHOLARLY_SOURCE_RE.search(link)})
+    if len(distinct_links) < 3:
+        errors.append("References and visual resources should include at least three cited external references")
+    if len(scholarly_links) < 2:
+        errors.append("References and visual resources should include at least two scholarly/core paper links")
+    return errors
 
 
 def section_order_errors(body: str) -> list[str]:
@@ -226,6 +315,28 @@ def section_order_errors(body: str) -> list[str]:
                 + " -> ".join(REQUIRED_SECTIONS)
             ]
     return []
+
+
+def section_body(body: str, section: str) -> str:
+    match = re.search(rf"^##\s+{re.escape(section)}\s*$", body, re.MULTILINE)
+    if not match:
+        return ""
+    next_match = re.search(r"^##\s+.+$", body[match.end() :], re.MULTILINE)
+    end = match.end() + next_match.start() if next_match else len(body)
+    return body[match.end() : end].strip()
+
+
+def display_math_errors(body: str) -> list[str]:
+    errors: list[str] = []
+    for block in re.findall(r"\$\$(.*?)\$\$", body, flags=re.DOTALL):
+        if r"\qquad" in block or r"\quad" in block:
+            errors.append("display math should not use \\quad/\\qquad; split side conditions into prose")
+        for line in block.splitlines():
+            stripped = line.strip()
+            if len(stripped) > 100:
+                errors.append("display math line is too long; split it to avoid horizontal scroll")
+                break
+    return errors
 
 
 def visual_plan_errors(front_matter: str, body: str) -> list[str]:
@@ -270,7 +381,11 @@ def visual_plan_errors(front_matter: str, body: str) -> list[str]:
         )
         section_text = block.group(1) if block else ""
         if re.search(r"^\s*-\s+path:", section_text, flags=re.MULTILINE):
-            if not re.search(r"^\s+alt:\s+\".+\"", section_text, flags=re.MULTILINE):
+            alt_values = [
+                match.group(1).strip().strip('"').strip("'")
+                for match in re.finditer(r"^\s+alt:\s+(.+)$", section_text, flags=re.MULTILINE)
+            ]
+            if not alt_values or any(not alt for alt in alt_values):
                 errors.append(f"{section} entries must include alt text")
             if section == "generated_figures" and not re.search(r"^\s+prompt:\s+\|", section_text, flags=re.MULTILINE):
                 errors.append("generated_figures entries must include the final image prompt")
@@ -306,6 +421,13 @@ def validate(path: Path) -> tuple[list[str], list[str]]:
         if not re.search(rf"^##\s+{re.escape(section)}\s*$", body, re.MULTILINE):
             errors.append(f"missing required section: {section}")
     errors.extend(section_order_errors(body))
+    errors.extend(display_math_errors(body))
+    errors.extend(source_material_errors(front_matter))
+    errors.extend(reference_link_errors(body))
+
+    next_part = section_body(body, "Next part")
+    if next_part and len(re.findall(r"\b[\w'-]+\b", next_part)) > 25:
+        errors.append("Next part section should be concise: keep it to 25 words or fewer")
 
     for section in FORBIDDEN_SECTION_NAMES:
         if re.search(rf"^##\s+{re.escape(section)}\s*$", body, re.MULTILINE):
@@ -320,6 +442,7 @@ def validate(path: Path) -> tuple[list[str], list[str]]:
     errors.extend(image_alt_errors(body))
     errors.extend(markdown_image_errors(body))
     errors.extend(liquid_figure_errors(body))
+    errors.extend(html_image_errors(body))
     errors.extend(visual_plan_errors(front_matter, body))
 
     visible_body = re.sub(r"<!--.*?-->", "", body, flags=re.DOTALL)
