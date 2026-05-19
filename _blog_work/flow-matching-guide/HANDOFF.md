@@ -51,6 +51,27 @@ verification command succeeds and the evidence is recorded.
 
 ## Latest Verification
 
+2026-05-19 FM-06 Part 4 draft check:
+
+- Active branch: `codex/flow-matching-series-complete-drafts`.
+- FM-06 is passing and no task is currently active.
+- Planner verified OT-CFM and Rectified Flow claim scope; retained evidence is
+  in
+  `_blog_work/flow-matching-guide/remote_runs/20260519T153000Z_fm06_source_check/source_verification.md`.
+- Generator created `_drafts/flow-matching-guide-part-4.md`, the deterministic
+  example `scripts/blog_pipeline/examples/flow_matching_coupling_diagnostics.py`,
+  run metadata under
+  `_blog_work/flow-matching-guide/remote_runs/20260519T153215Z_fm06_coupling_diagnostics/`,
+  and the local figure
+  `assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg`.
+- Evaluator decision: passed. The draft explicitly scopes minibatch OT as a
+  batch-local assignment, avoids global OT claims, keeps Rectified Flow as
+  straight-path motivation, and registers the local figure with alt text.
+- `python3 scripts/blog_pipeline/check_harness.py flow-matching-guide`: passed.
+- `python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md`: passed after splitting a display equation side condition.
+- `python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py`: passed.
+- `BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts`: passed.
+
 2026-05-19 FM-05 Part 3 draft check:
 
 - Active branch: `codex/flow-matching-series-complete-drafts`.

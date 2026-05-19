@@ -1,0 +1,17 @@
+{
+  "task": "FM-06",
+  "seed": 61,
+  "batch_size": 12,
+  "assignment_method": "exact squared-distance assignment within one minibatch",
+  "metrics": {
+    "independent": {
+      "cost": 7.430225427783206,
+      "crossings": 16.0
+    },
+    "minibatch_ot": {
+      "cost": 3.917429153129655,
+      "crossings": 3.0
+    }
+  },
+  "asset": "assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg"
+}

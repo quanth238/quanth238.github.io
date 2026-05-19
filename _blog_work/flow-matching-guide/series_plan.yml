@@ -117,7 +117,7 @@ parts:
     transition: "Part 4 changes the endpoint coupling and studies path quality."
 
   - part: 4
-    status: "planned"
+    status: "draft-passing"
     title: "Couplings, minibatch OT, and rectified paths"
     reader_question: "How does endpoint pairing change path quality and sampling cost?"
     objective: "Compare independent pairing, minibatch OT pairing, and rectified-flow motivation."
@@ -139,8 +139,12 @@ parts:
       - "Minibatch OT pairing"
       - "Rectified-flow view"
       - "Diagnostics"
-    code_target: "Create a 2D endpoint pairing comparison with transport cost, line-crossing count, and sampled trajectories."
-    visual_intent: "Side-by-side pairing lines and path plots."
+    verification_evidence:
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T153000Z_fm06_source_check/source_verification.md"
+      - "_blog_work/flow-matching-guide/remote_runs/20260519T153215Z_fm06_coupling_diagnostics/coupling_diagnostics.json"
+      - "assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg"
+    code_target: "Complete: compared independent random pairing and exact squared-distance assignment inside one minibatch with transport cost and line-crossing diagnostics."
+    visual_intent: "Complete: approved side-by-side pairing-line SVG with explicit batch-local scope."
     transition: "Part 5 asks what else can change besides coupling."
 
   - part: 5

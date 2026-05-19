@@ -1,7 +1,7 @@
 series: "flow-matching-guide"
 updated_at: "2026-05-19"
 wip_limit: 1
-current_state: "fm-05-passing"
+current_state: "fm-06-passing"
 active_task: null
 state_policy:
   valid_states: ["not_started", "active", "blocked", "passing"]
@@ -139,7 +139,7 @@ tasks:
   - id: "FM-06"
     title: "Implement Flow Matching Part 4"
     behavior: "Draft and verify Part 4 on endpoint couplings, minibatch OT, and rectified-path diagnostics."
-    state: "not_started"
+    state: "passing"
     depends_on: ["FM-05"]
     verification:
       - "python3 scripts/blog_pipeline/check_harness.py flow-matching-guide"
@@ -150,6 +150,17 @@ tasks:
       - "Answer one practical question about how endpoint pairing changes path quality and sampling cost."
       - "Avoid claiming minibatch OT is globally optimal."
       - "Include local coupling diagnostics and registered visual metadata."
+    evidence:
+      - "Activated on branch codex/flow-matching-series-complete-drafts after FM-05 passed and was committed as 00519a9."
+      - "Planner verified OT-CFM and Rectified Flow source support; evidence: _blog_work/flow-matching-guide/remote_runs/20260519T153000Z_fm06_source_check/source_verification.md."
+      - "Generator created draft: _drafts/flow-matching-guide-part-4.md."
+      - "Generator created coupling diagnostic example: scripts/blog_pipeline/examples/flow_matching_coupling_diagnostics.py."
+      - "Code-result metadata: _blog_work/flow-matching-guide/remote_runs/20260519T153215Z_fm06_coupling_diagnostics/coupling_diagnostics.json."
+      - "Local figure: assets/img/blog/flow-matching-guide/flow-matching-coupling-diagnostics.svg."
+      - "Verification passed: python3 scripts/blog_pipeline/check_harness.py flow-matching-guide -> [harness-check] passed: flow-matching-guide."
+      - "Verification passed after equation-width fix: python3 scripts/blog_pipeline/check_post.py _drafts/flow-matching-guide-part-4.md -> [blog-check] passed."
+      - "Verification passed: python3 -m py_compile scripts/blog_pipeline/*.py scripts/blog_pipeline/examples/*.py."
+      - "Verification passed: BUNDLE_GEMFILE=/Users/quan238/personal/cv/Gemfile bundle exec jekyll build --drafts."
   - id: "FM-07"
     title: "Implement Flow Matching Part 5"
     behavior: "Draft and verify Part 5 on probability path families after schedule equations are checked against primary sources."
