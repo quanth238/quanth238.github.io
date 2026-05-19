@@ -44,11 +44,66 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-flow-matching-guide-and-code-part-1",
+        },{id: "post-flow-matching-official-api",
         
-          title: "Flow Matching Guide and Code, part 1",
+          title: "Flow Matching: Official API",
         
-        description: "A practical first pass at flow matching: path, velocity target, loss, and a 2D check.",
+        description: "Map toy code to the package.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/flow-matching-guide-part-6/";
+          
+        },
+      },{id: "post-flow-matching-path-design",
+        
+          title: "Flow Matching: Path Design",
+        
+        description: "Compare two path schedules.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/flow-matching-guide-part-5/";
+          
+        },
+      },{id: "post-flow-matching-endpoint-pairing",
+        
+          title: "Flow Matching: Endpoint Pairing",
+        
+        description: "Compare random and OT pairing.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/flow-matching-guide-part-4/";
+          
+        },
+      },{id: "post-flow-matching-local-averages",
+        
+          title: "Flow Matching: Local Averages",
+        
+        description: "Average arrows into a field.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/flow-matching-guide-part-3/";
+          
+        },
+      },{id: "post-flow-matching-ode-sampling",
+        
+          title: "Flow Matching: ODE Sampling",
+        
+        description: "Compare coarse and fine ODE steps.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/flow-matching-guide-part-2/";
+          
+        },
+      },{id: "post-flow-matching-velocity-fields",
+        
+          title: "Flow Matching: Velocity Fields",
+        
+        description: "Train the basic velocity target.",
         section: "Posts",
         handler: () => {
           

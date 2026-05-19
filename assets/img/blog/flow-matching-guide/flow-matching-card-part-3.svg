@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Flow Matching Part 3: Average local velocities</title>
+  <desc id="desc">Many endpoint-conditioned arrows become the marginal direction used by sampling.</desc>
+  <rect width="1200" height="675" rx="34" fill="#111827"/>
+  <rect x="34" y="34" width="1132" height="607" rx="28" fill="#172033" stroke="#2B3548" stroke-width="2"/>
+  <text x="72" y="96" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="1.5">PART 3 / POPULATION VIEW</text>
+  <text x="72" y="154" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="47" font-weight="760">Average local velocities</text>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#F8FAFC"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2DD4BF"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#FB923C"/>
+    </marker>
+  </defs>
+  <circle cx="470" cy="390" r="165" fill="#22304A" stroke="#A78BFA" stroke-width="4" stroke-dasharray="10 12"/>
+  <path d="M300 390 L420 335" stroke="#AEB8C8" stroke-width="5" stroke-linecap="round" opacity="0.72" marker-end="url(#arrow)"/>
+  <path d="M335 455 L470 420" stroke="#AEB8C8" stroke-width="5" stroke-linecap="round" opacity="0.72" marker-end="url(#arrow)"/>
+  <path d="M365 330 L520 300" stroke="#AEB8C8" stroke-width="5" stroke-linecap="round" opacity="0.72" marker-end="url(#arrow)"/>
+  <path d="M412 418 L565 380" stroke="#AEB8C8" stroke-width="5" stroke-linecap="round" opacity="0.72" marker-end="url(#arrow)"/>
+  <path d="M455 350 L600 325" stroke="#AEB8C8" stroke-width="5" stroke-linecap="round" opacity="0.72" marker-end="url(#arrow)"/>
+  <path d="M486 456 L650 430" stroke="#AEB8C8" stroke-width="5" stroke-linecap="round" opacity="0.72" marker-end="url(#arrow)"/>
+  <circle cx="470" cy="390" r="16" fill="#FB7185"/>
+  <path d="M735 392 L970 318" stroke="#2DD4BF" stroke-width="16" stroke-linecap="round" marker-end="url(#arrow-teal)"/>
+  <text x="710" y="460" fill="#2DD4BF" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="760">local average field</text>
+  <text x="252" y="575" fill="#AEB8C8" font-family="Inter, Arial, sans-serif" font-size="28">conditional samples near x,t</text>
+</svg>
