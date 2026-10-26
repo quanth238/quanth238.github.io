@@ -2,4 +2,4 @@
 :HL["/fonts/geist-latin.woff2","font",{"crossOrigin":"anonymous","type":"font/woff2"}]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"slug","t":"d","k":"publications","s":["_not-found","_global-error"]},"h":96,"c":"$Q2"}]]
-0:{"b":"lNraCz00P7M2c02UM-jhT","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"zv7C8pgQgZ_6KlCVTGBzQ","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
