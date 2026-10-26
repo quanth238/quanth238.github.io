@@ -1,16 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Sun, Moon, Monitor } from "lucide-react";
-import { useThemeStore, type Theme } from "@/lib/stores/themeStore";
+import { Sun, Moon } from "lucide-react";
+import { useThemeStore } from "@/lib/stores/themeStore";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useThemeStore();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   const current = mounted ? theme : "light";
-  const order: Theme[] = ["light", "dark", "system"];
-  const next = order[(order.indexOf(current) + 1) % order.length];
+  const next = current === "dark" ? "light" : "dark";
   const label = current.charAt(0).toUpperCase() + current.slice(1);
   return (
     <button
@@ -22,8 +21,6 @@ export function ThemeToggle() {
     >
       {current === "dark" ? (
         <Moon aria-hidden="true" />
-      ) : current === "system" ? (
-        <Monitor aria-hidden="true" />
       ) : (
         <Sun aria-hidden="true" />
       )}

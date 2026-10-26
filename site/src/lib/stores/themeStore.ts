@@ -1,37 +1,41 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-export type Theme = "light" | "dark" | "system";
+export type Theme = "light" | "dark";
 
 interface ThemeStore {
   theme: Theme;
   setTheme: (theme: Theme) => void;
-  toggleTheme: () => void; // toggles between light/dark (explicit override)
+  toggleTheme: () => void;
 }
 
 export const useThemeStore = create<ThemeStore>()(
   persist(
     (set, get) => ({
-      // The approved forest palette is light by default.
       theme: "light",
       setTheme: (theme: Theme) => {
         set({ theme });
         updateTheme(theme);
       },
       toggleTheme: () => {
-        const current = get().theme;
-        // When in system mode, first toggle explicitly to light
-        const newTheme = current === "dark" ? "light" : "dark";
-        set({ theme: newTheme });
-        updateTheme(newTheme);
+        const theme = get().theme === "dark" ? "light" : "dark";
+        set({ theme });
+        updateTheme(theme);
       },
     }),
     {
-      name: "theme-storage",
+      // The old key may contain the previous automatic system preference.
+      // Start this light-first design fresh, then remember explicit choices.
+      name: "portfolio-theme-v1",
+      merge: (persisted, current) => ({
+        ...current,
+        theme:
+          (persisted as { theme?: unknown } | null)?.theme === "dark"
+            ? "dark"
+            : "light",
+      }),
       storage: createJSONStorage(() => {
-        if (typeof window !== "undefined") {
-          return localStorage;
-        }
+        if (typeof window !== "undefined") return localStorage;
         return {
           getItem: () => null,
           setItem: () => {},
@@ -42,24 +46,9 @@ export const useThemeStore = create<ThemeStore>()(
   ),
 );
 
-function getSystemPrefersDark(): boolean {
-  if (typeof window === "undefined" || typeof window.matchMedia !== "function")
-    return false;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
-}
-
-export function resolveTheme(theme: Theme): "light" | "dark" {
-  if (theme === "system") {
-    return getSystemPrefersDark() ? "dark" : "light";
-  }
-  return theme;
-}
-
 function updateTheme(theme: Theme) {
-  const effective = resolveTheme(theme);
-  // Update DOM
   const root = document.documentElement;
   root.classList.remove("light", "dark");
-  root.classList.add(effective);
-  root.setAttribute("data-theme", effective);
+  root.classList.add(theme);
+  root.setAttribute("data-theme", theme);
 }
