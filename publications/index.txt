@@ -1,0 +1,84 @@
+1:"$Sreact.fragment"
+3:"static/chunks/864-a41a238e5f3c211b.js"
+4:"static/chunks/347-639fdf65535f2f7e.js"
+5:"static/chunks/224-94a2729f2e2fe427.js"
+6:"static/chunks/app/layout-32cf971079e2972a.js"
+7:I[4961,["864","$3","347","$4","224","$5","177","$6"],"ThemeProvider"]
+8:I[7982,["864","$3","347","$4","224","$5","177","$6"],"LocaleProvider"]
+9:I[9535,["864","$3","347","$4","224","$5","177","$6"],"default"]
+12:I[7123,[],"default",1]
+:HL["/_next/static/css/c52f45b1af1d6b2b.css","style"]
+2:T5c3,
+    try {
+      const cfg = {"enabled":false,"locales":["en"],"defaultLocale":"en","mode":"fixed","fixedLocale":"en","persist":false,"switcher":false,"labels":{"en":"en"}};
+      const storageKey = 'locale-storage';
+      const normalize = (value) => typeof value === 'string' ? value.trim().replace('_', '-').toLowerCase() : '';
+      const matchLocale = (candidate) => {
+        const normalized = normalize(candidate);
+        if (!normalized) return null;
+        if (cfg.locales.includes(normalized)) return normalized;
+        const language = normalized.split('-')[0];
+        if (cfg.locales.includes(language)) return language;
+        return null;
+      };
+
+      let resolved = null;
+
+      if (!cfg.enabled) {
+        resolved = cfg.defaultLocale;
+      } else if (cfg.persist) {
+        resolved = matchLocale(localStorage.getItem(storageKey));
+      }
+
+      if (!resolved) {
+        if (cfg.mode === 'fixed') {
+          resolved = cfg.fixedLocale;
+        } else {
+          resolved = matchLocale(navigator.language);
+        }
+      }
+
+      if (!resolved) {
+        resolved = cfg.defaultLocale;
+      }
+
+      const root = document.documentElement;
+      root.lang = resolved;
+      root.setAttribute('data-locale', resolved);
+
+      if (cfg.persist) {
+        localStorage.setItem(storageKey, resolved);
+      }
+    } catch (e) {
+      const root = document.documentElement;
+      root.lang = 'en';
+      root.setAttribute('data-locale', 'en');
+    }
+  e:X
+f:[["children",{"s":"__PAGE__","h":512,"d":{"r":"$L10","p":false,"v":null}}]]
+c:[["children",{"s":{"n":"slug","t":"d","k":"publications","s":["_not-found","_global-error"]},"h":512,"d":{"r":"$Ld","p":false,"v":"$e"},"c":"$Qf"}]]
+0:{"P":null,"c":["","publications",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/c52f45b1af1d6b2b.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"scroll-smooth","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon.svg","type":"image/svg+xml"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              try {\n                const theme = localStorage.getItem('theme-storage');\n                const parsed = theme ? JSON.parse(theme) : null;\n                const setting = parsed?.state?.theme || 'system';\n                const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;\n                const effective = setting === 'dark' ? 'dark' : (setting === 'light' ? 'light' : (prefersDark ? 'dark' : 'light'));\n                var root = document.documentElement;\n                root.classList.add(effective);\n                root.setAttribute('data-theme', effective);\n              } catch (e) {\n                var root = document.documentElement;\n                root.classList.add('light');\n                root.setAttribute('data-theme', 'light');\n              }\n            "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"className":"font-sans antialiased","children":["$","$L7",null,{"children":["$","$L8",null,{"config":{"enabled":false,"locales":["en"],"defaultLocale":"en","mode":"fixed","fixedLocale":"en","persist":false,"switcher":false,"labels":{"en":"en"}},"children":[["$","$L9",null,{"items":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}],"siteTitle":"Quan Tran Hong","enableOnePageMode":false,"i18n":"$0:t:t:d:r:props:children:1:props:children:1:props:children:props:children:props:config","itemsByLocale":{"en":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}]},"siteTitleByLocale":{"en":"Quan Tran Hong"}}],["$","main",null,{"className":"min-h-screen pt-16 lg:pt-20","children":"$La"}],"$Lb"]}]}]}]]}]]}],"p":false,"v":null},"c":"$Qc"},"h":{"r":"$L11","p":false,"v":null}},"m":"$undefined","G":["$12",[]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"ob7P6KP92JW5Y4CEhKwqw"}
+13:I[7121,[],""]
+14:I[4581,[],""]
+15:I[7694,["864","$3","347","$4","224","$5","177","$6"],"default"]
+17:I[484,[],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:"ViewportBoundary"
+1b:I[484,[],"$1a"]
+1d:"MetadataBoundary"
+1e:I[484,[],"$1d"]
+a:["$","$L13",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L14",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]
+b:["$","$L15",null,{"lastUpdated":"October 26, 2026","lastUpdatedByLocale":{"en":"October 26, 2026"},"defaultLocale":"en"}]
+d:["$","$1","c",{"children":[null,["$","$L13",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L14",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+10:["$","$1","c",{"children":["$L16",null,["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]]}]
+11:["$","$1","h",{"children":[null,["$","$L1b",null,{"children":"$L1c"}],["$","$L1e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$18",null,{"name":"Next.Metadata","children":"$L1f"}]}],null]}],null]}]
+20:"static/chunks/436-3c3c0ca22611d666.js"
+21:"static/chunks/582-ada3ae37bfd9a704.js"
+22:"static/chunks/app/%5Bslug%5D/page-3144145bc9256f6e.js"
+23:I[960,["864","$3","436","$20","582","$21","182","$22"],"default"]
+e:C
+16:["$","$L23",null,{"dataByLocale":{"en":{"type":"publication","config":{"type":"publication","title":"Publications","description":"Selected work on 3D Gaussian Splatting, neural rendering, and geometric reconstruction.","source":"publications.bib"},"publications":[{"id":"hong2026birthdeath","title":"Birth-Death Structural Learning for 3D Gaussian Splatting","titleNodes":[{"type":"text","text":"Birth-Death Structural Learning for 3D Gaussian Splatting"}],"authors":[{"name":"Quan Tran Hong","isHighlighted":true,"isCorresponding":false,"isCoAuthor":false},{"name":"Long Nguyen-Chi","isHighlighted":false,"isCorresponding":false,"isCoAuthor":false},{"name":"Binh T. Nguyen","isHighlighted":false,"isCorresponding":false,"isCoAuthor":false}],"year":2026,"type":"conference","status":"published","tags":[],"keywords":"$16:props:dataByLocale:en:publications:0:tags","researchArea":"machine-learning","journal":"","conference":"Conference on Neural Information Processing Systems (NeurIPS)","url":"https://openreview.net/forum?id=2ZtZYoWqyd","code":"https://github.com/quanth238/birth-death-3dgs","abstract":"","description":"Accepted as a poster. Structural learning for 3D Gaussian Splatting, guiding density control with a first-variation score from multi-view reconstruction loss.","selected":true,"preview":"birth-death.png","bibtex":"@inproceedings{hong2026birthdeath,\n  title = {Birth-Death Structural Learning for 3D Gaussian Splatting},\n  author = {Hong, Quan Tran and Nguyen-Chi, Long and Nguyen, Binh T.},\n  booktitle = {Conference on Neural Information Processing Systems (NeurIPS)},\n  year = {2026},\n  note = {Accepted as a poster},\n  url = {https://openreview.net/forum?id=2ZtZYoWqyd}\n}"},{"id":"luu2026geometry","title":"Geometry-Aware Online Mapping for 3D Gaussian Splatting SLAM","titleNodes":[{"type":"text","text":"Geometry-Aware Online Mapping for 3D Gaussian Splatting SLAM"}],"authors":[{"name":"Cong Thai Luu","isHighlighted":false,"isCorresponding":false,"isCoAuthor":true},{"name":"Quan Tran Hong","isHighlighted":true,"isCorresponding":false,"isCoAuthor":true},{"name":"Le Hieu Phan","isHighlighted":false,"isCorresponding":false,"isCoAuthor":false},{"name":"Tuan Dang","isHighlighted":false,"isCorresponding":false,"isCoAuthor":false}],"year":2026,"type":"conference","status":"published","tags":[],"keywords":"$16:props:dataByLocale:en:publications:1:tags","researchArea":"machine-learning","journal":"","conference":"IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)","url":"https://arxiv.org/abs/2608.14902","code":"https://github.com/cogniboticslab/3dgs_slam","abstract":"","description":"Accepted. Geometry-aware mapping with transmittance-preserving densification, camera-aware scale initialization, and error-guided densification.","selected":true,"preview":"geometry-aware-slam.png","bibtex":"@inproceedings{luu2026geometry,\n  title = {Geometry-Aware Online Mapping for 3D Gaussian Splatting SLAM},\n  author = {Luu, Cong Thai and Hong, Quan Tran and Phan, Le Hieu and Dang, Tuan},\n  booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},\n  year = {2026},\n  note = {Accepted. Equal contribution by Cong Thai Luu and Quan Tran Hong},\n  url = {https://arxiv.org/abs/2608.14902}\n}"},{"id":"hong2026triags","title":"TriaGS: Differentiable Triangulation-Guided Geometric Consistency for 3D Gaussian Splatting","titleNodes":[{"type":"text","text":"TriaGS: Differentiable Triangulation-Guided Geometric Consistency for 3D Gaussian Splatting"}],"authors":[{"name":"Quan Tran Hong","isHighlighted":true,"isCorresponding":false,"isCoAuthor":false},{"name":"Tuan Dang","isHighlighted":false,"isCorresponding":false,"isCoAuthor":false}],"year":2026,"type":"conference","status":"published","tags":[],"keywords":"$16:props:dataByLocale:en:publications:2:tags","researchArea":"machine-learning","journal":"","conference":"IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)","url":"https://arxiv.org/abs/2512.06269","code":"https://github.com/cogniboticslab/triags","abstract":"","description":"Differentiable multi-view triangulation enforces geometric consistency for 3D Gaussian Splatting, improving surface reconstruction and reducing floater artifacts.","selected":true,"preview":"triags.png","bibtex":"@inproceedings{hong2026triags,\n  title = {TriaGS: Differentiable Triangulation-Guided Geometric Consistency for 3D Gaussian Splatting},\n  author = {Hong, Quan Tran and Dang, Tuan},\n  booktitle = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},\n  year = {2026},\n  url = {https://arxiv.org/abs/2512.06269}\n}"}]}},"defaultLocale":"en"}]
+1c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+24:I[6869,[],"IconMark"]
+19:null
+1f:[["$","title","0",{"children":"Publications | Quan Tran Hong"}],["$","meta","1",{"name":"description","content":"Selected work on 3D Gaussian Splatting, neural rendering, and geometric reconstruction."}],["$","meta","2",{"name":"author","content":"Quan Tran Hong"}],["$","meta","3",{"name":"keywords","content":"Quan Tran Hong,Computer Science,3D Gaussian Splatting,Neural Rendering,Research,VinUniversity"}],["$","meta","4",{"name":"creator","content":"Quan Tran Hong"}],["$","meta","5",{"name":"publisher","content":"Quan Tran Hong"}],["$","meta","6",{"property":"og:title","content":"Quan Tran Hong"}],["$","meta","7",{"property":"og:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","meta","8",{"property":"og:site_name","content":"Quan Tran Hong's Academic Website"}],["$","meta","9",{"property":"og:locale","content":"en_US"}],["$","meta","10",{"property":"og:type","content":"website"}],["$","meta","11",{"name":"twitter:card","content":"summary"}],["$","meta","12",{"name":"twitter:title","content":"Quan Tran Hong"}],["$","meta","13",{"name":"twitter:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","link","14",{"rel":"icon","href":"/favicon.svg"}],["$","$L24","15",{}]]
