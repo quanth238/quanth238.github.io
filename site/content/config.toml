@@ -1,0 +1,43 @@
+[site]
+title = "Quan Tran Hong"
+description = "Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."
+favicon = "/favicon.svg"
+last_updated = "October 26, 2026"
+
+[author]
+name = "Quan Tran Hong"
+title = "MSc Student · Research Assistant"
+institution = "VinUniversity"
+avatar = "/quan-tran-hong.jpg"
+
+[social]
+email = "quanth238@gmail.com"
+location = "Vietnam"
+google_scholar = "https://scholar.google.com/citations?user=VZ0L3wIAAAAJ&hl=en"
+github = "https://github.com/quanth238"
+linkedin = "https://www.linkedin.com/in/quan2381/"
+
+[features]
+enable_likes = false
+enable_one_page_mode = false
+
+[i18n]
+enabled = false
+locales = ["en"]
+default_locale = "en"
+mode = "fixed"
+fixed_locale = "en"
+persist = false
+switcher = false
+
+[[navigation]]
+title = "About"
+type = "page"
+target = "about"
+href = "/"
+
+[[navigation]]
+title = "Publications"
+type = "page"
+target = "publications"
+href = "/publications/"

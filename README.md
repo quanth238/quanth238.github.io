@@ -1,3 +1,12 @@
+# Quan Tran Hong — Personal Website
+
+The active website now uses **[PRISM](https://github.com/xyjoey/PRISM)**.
+See [site/README.md](site/README.md) for development and content updates.
+Build and publish from `site/` with `npm run deploy`. The old al-folio deployment is disabled.
+The legacy al-folio sources below are retained for reference and are not deployed.
+
+---
+
 # CV Research Blog Visual Harness
 
 This worktree is the dedicated blog-writing harness for Quan's CV site.

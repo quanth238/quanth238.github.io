@@ -1,0 +1,29 @@
+type = "about"
+title = "About"
+
+[profile]
+research_interests = [
+  "Machine Learning",
+  "Computer Vision & 3D Reconstruction",
+  "Neural Rendering",
+  "Generative Modeling"
+]
+
+[[sections]]
+id = "about"
+type = "markdown"
+source = "bio.md"
+title = "About"
+
+[[sections]]
+id = "featured_publications"
+type = "publications"
+title = "Selected Publications"
+filter = "selected"
+limit = 3
+
+[[sections]]
+id = "background"
+type = "markdown"
+source = "background.md"
+title = "Background"

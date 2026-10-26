@@ -1,0 +1,4 @@
+type = "publication"
+title = "Publications"
+description = "Selected work on 3D Gaussian Splatting, neural rendering, and geometric reconstruction."
+source = "publications.bib"
