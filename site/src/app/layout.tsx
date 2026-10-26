@@ -33,7 +33,14 @@ export async function generateMetadata(): Promise<Metadata> {
     creator: config.author.name,
     publisher: config.author.name,
     icons: {
-      icon: config.site.favicon,
+      icon: [
+        {
+          url: "/favicon.ico",
+          sizes: "16x16 32x32 48x48",
+          type: "image/x-icon",
+        },
+        { url: config.site.favicon, sizes: "96x96", type: "image/png" },
+      ],
     },
     openGraph: {
       type: "website",
@@ -143,7 +150,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href={config.site.favicon} type="image/svg+xml" />
         <link
           rel="preload"
           href="/fonts/geist-latin.woff2"

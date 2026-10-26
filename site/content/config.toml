@@ -1,7 +1,7 @@
 [site]
 title = "Quan Tran Hong"
 description = "Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."
-favicon = "/favicon.svg"
+favicon = "/favicon-pixel-96.png"
 last_updated = "October 26, 2026"
 
 [author]

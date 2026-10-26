@@ -45,3 +45,7 @@ remembers only explicit choices under the new theme preference key. The header c
 
 Geist font files in public/fonts/ are distributed under the accompanying
 SIL Open Font License.
+
+The favicon is a transparent pixel portrait. The primary browser icon is
+public/favicon-pixel-96.png; public/favicon.ico provides 16, 32, and 48 px
+fallbacks, and public/favicon.svg is a self-contained compatibility wrapper.
