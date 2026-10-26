@@ -1,3 +1,4 @@
-:HL["/_next/static/css/c52f45b1af1d6b2b.css","style"]
+:HL["/_next/static/css/df573a0cc13cdbdf.css","style"]
+:HL["/fonts/geist-latin.woff2","font",{"crossOrigin":"anonymous","type":"font/woff2"}]
 1:[["children",{"s":"__PAGE__","h":128}]]
-0:{"b":"ZTN57t_HnlnbK5cHfs_ZI","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+0:{"b":"AKscdpVg10k7-quiV6F6f","t":{"t":{"s":"","h":16,"c":"$Q1"}}}

@@ -1,13 +1,11 @@
 1:"$Sreact.fragment"
-3:"static/chunks/864-a41a238e5f3c211b.js"
-4:"static/chunks/500-8af45f63ef5e66a0.js"
-5:"static/chunks/913-c5857ce2a696051f.js"
-6:"static/chunks/app/layout-2a1f32dd06cba5cf.js"
-7:I[4961,["864","$3","500","$4","913","$5","177","$6"],"ThemeProvider"]
-8:I[7982,["864","$3","500","$4","913","$5","177","$6"],"LocaleProvider"]
-9:I[4511,["864","$3","500","$4","913","$5","177","$6"],"default"]
-a:I[7121,[],""]
-:HL["/_next/static/css/c52f45b1af1d6b2b.css","style"]
+3:"static/chunks/500-8af45f63ef5e66a0.js"
+4:"static/chunks/app/layout-52152e89320fc4de.js"
+5:I[4961,["500","$3","177","$4"],"ThemeProvider"]
+6:I[7982,["500","$3","177","$4"],"LocaleProvider"]
+7:I[9251,["500","$3","177","$4"],"default"]
+:HL["/_next/static/css/df573a0cc13cdbdf.css","style"]
+:HL["/fonts/geist-latin.woff2","font",{"crossOrigin":"anonymous","type":"font/woff2"}]
 2:T5c3,
     try {
       const cfg = {"enabled":false,"locales":["en"],"defaultLocale":"en","mode":"fixed","fixedLocale":"en","persist":false,"switcher":false,"labels":{"en":"en"}};
@@ -54,32 +52,33 @@ a:I[7121,[],""]
       root.lang = 'en';
       root.setAttribute('data-locale', 'en');
     }
-  e:X
-12:X
-12:C
-13:[["children",{"s":"__PAGE__","h":160,"d":{"r":"$L14","p":"$@15","v":null,"s":"$e"}}]]
-f:[["children",{"s":"_not-found","h":96,"d":{"r":"$L10","p":"$@11","v":"$12","s":"$e"},"c":"$Q13"}]]
-0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/c52f45b1af1d6b2b.css","precedence":"next"}]],["$","html",null,{"lang":"en","className":"scroll-smooth","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon.svg","type":"image/svg+xml"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              try {\n                const theme = localStorage.getItem('theme-storage');\n                const parsed = theme ? JSON.parse(theme) : null;\n                const setting = parsed?.state?.theme || 'system';\n                const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;\n                const effective = setting === 'dark' ? 'dark' : (setting === 'light' ? 'light' : (prefersDark ? 'dark' : 'light'));\n                var root = document.documentElement;\n                root.classList.add(effective);\n                root.setAttribute('data-theme', effective);\n              } catch (e) {\n                var root = document.documentElement;\n                root.classList.add('light');\n                root.setAttribute('data-theme', 'light');\n              }\n            "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"className":"font-sans antialiased","children":["$","$L7",null,{"children":["$","$L8",null,{"config":{"enabled":false,"locales":["en"],"defaultLocale":"en","mode":"fixed","fixedLocale":"en","persist":false,"switcher":false,"labels":{"en":"en"}},"children":[["$","$L9",null,{"items":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}],"siteTitle":"Quan Tran Hong","enableOnePageMode":false,"i18n":"$0:t:t:d:r:props:children:1:props:children:1:props:children:props:children:props:config","itemsByLocale":{"en":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}]},"siteTitleByLocale":{"en":"Quan Tran Hong"}}],["$","main",null,{"className":"min-h-screen pt-16 lg:pt-20","children":["$","$La",null,{"parallelRouterKey":"children","template":"$Lb"}]}],"$Lc"]}]}]}]]}]]}],"p":"$@d","v":null,"s":"$e"},"c":"$Qf"},"h":{"r":"$L16","p":"$@17","v":null,"s":"$e"}},"a":"$@18","u":"$@19","b":"ZTN57t_HnlnbK5cHfs_ZI"}
-1a:I[4581,[],""]
-1b:I[7694,["864","$3","500","$4","913","$5","177","$6"],"default"]
-1c:I[484,[],"OutletBoundary"]
-1d:"$Sreact.suspense"
-1f:"ViewportBoundary"
+  b:X
+f:X
+f:C
+10:[["children",{"s":"__PAGE__","h":160,"d":{"r":"$L11","p":"$@12","v":null,"s":"$b"}}]]
+c:[["children",{"s":"_not-found","h":96,"d":{"r":"$Ld","p":"$@e","v":"$f","s":"$b"},"c":"$Q10"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/df573a0cc13cdbdf.css","precedence":"next"}]],["$","html",null,{"lang":"en","className":"scroll-smooth","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon.svg","type":"image/svg+xml"}],["$","link",null,{"rel":"preload","href":"/fonts/geist-latin.woff2","as":"font","type":"font/woff2","crossOrigin":"anonymous"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              try {\n                const theme = localStorage.getItem('theme-storage');\n                const parsed = theme ? JSON.parse(theme) : null;\n                const setting = parsed?.state?.theme || 'light';\n                const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;\n                const effective = setting === 'dark' ? 'dark' : (setting === 'light' ? 'light' : (prefersDark ? 'dark' : 'light'));\n                var root = document.documentElement;\n                root.classList.add(effective);\n                root.setAttribute('data-theme', effective);\n              } catch (e) {\n                var root = document.documentElement;\n                root.classList.add('light');\n                root.setAttribute('data-theme', 'light');\n              }\n            "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"className":"font-sans antialiased","children":["$","$L5",null,{"children":["$","$L6",null,{"config":{"enabled":false,"locales":["en"],"defaultLocale":"en","mode":"fixed","fixedLocale":"en","persist":false,"switcher":false,"labels":{"en":"en"}},"children":[["$","$L7",null,{"items":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}],"siteTitle":"Quan Tran Hong","enableOnePageMode":false,"i18n":"$0:t:t:d:r:props:children:1:props:children:1:props:children:props:children:props:config","itemsByLocale":{"en":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}]},"siteTitleByLocale":{"en":"Quan Tran Hong"}}],"$L8","$L9"]}]}]}]]}]]}],"p":"$@a","v":null,"s":"$b"},"c":"$Qc"},"h":{"r":"$L13","p":"$@14","v":null,"s":"$b"}},"a":"$@15","u":"$@16","b":"AKscdpVg10k7-quiV6F6f"}
+17:I[7121,[],""]
+18:I[4581,[],""]
+19:I[7694,["500","$3","177","$4"],"default"]
+1a:I[484,[],"OutletBoundary"]
+1b:"$Sreact.suspense"
+1d:"ViewportBoundary"
+1e:I[484,[],"$1d"]
+1f:"MetadataBoundary"
 20:I[484,[],"$1f"]
-21:"MetadataBoundary"
-22:I[484,[],"$21"]
-23:I[6869,[],"IconMark"]
-b:["$","$L1a",null,{}]
-c:["$","$L1b",null,{"lastUpdated":"October 26, 2026","lastUpdatedByLocale":{"en":"October 26, 2026"},"defaultLocale":"en"}]
-10:["$","$1","c",{"children":[null,["$","$La",null,{"parallelRouterKey":"children","template":["$","$L1a",null,{}]}]]}]
-14:["$","$1","c",{"children":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],null,["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]]}]
-16:["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L20",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L22",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Quan Tran Hong"}],["$","meta","1",{"name":"description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","meta","2",{"name":"author","content":"Quan Tran Hong"}],["$","meta","3",{"name":"keywords","content":"Quan Tran Hong,Computer Science,3D Gaussian Splatting,Neural Rendering,Research,VinUniversity"}],["$","meta","4",{"name":"creator","content":"Quan Tran Hong"}],["$","meta","5",{"name":"publisher","content":"Quan Tran Hong"}],["$","meta","6",{"property":"og:title","content":"Quan Tran Hong"}],["$","meta","7",{"property":"og:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","meta","8",{"property":"og:site_name","content":"Quan Tran Hong's Academic Website"}],["$","meta","9",{"property":"og:locale","content":"en_US"}],["$","meta","10",{"property":"og:type","content":"website"}],["$","meta","11",{"name":"twitter:card","content":"summary"}],["$","meta","12",{"name":"twitter:title","content":"Quan Tran Hong"}],["$","meta","13",{"name":"twitter:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","link","14",{"rel":"icon","href":"/favicon.svg"}],["$","$L23","15",{}]]}]}],null]}],null]}]
-1e:null
-19:true
-e:300
-e:C
-18:0
-11:"$undefined"
-17:"$undefined"
-15:"$undefined"
-d:"$undefined"
+21:I[6869,[],"IconMark"]
+8:["$","main",null,{"id":"main-content","children":["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]}]
+9:["$","$L19",null,{"lastUpdated":"October 26, 2026","lastUpdatedByLocale":{"en":"October 26, 2026"},"defaultLocale":"en"}]
+d:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
+11:["$","$1","c",{"children":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],null,["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]]}]
+13:["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L1e",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L20",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Quan Tran Hong"}],["$","meta","1",{"name":"description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","meta","2",{"name":"author","content":"Quan Tran Hong"}],["$","meta","3",{"name":"keywords","content":"Quan Tran Hong,Computer Science,3D Gaussian Splatting,Neural Rendering,Research,VinUniversity"}],["$","meta","4",{"name":"creator","content":"Quan Tran Hong"}],["$","meta","5",{"name":"publisher","content":"Quan Tran Hong"}],["$","meta","6",{"property":"og:title","content":"Quan Tran Hong"}],["$","meta","7",{"property":"og:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","meta","8",{"property":"og:site_name","content":"Quan Tran Hong's Academic Website"}],["$","meta","9",{"property":"og:locale","content":"en_US"}],["$","meta","10",{"property":"og:type","content":"website"}],["$","meta","11",{"name":"twitter:card","content":"summary"}],["$","meta","12",{"name":"twitter:title","content":"Quan Tran Hong"}],["$","meta","13",{"name":"twitter:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","link","14",{"rel":"icon","href":"/favicon.svg"}],["$","$L21","15",{}]]}]}],null]}],null]}]
+1c:null
+16:true
+b:300
+b:C
+15:0
+e:"$undefined"
+14:"$undefined"
+12:"$undefined"
+a:"$undefined"
