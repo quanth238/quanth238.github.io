@@ -49,3 +49,7 @@ SIL Open Font License.
 The favicon is a transparent pixel portrait. The primary browser icon is
 public/favicon-pixel-96.png; public/favicon.ico provides 16, 32, and 48 px
 fallbacks, and public/favicon.svg is a self-contained compatibility wrapper.
+
+The profile avatar is public/quan-tran-hong-pixel.webp: the same pixel character
+with a brick-building and tree background inspired by the original photograph.
+The original photo remains in public/quan-tran-hong.jpg.
