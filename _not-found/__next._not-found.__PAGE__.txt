@@ -1,10 +1,15 @@
 1:"$Sreact.fragment"
 3:"static/chunks/500-8af45f63ef5e66a0.js"
-4:"static/chunks/app/layout-52152e89320fc4de.js"
+4:"static/chunks/app/layout-c3183b02a65c36b2.js"
 5:I[4961,["500","$3","177","$4"],"ThemeProvider"]
 6:I[7982,["500","$3","177","$4"],"LocaleProvider"]
-7:I[9251,["500","$3","177","$4"],"default"]
-:HL["/_next/static/css/df573a0cc13cdbdf.css","style"]
+7:I[999,["500","$3","177","$4"],"default"]
+8:I[7121,[],""]
+9:I[4581,[],""]
+a:I[7694,["500","$3","177","$4"],"default"]
+13:"ViewportBoundary"
+14:I[484,[],"$13"]
+:HL["/_next/static/css/6c4a8bf404bba42f.css","style"]
 :HL["/fonts/geist-latin.woff2","font",{"crossOrigin":"anonymous","type":"font/woff2"}]
 2:T5c3,
     try {
@@ -52,33 +57,25 @@
       root.lang = 'en';
       root.setAttribute('data-locale', 'en');
     }
-  b:X
+  c:X
 f:X
 f:C
-10:[["children",{"s":"__PAGE__","h":160,"d":{"r":"$L11","p":"$@12","v":null,"s":"$b"}}]]
-c:[["children",{"s":"_not-found","h":96,"d":{"r":"$Ld","p":"$@e","v":"$f","s":"$b"},"c":"$Q10"}]]
-0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/df573a0cc13cdbdf.css","precedence":"next"}]],["$","html",null,{"lang":"en","className":"scroll-smooth","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon.svg","type":"image/svg+xml"}],["$","link",null,{"rel":"preload","href":"/fonts/geist-latin.woff2","as":"font","type":"font/woff2","crossOrigin":"anonymous"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              try {\n                const theme = localStorage.getItem('theme-storage');\n                const parsed = theme ? JSON.parse(theme) : null;\n                const setting = parsed?.state?.theme || 'light';\n                const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;\n                const effective = setting === 'dark' ? 'dark' : (setting === 'light' ? 'light' : (prefersDark ? 'dark' : 'light'));\n                var root = document.documentElement;\n                root.classList.add(effective);\n                root.setAttribute('data-theme', effective);\n              } catch (e) {\n                var root = document.documentElement;\n                root.classList.add('light');\n                root.setAttribute('data-theme', 'light');\n              }\n            "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"className":"font-sans antialiased","children":["$","$L5",null,{"children":["$","$L6",null,{"config":{"enabled":false,"locales":["en"],"defaultLocale":"en","mode":"fixed","fixedLocale":"en","persist":false,"switcher":false,"labels":{"en":"en"}},"children":[["$","$L7",null,{"items":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}],"siteTitle":"Quan Tran Hong","enableOnePageMode":false,"i18n":"$0:t:t:d:r:props:children:1:props:children:1:props:children:props:children:props:config","itemsByLocale":{"en":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}]},"siteTitleByLocale":{"en":"Quan Tran Hong"}}],"$L8","$L9"]}]}]}]]}]]}],"p":"$@a","v":null,"s":"$b"},"c":"$Qc"},"h":{"r":"$L13","p":"$@14","v":null,"s":"$b"}},"a":"$@15","u":"$@16","b":"AKscdpVg10k7-quiV6F6f"}
-17:I[7121,[],""]
-18:I[4581,[],""]
-19:I[7694,["500","$3","177","$4"],"default"]
-1a:I[484,[],"OutletBoundary"]
-1b:"$Sreact.suspense"
-1d:"ViewportBoundary"
-1e:I[484,[],"$1d"]
-1f:"MetadataBoundary"
-20:I[484,[],"$1f"]
-21:I[6869,[],"IconMark"]
-8:["$","main",null,{"id":"main-content","children":["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]}]
-9:["$","$L19",null,{"lastUpdated":"October 26, 2026","lastUpdatedByLocale":{"en":"October 26, 2026"},"defaultLocale":"en"}]
-d:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
-11:["$","$1","c",{"children":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],null,["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]]}]
-13:["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L1e",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L20",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Quan Tran Hong"}],["$","meta","1",{"name":"description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","meta","2",{"name":"author","content":"Quan Tran Hong"}],["$","meta","3",{"name":"keywords","content":"Quan Tran Hong,Computer Science,3D Gaussian Splatting,Neural Rendering,Research,VinUniversity"}],["$","meta","4",{"name":"creator","content":"Quan Tran Hong"}],["$","meta","5",{"name":"publisher","content":"Quan Tran Hong"}],["$","meta","6",{"property":"og:title","content":"Quan Tran Hong"}],["$","meta","7",{"property":"og:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","meta","8",{"property":"og:site_name","content":"Quan Tran Hong's Academic Website"}],["$","meta","9",{"property":"og:locale","content":"en_US"}],["$","meta","10",{"property":"og:type","content":"website"}],["$","meta","11",{"name":"twitter:card","content":"summary"}],["$","meta","12",{"name":"twitter:title","content":"Quan Tran Hong"}],["$","meta","13",{"name":"twitter:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","link","14",{"rel":"icon","href":"/favicon.svg"}],["$","$L21","15",{}]]}]}],null]}],null]}]
-1c:null
-16:true
-b:300
-b:C
-15:0
+10:[["children",{"s":"__PAGE__","h":160,"d":{"r":"$L11","p":"$@12","v":null,"s":"$c"}}]]
+d:[["children",{"s":"_not-found","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]]}],"p":"$@e","v":"$f","s":"$c"},"c":"$Q10"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/6c4a8bf404bba42f.css","precedence":"next"}]],["$","html",null,{"lang":"en","className":"scroll-smooth","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon.svg","type":"image/svg+xml"}],["$","link",null,{"rel":"preload","href":"/fonts/geist-latin.woff2","as":"font","type":"font/woff2","crossOrigin":"anonymous"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              try {\n                const theme = localStorage.getItem('portfolio-theme-v1');\n                const parsed = theme ? JSON.parse(theme) : null;\n                const effective = parsed?.state?.theme === 'dark' ? 'dark' : 'light';\n                var root = document.documentElement;\n                root.classList.add(effective);\n                root.setAttribute('data-theme', effective);\n              } catch (e) {\n                var root = document.documentElement;\n                root.classList.add('light');\n                root.setAttribute('data-theme', 'light');\n              }\n            "}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}]]}],["$","body",null,{"className":"font-sans antialiased","children":["$","$L5",null,{"children":["$","$L6",null,{"config":{"enabled":false,"locales":["en"],"defaultLocale":"en","mode":"fixed","fixedLocale":"en","persist":false,"switcher":false,"labels":{"en":"en"}},"children":[["$","$L7",null,{"items":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}],"siteTitle":"Quan Tran Hong","enableOnePageMode":false,"i18n":"$0:t:t:d:r:props:children:1:props:children:1:props:children:props:children:props:config","itemsByLocale":{"en":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications/"}]},"siteTitleByLocale":{"en":"Quan Tran Hong"}}],["$","main",null,{"id":"main-content","children":["$","$L8",null,{"parallelRouterKey":"children","template":["$","$L9",null,{}]}]}],["$","$La",null,{"lastUpdated":"October 26, 2026","lastUpdatedByLocale":{"en":"October 26, 2026"},"defaultLocale":"en"}]]}]}]}]]}]]}],"p":"$@b","v":null,"s":"$c"},"c":"$Qd"},"h":{"r":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],"$L15",null]}],"p":"$@16","v":null,"s":"$c"}},"a":"$@17","u":"$@18","b":"uI7o8tEn1Z0bNawrKTX4X"}
+19:I[484,[],"OutletBoundary"]
+1a:"$Sreact.suspense"
+1c:"MetadataBoundary"
+1d:I[484,[],"$1c"]
+1e:I[6869,[],"IconMark"]
+11:["$","$1","c",{"children":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],null,["$","$L19",null,{"children":["$","$1a",null,{"name":"Next.MetadataOutlet","children":"$@1b"}]}]]}]
+15:["$","$L1d",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Quan Tran Hong"}],["$","meta","1",{"name":"description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","meta","2",{"name":"author","content":"Quan Tran Hong"}],["$","meta","3",{"name":"keywords","content":"Quan Tran Hong,Computer Science,3D Gaussian Splatting,Neural Rendering,Research,VinUniversity"}],["$","meta","4",{"name":"creator","content":"Quan Tran Hong"}],["$","meta","5",{"name":"publisher","content":"Quan Tran Hong"}],["$","meta","6",{"property":"og:title","content":"Quan Tran Hong"}],["$","meta","7",{"property":"og:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","meta","8",{"property":"og:site_name","content":"Quan Tran Hong's Academic Website"}],["$","meta","9",{"property":"og:locale","content":"en_US"}],["$","meta","10",{"property":"og:type","content":"website"}],["$","meta","11",{"name":"twitter:card","content":"summary"}],["$","meta","12",{"name":"twitter:title","content":"Quan Tran Hong"}],["$","meta","13",{"name":"twitter:description","content":"Quan Tran Hong is a Computer Science graduate student at VinUniversity researching 3D vision, neural rendering, and generative modeling."}],["$","link","14",{"rel":"icon","href":"/favicon.svg"}],["$","$L1e","15",{}]]}]}],null]}]
+c:300
+1b:null
+18:true
+c:C
+17:0
 e:"$undefined"
-14:"$undefined"
+b:"$undefined"
+16:"$undefined"
 12:"$undefined"
-a:"$undefined"

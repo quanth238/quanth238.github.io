@@ -1,5 +1,5 @@
-:HL["/_next/static/css/df573a0cc13cdbdf.css","style"]
+:HL["/_next/static/css/6c4a8bf404bba42f.css","style"]
 :HL["/fonts/geist-latin.woff2","font",{"crossOrigin":"anonymous","type":"font/woff2"}]
 2:[["children",{"s":"__PAGE__","h":160}]]
-1:[["children",{"s":{"n":"slug","t":"d","k":"publications","s":["_not-found","_global-error"]},"h":64,"c":"$Q2"}]]
-0:{"b":"AKscdpVg10k7-quiV6F6f","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+1:[["children",{"s":{"n":"slug","t":"d","k":"publications","s":["_not-found","_global-error"]},"h":96,"c":"$Q2"}]]
+0:{"b":"uI7o8tEn1Z0bNawrKTX4X","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
