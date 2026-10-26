@@ -1,8 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import { Mail, GraduationCap, MapPin, Github, Linkedin } from "lucide-react";
+import {
+  Mail,
+  GraduationCap,
+  MapPin,
+  Github,
+  Linkedin,
+  BrainCircuit,
+  Box,
+  ScanLine,
+  Sparkles,
+  Network,
+  type LucideIcon,
+} from "lucide-react";
 import type { SiteConfig } from "@/lib/config";
+
+const interestIcons: Record<string, LucideIcon> = {
+  "Machine Learning": BrainCircuit,
+  "3D Reconstruction": Box,
+  "Neural Rendering": ScanLine,
+  "Generative Modeling": Sparkles,
+};
 
 interface ProfileProps {
   author: SiteConfig["author"];
@@ -77,9 +96,15 @@ export default function Profile({
         >
           <h2 id="research-interests-heading">Research Interests</h2>
           <ul className="interest-list">
-            {researchInterests.map((interest) => (
-              <li key={interest}>{interest}</li>
-            ))}
+            {researchInterests.map((interest) => {
+              const Icon = interestIcons[interest] || Network;
+              return (
+                <li key={interest}>
+                  <Icon aria-hidden="true" />
+                  <span>{interest}</span>
+                </li>
+              );
+            })}
           </ul>
         </section>
       )}
