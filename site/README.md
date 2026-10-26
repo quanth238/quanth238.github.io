@@ -36,3 +36,12 @@ additional papers, service, and experience.
 Teaching, Awards, Services, and a separate CV page are not generated.
 The earlier al-folio source remains outside `site/` for reference and is not
 part of the deployed static export.
+
+## Visual design
+
+Forest and porcelain palette, self-hosted Geist Sans, compact profile, and shared
+publication rows with real method figures. Light is the default; explicit theme
+preferences remain available. The header contains the only CV download.
+
+Geist font files in public/fonts/ are distributed under the accompanying
+SIL Open Font License.
