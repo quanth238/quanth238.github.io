@@ -26,7 +26,7 @@ installing that file.
 - `content/config.toml`: identity, contact links, and navigation.
 - `content/bio.md` and `content/background.md`: biography and experience.
 - `content/publications.bib`: the three selected conference publications.
-- `public/files/quan-tran-hong-cv.pdf`: the supplied CV, downloaded from the header or profile button.
+- `public/files/quan-tran-hong-cv.pdf`: the supplied CV, downloaded from the header button.
 - `public/papers/`: overview figures from the corresponding public paper repositories.
 
 Publication status and biographical details follow the CV supplied on

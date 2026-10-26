@@ -9,7 +9,6 @@ import {
 } from "@heroicons/react/24/outline";
 import { Github, Linkedin } from "lucide-react";
 import type { SiteConfig } from "@/lib/config";
-import DownloadCV from "@/components/ui/DownloadCV";
 
 interface ProfileProps {
   author: SiteConfig["author"];
@@ -85,9 +84,6 @@ export default function Profile({
               <Icon className="h-5 w-5" aria-hidden="true" />
             </a>
           ))}
-      </div>
-      <div className="mb-6 text-center">
-        <DownloadCV />
       </div>
       {researchInterests && (
         <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-700/50 dark:bg-neutral-800">
