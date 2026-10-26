@@ -25,8 +25,9 @@ if (
 ) {
   throw new Error("Refusing to deploy to an unexpected repository.");
 }
-const name = git(["config", "user.name"]);
-const email = git(["config", "user.email"]);
+const identity = git(["var", "GIT_AUTHOR_IDENT"]).match(/^(.*) <([^>]+)> /);
+if (!identity) throw new Error("Git author identity is missing.");
+const [, name, email] = identity;
 const checkout = mkdtempSync(join(root, ".deploy-"));
 
 try {
